@@ -72,20 +72,43 @@ that report has been redacted first. If you do want to link source documents
 non-public sheet/version rather than exposing them through `source_url` on
 the public site.
 
-## 3. Deploying
+## 3. Deploying (GitHub Pages)
 
-It's one HTML file with no build step, so any static host works:
+It's one HTML file with no build step, and the repo already lives on GitHub, so
+GitHub Pages is the simplest host. `index.html` is at the repo root, which is
+what Pages serves as the home page.
 
-- **Render**: New → Static Site → point it at a GitHub repo containing this
-  file (root `index.html`) → deploy. No build command needed; leave the
-  publish directory as `.`
-- **Netlify or Vercel**: drag-and-drop this folder onto their dashboard —
-  even faster than Render for something this simple.
-- **GitHub Pages**: push this folder to a repo, enable Pages in the repo
-  settings, pick the branch/root.
+1. Push the latest files to the `main` branch:
 
-Whichever you pick, the only file that matters is `index.html` — the CSV
-template is just for setting up the Sheet and isn't read by the site itself.
+   ```sh
+   git add -A
+   git commit -m "Deploy crash map"
+   git push origin main
+   ```
+2. On GitHub, go to the repo → **Settings** → **Pages** (left sidebar).
+3. Under **Build and deployment** → **Source**, pick **Deploy from a branch**.
+4. Set **Branch** to `main` and the folder to **`/ (root)`**, then **Save**.
+5. Wait ~1 minute. Your site will be live at:
+
+   **https://bedrockdude10.github.io/hopewell-boro-crashes/**
+
+   (Pages shows the exact URL at the top of that same settings page once it's
+   built.)
+
+**Notes:**
+
+- On the free plan the repo must be **public** for Pages to work. That's fine
+  here — the data is already public (a published Sheet with no personal
+  details).
+- **Data changes need no redeploy.** Editing the Google Sheet updates the live
+  site on the next page load (subject to Google's CSV cache, a few minutes).
+- **Code changes** (editing `index.html`) just need another `git push` to
+  `main` — Pages rebuilds automatically within a minute or so.
+- The only file that matters to the running site is `index.html`. `template.csv`
+  is just a reference/import file for the Sheet and isn't read by the site.
+- Optional: to use a custom domain (e.g. a `hopewellnj.org` subdomain), add it
+  under Settings → Pages → **Custom domain** and create the matching DNS record
+  with your domain provider.
 
 ## 4. Extending later
 
