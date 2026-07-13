@@ -285,11 +285,14 @@
 <script>
 // ============================================================================
 // DATA SOURCE
-// Paste a published-to-web Google Sheet CSV link below to go live.
-// (Google Sheet -> File -> Share -> Publish to web -> select sheet -> CSV)
-// Leave blank to run on the bundled sample data below.
+// Live-wired to the "Hopewell Boro Crashes" Google Sheet via its CSV export
+// endpoint. This only works because the sheet's general access is set to
+// "Anyone with the link" (Viewer) -- if that's ever tightened, this fetch
+// will start failing and the site will silently fall back to demo data.
+// Sheet: https://docs.google.com/spreadsheets/d/1TvlXckObW_d1xVSLTGKHXncRVYzlIVgNhi7fU6hI1v8
+// (gid=0 is the "template" tab -- update the gid if you add/reorder tabs.)
 // ============================================================================
-const DATA_URL = "";
+const DATA_URL = "https://docs.google.com/spreadsheets/d/1TvlXckObW_d1xVSLTGKHXncRVYzlIVgNhi7fU6hI1v8/export?format=csv&gid=0";
 
 // Fallback / demo dataset. Replace by wiring up DATA_URL above.
 // Columns match what the Google Sheet template expects.
