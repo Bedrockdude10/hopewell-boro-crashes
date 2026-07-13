@@ -4,16 +4,28 @@ A single-file replacement for the Google My Maps crash map, built with Leaflet.
 No server, no database — the "backend" is a Google Sheet, so anyone comfortable
 with spreadsheets can maintain the data with no code involved.
 
-Open `index.html` in a browser right now and it works, using the 16 placeholder
-rows built in as a demo. Everything below is about swapping that placeholder
-data for real crash records.
+Open `index.html` in a browser and it reads live from the published Google
+Sheet — that Sheet is the site's single source of truth. No crash data is baked
+into the HTML; if the Sheet can't be reached, the map shows a visible "data
+unavailable" state rather than stale data. Everything below is about
+maintaining the data in the Sheet.
+
+> **Note:** Google caches the "Publish to web" CSV, so edits to the Sheet can
+> take a few minutes to show up on the live site.
+>
+> `template.csv` holds the five real crash records (all at the Broad St &
+> Greenwood Ave intersection) as a reference/import file. The police reports
+> don't record lat/lng, so those five pins are placed in a small spread around
+> the Broad/Greenwood signal (each keyed to the leg named in its report) so
+> every marker stays clickable.
 
 ## 1. Set up the data source (Google Sheet)
 
-1. Open Google Sheets and import `crash-data-template.csv` (File → Import →
-   Upload), or just copy/paste its contents into a new sheet. This gives you
-   the right column headers and 16 sample rows to see the format — delete the
-   sample rows once you're adding real ones.
+1. Open your Google Sheet, delete the old sample rows, and import `template.csv`
+   (File → Import → Upload → "Replace current sheet" or "Append"), or just
+   copy/paste its contents. `template.csv` already contains the five real crash
+   records with the correct column headers — add new rows below them as more
+   reports come in.
 2. Column reference:
 
    | Column | Required | Notes |
@@ -37,17 +49,17 @@ data for real crash records.
 3. Publish the sheet as CSV: **File → Share → Publish to web** → under
    "Link", choose the specific sheet/tab → set the format dropdown to
    **Comma-separated values (.csv)** → **Publish**. Copy the link it gives you.
-4. Open `index.html` in a text editor, find this line near the top of the
-   `<script>` block:
+4. This is **already done** — `index.html` has `DATA_URL` set to your published
+   link near the top of the `<script>` block:
 
    ```js
-   const DATA_URL = "";
+   const DATA_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv";
    ```
 
-   Paste the published link between the quotes and save. The map now reads
-   live from the Sheet — anyone with edit access to the Sheet can add,
+   The map reads live from the Sheet — anyone with edit access can add,
    correct, or remove crashes, and the site picks it up on next page load.
-   No redeploy needed for data changes.
+   No redeploy needed for data changes. If you ever re-publish under a new
+   link, paste the new one between those quotes and save.
 
 ## 2. A note on privacy
 

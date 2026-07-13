@@ -241,7 +241,7 @@
       <h1>Hopewell Area Crash Map</h1>
       <p class="subtitle">Bicycle, pedestrian &amp; vehicle crash locations — Hopewell Borough &amp; Township, NJ</p>
     </div>
-    <span class="demo-flag">Placeholder data — not real crash records</span>
+    <span class="demo-flag">Source: Hopewell Borough PD crash reports</span>
   </header>
 
   <div id="main">
@@ -285,34 +285,16 @@
 <script>
 // ============================================================================
 // DATA SOURCE
-// Live-wired to the "Hopewell Boro Crashes" Google Sheet via its CSV export
-// endpoint. This only works because the sheet's general access is set to
-// "Anyone with the link" (Viewer) -- if that's ever tightened, this fetch
-// will start failing and the site will silently fall back to demo data.
-// Sheet: https://docs.google.com/spreadsheets/d/1TvlXckObW_d1xVSLTGKHXncRVYzlIVgNhi7fU6hI1v8
-// (gid=0 is the "template" tab -- update the gid if you add/reorder tabs.)
+// The site's only data source is the "Hopewell Boro Crashes" Google Sheet,
+// read live via its "Publish to web" CSV endpoint (File -> Share -> Publish to
+// web -> CSV). There is intentionally no data baked into this file -- edit the
+// Sheet to add, correct, or remove crashes and the site picks it up on the next
+// page load. If this fetch ever fails (sheet unpublished, offline, etc.) the
+// map shows a visible error instead of stale data.
+// Note: Google caches the published CSV, so edits can take a few minutes to
+// appear on the live site.
 // ============================================================================
-const DATA_URL = "https://docs.google.com/spreadsheets/d/1TvlXckObW_d1xVSLTGKHXncRVYzlIVgNhi7fU6hI1v8/export?format=csv&gid=0";
-
-// Fallback / demo dataset. Replace by wiring up DATA_URL above.
-// Columns match what the Google Sheet template expects.
-const SAMPLE_CSV = `id,date,time,municipality,location,lat,lng,crash_type,severity,description,source_url
-1,2024-03-11,17:40,Hopewell Borough,Broad St & Greenwood Ave,40.3884,-74.7635,pedestrian,injury,Pedestrian struck in crosswalk during evening commute; driver stated sun glare.,
-2,2024-06-02,08:15,Hopewell Borough,Broad St near W Broad St,40.3878,-74.7658,bicycle,injury,Cyclist sideswiped by vehicle turning right without signaling.,
-3,2023-09-19,15:05,Hopewell Borough,Greenwood Ave & Hamill Rd,40.3902,-74.7629,vehicle,property_damage,Rear-end collision at stop sign; no injuries reported.,
-4,2024-01-27,07:50,Hopewell Borough,Broad St & Somerset St,40.3865,-74.7648,pedestrian,fatal,Pedestrian fatality during early morning school commute hours.,
-5,2023-11-08,13:20,Hopewell Borough,Greenwood Ave near Louellen St,40.3897,-74.7657,bicycle,property_damage,Cyclist swerved to avoid opening car door; minor bike damage.,
-6,2024-08-14,18:30,Hopewell Borough,Broad St & E Broad St,40.3872,-74.7615,vehicle,injury,Two-vehicle collision at unsignalized intersection.,
-7,2023-05-30,12:10,Hopewell Township,Pennington-Hopewell Rd near Titus Mill Rd,40.3701,-74.7990,vehicle,injury,Single-vehicle run-off-road crash on curve.,
-8,2024-04-22,16:45,Hopewell Township,Scotch Rd & Bear Tavern Rd,40.3105,-74.7415,vehicle,property_damage,Minor collision at four-way intersection.,
-9,2023-12-03,07:35,Hopewell Township,Route 31 & Van Kirk Rd,40.3985,-74.7810,pedestrian,injury,Pedestrian struck crossing Route 31 outside marked crosswalk.,
-10,2024-02-17,09:00,Hopewell Township,Groveville-Hopewell Rd near Stony Brook Rd,40.3550,-74.7700,bicycle,injury,Cyclist struck from behind on shoulderless rural road.,
-11,2024-07-04,21:15,Hopewell Township,Route 31 near Old Mill Rd,40.4020,-74.7825,vehicle,fatal,Single-vehicle crash involving a utility pole.,
-12,2023-10-11,14:50,Hopewell Borough,Broad St & Blackwell Ave,40.3860,-74.7605,other,property_damage,Vehicle struck a parked car; driver cited for careless driving.,
-13,2024-05-09,19:05,Hopewell Township,Bear Tavern Rd & Fackler Rd,40.2980,-74.7550,pedestrian,injury,Pedestrian walking along roadway shoulder struck at dusk.,
-14,2023-08-21,11:25,Hopewell Borough,Greenwood Ave & Elm Ave,40.3908,-74.7645,bicycle,property_damage,Cyclist and vehicle collided at uncontrolled intersection.,
-15,2024-09-30,17:50,Hopewell Township,Pennington-Hopewell Rd & Rocktown Rd,40.3650,-74.8050,vehicle,injury,Two-vehicle T-bone collision at rural crossroads.,
-16,2024-11-02,16:20,Hopewell Borough,Broad St & Model Ave,40.3850,-74.7620,pedestrian,property_damage,Pedestrian clipped by slow-moving vehicle; no injury reported.,`;
+const DATA_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNaGPv0YiXVH3i2ZCzIKGNTG6v6TI3IbUh2QcxdplOcYN8tE8FpCmThojYCowEKVchYTzJWK37mFKt/pub?output=csv";
 
 // ---- Visual config -------------------------------------------------------
 const TYPE_COLOR = { bicycle:"#2B6CB0", pedestrian:"#6B4C9A", vehicle:"#B0562B", other:"#5B6B73" };
@@ -328,7 +310,7 @@ const ICONS = {
 };
 
 // ---- Map setup -------------------------------------------------------------
-const map = L.map('map', { zoomControl:false }).setView([40.3881, -74.7638], 13);
+const map = L.map('map', { zoomControl:false }).setView([40.38912, -74.76198], 18);
 L.control.zoom({ position:'bottomright' }).addTo(map);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution:'&copy; OpenStreetMap &copy; CARTO',
@@ -409,24 +391,24 @@ function normalizeRow(r){
   };
 }
 
-function loadFromCSVText(text){
-  const parsed = Papa.parse(text, { header:true, skipEmptyLines:true });
-  allCrashes = parsed.data.map(normalizeRow);
-  render();
+function showError(){
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+  allCrashes = [];
+  const el = document.getElementById('statCount');
+  el.textContent = '—';
+  el.title = 'Could not load crash data from the Google Sheet.';
+  document.querySelector('#stats .label').textContent = 'data unavailable';
 }
 
 function init(){
-  if (DATA_URL && DATA_URL.trim().length > 0) {
-    Papa.parse(DATA_URL, {
-      download:true,
-      header:true,
-      skipEmptyLines:true,
-      complete: (res) => { allCrashes = res.data.map(normalizeRow); render(); },
-      error: () => { console.warn('Falling back to sample data — could not load DATA_URL'); loadFromCSVText(SAMPLE_CSV); }
-    });
-  } else {
-    loadFromCSVText(SAMPLE_CSV);
-  }
+  Papa.parse(DATA_URL, {
+    download:true,
+    header:true,
+    skipEmptyLines:true,
+    complete: (res) => { allCrashes = res.data.map(normalizeRow); render(); },
+    error: () => { console.error('Could not load crash data from DATA_URL'); showError(); }
+  });
 }
 
 // ---- Controls ---------------------------------------------------------------
