@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hopewell Area Crash Map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F3EF;
+    --panel:#1F2E2B;
+    --panel-2:#283833;
+    --ink:#1C2321;
+    --ink-soft:#4B5750;
+    --line:#D8DDD4;
+    --sage:#8FA37E;
+    --bike:#2B6CB0;
+    --ped:#6B4C9A;
+    --vehicle:#B0562B;
+    --other:#5B6B73;
+    --fatal:#7A1F1F;
+    --injury:#C9622A;
+    --pdo:#8C9A93;
+    --radius:10px;
+    --shadow: 0 4px 18px rgba(28,35,33,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;}
+  body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  h1,h2,h3,.display{
+    font-family:"Space Grotesk", sans-serif;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:"IBM Plex Mono", monospace;
+  }
+
+  #app{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+  }
+
+  header{
+    background:var(--panel);
+    color:#EFF3EE;
+    padding:14px 20px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:6px 20px;
+    z-index:1000;
+    box-shadow: var(--shadow);
+  }
+  header .title-block{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  header h1{font-size:19px; font-weight:600; margin:0; color:#fff;}
+  header .subtitle{font-size:12.5px; color:#B9C4BC; margin:0;}
+  header .demo-flag{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#F1D8B8;
+    background:rgba(201,98,42,0.18);
+    border:1px solid rgba(201,98,42,0.45);
+    padding:3px 8px;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+
+  #main{
+    position:relative;
+    flex:1;
+    min-height:0;
+  }
+  #map{
+    position:absolute;
+    inset:0;
+    background:#E4E8E1;
+  }
+
+  .floating{
+    position:absolute;
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(6px);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  #controls{
+    top:14px;
+    left:14px;
+    z-index:900;
+    padding:14px;
+    width:230px;
+    max-width:calc(100vw - 28px);
+  }
+  #controls h2{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    margin:0 0 8px 0;
+    font-weight:600;
+  }
+  .seg{
+    display:flex;
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    margin-bottom:14px;
+  }
+  .seg button{
+    flex:1;
+    border:none;
+    background:#fff;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    padding:7px 4px;
+    cursor:pointer;
+    color:var(--ink-soft);
+    border-right:1px solid var(--line);
+  }
+  .seg button:last-child{border-right:none;}
+  .seg button.active{
+    background:var(--panel);
+    color:#fff;
+  }
+
+  .check-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:5px 0;
+    font-size:13px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .check-row input{accent-color:var(--panel); width:14px; height:14px;}
+  .swatch{
+    width:18px; height:18px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .swatch svg{width:11px; height:11px;}
+
+  #legend{
+    bottom:14px;
+    left:14px;
+    z-index:900;
+    padding:12px 14px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+  #legend .row{display:flex; align-items:center; gap:8px; margin:3px 0;}
+  #legend .ring{
+    width:12px; height:12px; border-radius:50%;
+    border:3px solid var(--pdo);
+    background:transparent;
+  }
+
+  #stats{
+    top:14px;
+    right:14px;
+    z-index:900;
+    padding:10px 16px;
+    text-align:right;
+  }
+  #stats .count{
+    font-family:"Space Grotesk", sans-serif;
+    font-size:22px;
+    font-weight:700;
+    color:var(--panel);
+    line-height:1;
+  }
+  #stats .label{
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+  }
+
+  .leaflet-popup-content-wrapper{
+    border-radius:8px;
+    box-shadow:var(--shadow);
+  }
+  .popup{
+    font-size:13px;
+    min-width:190px;
+  }
+  .popup .ptype{
+    display:inline-block;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:2px 7px;
+    border-radius:4px;
+    color:#fff;
+    margin-bottom:6px;
+  }
+  .popup h3{margin:0 0 4px 0; font-size:14.5px;}
+  .popup .meta{color:var(--ink-soft); font-size:12px; margin-bottom:6px;}
+  .popup .desc{margin:6px 0 0 0; line-height:1.4;}
+  .popup .sev{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .popup a.source{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12px;
+    color:var(--bike);
+  }
+
+  @media (max-width:640px){
+    header{padding:10px 14px;}
+    header h1{font-size:16px;}
+    #controls{width:190px; padding:10px;}
+    #stats .count{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="title-block">
+      <h1>Hopewell Area Crash Map</h1>
+      <p class="subtitle">Bicycle, pedestrian &amp; vehicle crash locations — Hopewell Borough &amp; Township, NJ</p>
+    </div>
+    <span class="demo-flag">Placeholder data — not real crash records</span>
+  </header>
+
+  <div id="main">
+    <div id="map"></div>
+
+    <div id="controls" class="floating">
+      <h2>Municipality</h2>
+      <div class="seg" id="muniSeg">
+        <button data-val="all" class="active">All</button>
+        <button data-val="Hopewell Borough">Borough</button>
+        <button data-val="Hopewell Township">Township</button>
+      </div>
+
+      <h2>Crash type</h2>
+      <label class="check-row"><input type="checkbox" data-type="bicycle" checked>
+        <span class="swatch" style="background:var(--bike)"></span> Bicycle</label>
+      <label class="check-row"><input type="checkbox" data-type="pedestrian" checked>
+        <span class="swatch" style="background:var(--ped)"></span> Pedestrian</label>
+      <label class="check-row"><input type="checkbox" data-type="vehicle" checked>
+        <span class="swatch" style="background:var(--vehicle)"></span> Vehicle only</label>
+      <label class="check-row"><input type="checkbox" data-type="other" checked>
+        <span class="swatch" style="background:var(--other)"></span> Other</label>
+    </div>
+
+    <div id="legend" class="floating">
+      <div style="font-weight:600; margin-bottom:6px; color:var(--ink);">Ring = severity</div>
+      <div class="row"><span class="ring" style="border-color:var(--fatal)"></span> Fatal</div>
+      <div class="row"><span class="ring" style="border-color:var(--injury)"></span> Injury</div>
+      <div class="row"><span class="ring" style="border-color:var(--pdo)"></span> Property damage only</div>
+    </div>
+
+    <div id="stats" class="floating">
+      <div class="count mono" id="statCount">0</div>
+      <div class="label">crashes shown</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+// ============================================================================
+// DATA SOURCE
+// Paste a published-to-web Google Sheet CSV link below to go live.
+// (Google Sheet -> File -> Share -> Publish to web -> select sheet -> CSV)
+// Leave blank to run on the bundled sample data below.
+// ============================================================================
+const DATA_URL = "";
+
+// Fallback / demo dataset. Replace by wiring up DATA_URL above.
+// Columns match what the Google Sheet template expects.
+const SAMPLE_CSV = `id,date,time,municipality,location,lat,lng,crash_type,severity,description,source_url
+1,2024-03-11,17:40,Hopewell Borough,Broad St & Greenwood Ave,40.3884,-74.7635,pedestrian,injury,Pedestrian struck in crosswalk during evening commute; driver stated sun glare.,
+2,2024-06-02,08:15,Hopewell Borough,Broad St near W Broad St,40.3878,-74.7658,bicycle,injury,Cyclist sideswiped by vehicle turning right without signaling.,
+3,2023-09-19,15:05,Hopewell Borough,Greenwood Ave & Hamill Rd,40.3902,-74.7629,vehicle,property_damage,Rear-end collision at stop sign; no injuries reported.,
+4,2024-01-27,07:50,Hopewell Borough,Broad St & Somerset St,40.3865,-74.7648,pedestrian,fatal,Pedestrian fatality during early morning school commute hours.,
+5,2023-11-08,13:20,Hopewell Borough,Greenwood Ave near Louellen St,40.3897,-74.7657,bicycle,property_damage,Cyclist swerved to avoid opening car door; minor bike damage.,
+6,2024-08-14,18:30,Hopewell Borough,Broad St & E Broad St,40.3872,-74.7615,vehicle,injury,Two-vehicle collision at unsignalized intersection.,
+7,2023-05-30,12:10,Hopewell Township,Pennington-Hopewell Rd near Titus Mill Rd,40.3701,-74.7990,vehicle,injury,Single-vehicle run-off-road crash on curve.,
+8,2024-04-22,16:45,Hopewell Township,Scotch Rd & Bear Tavern Rd,40.3105,-74.7415,vehicle,property_damage,Minor collision at four-way intersection.,
+9,2023-12-03,07:35,Hopewell Township,Route 31 & Van Kirk Rd,40.3985,-74.7810,pedestrian,injury,Pedestrian struck crossing Route 31 outside marked crosswalk.,
+10,2024-02-17,09:00,Hopewell Township,Groveville-Hopewell Rd near Stony Brook Rd,40.3550,-74.7700,bicycle,injury,Cyclist struck from behind on shoulderless rural road.,
+11,2024-07-04,21:15,Hopewell Township,Route 31 near Old Mill Rd,40.4020,-74.7825,vehicle,fatal,Single-vehicle crash involving a utility pole.,
+12,2023-10-11,14:50,Hopewell Borough,Broad St & Blackwell Ave,40.3860,-74.7605,other,property_damage,Vehicle struck a parked car; driver cited for careless driving.,
+13,2024-05-09,19:05,Hopewell Township,Bear Tavern Rd & Fackler Rd,40.2980,-74.7550,pedestrian,injury,Pedestrian walking along roadway shoulder struck at dusk.,
+14,2023-08-21,11:25,Hopewell Borough,Greenwood Ave & Elm Ave,40.3908,-74.7645,bicycle,property_damage,Cyclist and vehicle collided at uncontrolled intersection.,
+15,2024-09-30,17:50,Hopewell Township,Pennington-Hopewell Rd & Rocktown Rd,40.3650,-74.8050,vehicle,injury,Two-vehicle T-bone collision at rural crossroads.,
+16,2024-11-02,16:20,Hopewell Borough,Broad St & Model Ave,40.3850,-74.7620,pedestrian,property_damage,Pedestrian clipped by slow-moving vehicle; no injury reported.,`;
+
+// ---- Visual config -------------------------------------------------------
+const TYPE_COLOR = { bicycle:"#2B6CB0", pedestrian:"#6B4C9A", vehicle:"#B0562B", other:"#5B6B73" };
+const TYPE_LABEL = { bicycle:"Bicycle", pedestrian:"Pedestrian", vehicle:"Vehicle only", other:"Other" };
+const SEV_COLOR  = { fatal:"#7A1F1F", injury:"#C9622A", property_damage:"#8C9A93" };
+const SEV_LABEL  = { fatal:"Fatal", injury:"Injury", property_damage:"Property damage only" };
+
+const ICONS = {
+  bicycle: '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="17" r="3.2"/><circle cx="18" cy="17" r="3.2"/><path d="M6 17l4-9h4l3 9M10 8h4M9.5 8L13 17"/></svg>',
+  pedestrian: '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.1" fill="white" stroke="none"/><path d="M12 8v5M12 13l-3 6M12 13l3 6M9 11l-2.5 2M15 11l2.5 2"/></svg>',
+  vehicle: '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l1.5-5.5A2 2 0 0 1 7.4 9h9.2a2 2 0 0 1 1.9 1.5L20 16"/><rect x="3" y="16" width="18" height="3.2" rx="1"/><circle cx="7.5" cy="19.2" r="1.3" fill="white" stroke="none"/><circle cx="16.5" cy="19.2" r="1.3" fill="white" stroke="none"/></svg>',
+  other: '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.6" fill="white" stroke="none"/></svg>'
+};
+
+// ---- Map setup -------------------------------------------------------------
+const map = L.map('map', { zoomControl:false }).setView([40.3881, -74.7638], 13);
+L.control.zoom({ position:'bottomright' }).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution:'&copy; OpenStreetMap &copy; CARTO',
+  maxZoom:19
+}).addTo(map);
+
+let allCrashes = [];
+let markers = [];
+let activeMuni = 'all';
+let activeTypes = new Set(['bicycle','pedestrian','vehicle','other']);
+
+function makeIcon(crash){
+  const ring = SEV_COLOR[crash.severity] || '#999';
+  const fill = TYPE_COLOR[crash.crash_type] || '#666';
+  const glyph = ICONS[crash.crash_type] || ICONS.other;
+  const html = `
+    <div style="
+      width:30px;height:30px;border-radius:50%;
+      background:${fill};
+      border:3px solid ${ring};
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 2px 6px rgba(0,0,0,0.35);">
+      <div style="width:15px;height:15px;">${glyph}</div>
+    </div>`;
+  return L.divIcon({ html, className:'', iconSize:[30,30], iconAnchor:[15,15], popupAnchor:[0,-14] });
+}
+
+function popupHTML(crash){
+  const typeColor = TYPE_COLOR[crash.crash_type] || '#666';
+  const typeLabel = TYPE_LABEL[crash.crash_type] || 'Other';
+  const sevLabel = SEV_LABEL[crash.severity] || crash.severity || 'Unknown';
+  const sevColor = SEV_COLOR[crash.severity] || '#666';
+  const dateStr = crash.date ? crash.date + (crash.time ? ' · ' + crash.time : '') : '';
+  const src = crash.source_url ? `<a class="source" href="${crash.source_url}" target="_blank" rel="noopener">View source →</a>` : '';
+  const desc = crash.description ? `<p class="desc">${crash.description}</p>` : '';
+  return `
+    <div class="popup">
+      <span class="ptype" style="background:${typeColor}">${typeLabel}</span>
+      <h3>${crash.location || 'Unspecified location'}</h3>
+      <div class="meta mono">${dateStr}</div>
+      <div class="meta">${crash.municipality || ''}</div>
+      <div class="sev" style="color:${sevColor}">${sevLabel}</div>
+      ${desc}
+      ${src}
+    </div>`;
+}
+
+function render(){
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+  let shown = 0;
+  allCrashes.forEach(crash => {
+    if (!activeTypes.has(crash.crash_type)) return;
+    if (activeMuni !== 'all' && crash.municipality !== activeMuni) return;
+    if (!crash.lat || !crash.lng || isNaN(crash.lat) || isNaN(crash.lng)) return;
+    const marker = L.marker([crash.lat, crash.lng], { icon: makeIcon(crash) });
+    marker.bindPopup(popupHTML(crash));
+    marker.addTo(map);
+    markers.push(marker);
+    shown++;
+  });
+  document.getElementById('statCount').textContent = shown;
+}
+
+function normalizeRow(r){
+  return {
+    id: r.id,
+    date: (r.date || '').trim(),
+    time: (r.time || '').trim(),
+    municipality: (r.municipality || '').trim(),
+    location: (r.location || '').trim(),
+    lat: parseFloat(r.lat),
+    lng: parseFloat(r.lng),
+    crash_type: (r.crash_type || 'other').trim().toLowerCase(),
+    severity: (r.severity || 'property_damage').trim().toLowerCase(),
+    description: (r.description || '').trim(),
+    source_url: (r.source_url || '').trim()
+  };
+}
+
+function loadFromCSVText(text){
+  const parsed = Papa.parse(text, { header:true, skipEmptyLines:true });
+  allCrashes = parsed.data.map(normalizeRow);
+  render();
+}
+
+function init(){
+  if (DATA_URL && DATA_URL.trim().length > 0) {
+    Papa.parse(DATA_URL, {
+      download:true,
+      header:true,
+      skipEmptyLines:true,
+      complete: (res) => { allCrashes = res.data.map(normalizeRow); render(); },
+      error: () => { console.warn('Falling back to sample data — could not load DATA_URL'); loadFromCSVText(SAMPLE_CSV); }
+    });
+  } else {
+    loadFromCSVText(SAMPLE_CSV);
+  }
+}
+
+// ---- Controls ---------------------------------------------------------------
+document.querySelectorAll('#muniSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#muniSeg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMuni = btn.dataset.val;
+    render();
+  });
+});
+
+document.querySelectorAll('.check-row input').forEach(cb => {
+  cb.addEventListener('change', () => {
+    const t = cb.dataset.type;
+    if (cb.checked) activeTypes.add(t); else activeTypes.delete(t);
+    render();
+  });
+});
+
+init();
+</script>
+</body>
+</html>
