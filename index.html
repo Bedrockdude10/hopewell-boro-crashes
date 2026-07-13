@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hopewell Area Crash Map</title>
+<title>Hopewell Borough Crash Map</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -111,30 +111,6 @@
     margin:0 0 8px 0;
     font-weight:600;
   }
-  .seg{
-    display:flex;
-    border:1px solid var(--line);
-    border-radius:8px;
-    overflow:hidden;
-    margin-bottom:14px;
-  }
-  .seg button{
-    flex:1;
-    border:none;
-    background:#fff;
-    font-family:"IBM Plex Mono", monospace;
-    font-size:11px;
-    padding:7px 4px;
-    cursor:pointer;
-    color:var(--ink-soft);
-    border-right:1px solid var(--line);
-  }
-  .seg button:last-child{border-right:none;}
-  .seg button.active{
-    background:var(--panel);
-    color:#fff;
-  }
-
   .check-row{
     display:flex;
     align-items:center;
@@ -238,8 +214,8 @@
 <div id="app">
   <header>
     <div class="title-block">
-      <h1>Hopewell Area Crash Map</h1>
-      <p class="subtitle">Bicycle, pedestrian &amp; vehicle crash locations — Hopewell Borough &amp; Township, NJ</p>
+      <h1>Hopewell Borough Crash Map</h1>
+      <p class="subtitle">Bicycle, pedestrian &amp; vehicle crash locations in Hopewell Borough, NJ</p>
     </div>
     <span class="demo-flag">Source: Hopewell Borough PD crash reports</span>
   </header>
@@ -248,13 +224,6 @@
     <div id="map"></div>
 
     <div id="controls" class="floating">
-      <h2>Municipality</h2>
-      <div class="seg" id="muniSeg">
-        <button data-val="all" class="active">All</button>
-        <button data-val="Hopewell Borough">Borough</button>
-        <button data-val="Hopewell Township">Township</button>
-      </div>
-
       <h2>Crash type</h2>
       <label class="check-row"><input type="checkbox" data-type="bicycle" checked>
         <span class="swatch" style="background:var(--bike)"></span> Bicycle</label>
@@ -319,7 +288,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 
 let allCrashes = [];
 let markers = [];
-let activeMuni = 'all';
 let activeTypes = new Set(['bicycle','pedestrian','vehicle','other']);
 
 function makeIcon(crash){
@@ -364,7 +332,6 @@ function render(){
   let shown = 0;
   allCrashes.forEach(crash => {
     if (!activeTypes.has(crash.crash_type)) return;
-    if (activeMuni !== 'all' && crash.municipality !== activeMuni) return;
     if (!crash.lat || !crash.lng || isNaN(crash.lat) || isNaN(crash.lng)) return;
     const marker = L.marker([crash.lat, crash.lng], { icon: makeIcon(crash) });
     marker.bindPopup(popupHTML(crash));
@@ -412,15 +379,6 @@ function init(){
 }
 
 // ---- Controls ---------------------------------------------------------------
-document.querySelectorAll('#muniSeg button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#muniSeg button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeMuni = btn.dataset.val;
-    render();
-  });
-});
-
 document.querySelectorAll('.check-row input').forEach(cb => {
   cb.addEventListener('change', () => {
     const t = cb.dataset.type;

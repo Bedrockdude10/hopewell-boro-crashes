@@ -33,7 +33,7 @@ maintaining the data in the Sheet.
    | `id` | yes | Any unique number or code per row |
    | `date` | yes | `YYYY-MM-DD` |
    | `time` | no | 24-hour `HH:MM`, e.g. `17:40` |
-   | `municipality` | yes | Exactly `Hopewell Borough` or `Hopewell Township` (case-sensitive, used for the filter) |
+   | `municipality` | yes | `Hopewell Borough` — this site covers the Borough only; shown in the popup |
    | `location` | yes | Street / intersection name shown in the popup title |
    | `lat` | yes | Decimal latitude |
    | `lng` | yes | Decimal longitude |
@@ -112,11 +112,13 @@ what Pages serves as the home page.
 
 ## 4. Extending later
 
-- **More crash types or municipalities**: edit the `TYPE_COLOR` / `TYPE_LABEL`
-  and the municipality buttons (`#muniSeg`) near the top of the script and
-  markup — everything else (filtering, legend, icons) follows automatically
-  for the four existing types, and the municipality filter is driven by
-  whatever string is in the `municipality` column.
+- **More crash types**: edit `TYPE_COLOR` / `TYPE_LABEL` near the top of the
+  script and add a matching checkbox in the `#controls` markup — filtering,
+  legend, and icons follow automatically.
+- **Adding the Township back in**: this build is Borough-only, so the
+  municipality filter was removed. To cover both towns again, re-add a segmented
+  control (buttons with `data-val` values matching the `municipality` column)
+  and a filter check in `render()`.
 - **Public submission form** (like Mercer County's Vision Zero site): that
   needs an actual intake mechanism, not just a static page. The simplest
   version would be a Google Form that appends to the same Sheet — happy to
