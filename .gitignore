@@ -179,3 +179,4 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+hopewell-boro-crashes-276896c91504.json
