@@ -180,3 +180,10 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 hopewell-boro-crashes-276896c91504.json
+
+# --- Hopewell crash-map: secrets & data artifacts (never commit) ---
+# Google service-account key(s)
+hopewell-boro-crashes-*.json
+*-service-account*.json
+# downloaded NJDOT zips/txt + generated CSVs/caches
+scripts/data/

@@ -326,20 +326,49 @@ function popupHTML(crash){
     </div>`;
 }
 
+// Fan out pins that share the exact same coordinates so each stays clickable.
+// Crashes at one intersection (e.g. several reports at Broad St & Greenwood Ave)
+// often carry identical lat/lng; without this they stack into one un-clickable
+// pin. Positions are display-only and don't change the underlying data.
+const FANOUT_RADIUS = 0.00009; // ~10 m — separates 30px icons at street-level zoom
+function fanOut(crashes){
+  const groups = new Map();
+  crashes.forEach(c => {
+    const key = c.lat.toFixed(6) + ',' + c.lng.toFixed(6);
+    (groups.get(key) || groups.set(key, []).get(key)).push(c);
+  });
+  const placed = [];
+  groups.forEach(group => {
+    if (group.length === 1){
+      placed.push({ crash: group[0], lat: group[0].lat, lng: group[0].lng });
+      return;
+    }
+    const n = group.length;
+    const cosLat = Math.cos(group[0].lat * Math.PI / 180) || 1;
+    group.forEach((c, i) => {
+      const ang = (2 * Math.PI * i) / n - Math.PI / 2; // first pin at top, then clockwise
+      placed.push({
+        crash: c,
+        lat: c.lat + FANOUT_RADIUS * Math.cos(ang),
+        lng: c.lng + (FANOUT_RADIUS * Math.sin(ang)) / cosLat
+      });
+    });
+  });
+  return placed;
+}
+
 function render(){
   markers.forEach(m => map.removeLayer(m));
   markers = [];
-  let shown = 0;
-  allCrashes.forEach(crash => {
-    if (!activeTypes.has(crash.crash_type)) return;
-    if (!crash.lat || !crash.lng || isNaN(crash.lat) || isNaN(crash.lng)) return;
-    const marker = L.marker([crash.lat, crash.lng], { icon: makeIcon(crash) });
+  const visible = allCrashes.filter(c =>
+    activeTypes.has(c.crash_type) && c.lat && c.lng && !isNaN(c.lat) && !isNaN(c.lng));
+  fanOut(visible).forEach(({ crash, lat, lng }) => {
+    const marker = L.marker([lat, lng], { icon: makeIcon(crash) });
     marker.bindPopup(popupHTML(crash));
     marker.addTo(map);
     markers.push(marker);
-    shown++;
   });
-  document.getElementById('statCount').textContent = shown;
+  document.getElementById('statCount').textContent = markers.length;
 }
 
 function normalizeRow(r){
