@@ -237,8 +237,14 @@ attribution already shown on the map.
   photograph**, not retroreflectivity measurements, and absence from the layer
   is not evidence that a crossing doesn't exist or is fine. The survey folder's
   `LIMITATIONS.md` is the full version and is worth reading before any of this
-  goes to the county engineer. Locations with a flagged call show an orange
-  "needs a field check" note in the popup.
+  goes to the county engineer.
+
+The CSV's `review_flag` notes are **deliberately not shown on the site.** They are
+the reviewer's working doubts about their own reading — "marking is distant and small
+in frame", "condition poor/fair borderline" — and they read as hedging rather than as
+information to a resident looking at a map. They are still in
+`data/crosswalks.json` and in the survey CSV, which is where whoever walks these
+next will look.
 - **Every crossing's position is approximate to within a few metres** — see "Where
   the crossing lines come from" above. What street it spans and which junction it
   belongs to are reliable; its exact placement is not.
@@ -296,10 +302,10 @@ with the engineers before quoting either.**
 
 ### Repaving priority — the "top 5" list
 
-The **Repaving priority** checkbox scores every surveyed location and lists the top
-five. Turning it on turns the crosswalk layer on too; clicking an entry zooms to it
-and opens its popup. The score is computed in the browser, not baked in, because the
-crash half of it comes from the live Sheet.
+Turning the crosswalk layer on also shows a **Repaving priority** box on the right,
+under the crash count: every surveyed location scored, top five listed. Clicking an
+entry zooms to it and opens its popup. The score is computed in the browser, not
+baked in, because the crash half of it comes from the live Sheet.
 
 It is deliberately a simple additive score, so it can be argued with:
 

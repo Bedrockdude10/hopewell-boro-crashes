@@ -273,17 +273,6 @@
     padding-left:6px;
     margin-top:7px;
   }
-  .popup .flag{
-    font-size:11px;
-    line-height:1.35;
-    margin-top:7px;
-    padding:5px 7px;
-    border-radius:5px;
-    background:rgba(201,98,42,0.12);
-    border:1px solid rgba(201,98,42,0.35);
-    color:#7A4318;
-  }
-
   .popup .paving{
     font-size:11px;
     line-height:1.4;
@@ -416,10 +405,6 @@
           <span class="swatch square" style="background:var(--xw-good)"></span> Crosswalk inventory</label>
         <p class="hint">44 locations walked 31 Jul 2026. Zoom in for the markings
           drawn to scale; click any of them for the photo.</p>
-        <label class="check-row"><input type="checkbox" id="priorityToggle">
-          <span class="swatch square" style="background:var(--injury)"></span> Repaving priority</label>
-        <p class="hint">Top 5 intersections by condition and crash harm. Needs the
-          crosswalk layer.</p>
       </div>
     </div>
 
@@ -808,15 +793,16 @@ function xwalkPopupHTML(loc){
       .map(([s, n]) => `${n} ${(XW_LABEL[s] || s).toLowerCase()}`).join(', ')}</span>`);
   if (jur) pills.push(`<span class="pill ghost">${jur}</span>`);
 
-  // Recorded features are a property of the location, review flags are doubts
-  // about the reading -- keep them apart, and de-duplicate across legs.
+  // Recorded features are a property of the location, so they show. The
+  // `review_flag` notes deliberately do NOT: they are the reviewer's private
+  // doubts about their own reading ("marking is distant and small in frame"),
+  // written as working notes rather than as anything a resident should read off
+  // a public map. They stay in data/crosswalks.json and in the survey CSV, which
+  // is where whoever walks these next will look for them.
   const uniq = (xs) => [...new Set(xs.filter(Boolean))];
   const legsAndPhotos = loc.photos.flatMap(p => [p, ...(p.also || [])]);
   uniq(legsAndPhotos.map(p => p.features)).forEach(f =>
     pills.push(`<span class="pill ghost">${f}</span>`));
-  const flags = uniq(legsAndPhotos.map(p => p.review_flag));
-  const flagHTML = flags.length
-    ? `<div class="flag">Needs a field check — ${flags.join('; ')}</div>` : '';
 
   const photoHTML = lead ? `
     <img class="photo" src="${XWALK_PHOTOS}${lead.file}" alt="${loc.name}" loading="lazy"
@@ -847,7 +833,6 @@ function xwalkPopupHTML(loc){
       ${photoHTML}
       ${thumbHTML}
       ${reportedHTML}
-      ${flagHTML}
       ${pavingHTML(loc)}
     </div>`;
 }
@@ -1055,18 +1040,12 @@ document.querySelector('#priority ol').addEventListener('click', (e) => {
   if (m) setTimeout(() => m.openPopup(), 250);
 });
 
-document.getElementById('priorityToggle').addEventListener('change', (e) => {
-  const panel = document.getElementById('priority');
-  panel.classList.toggle('open', e.target.checked);
-  if (!e.target.checked) return;
-  // The priority list is about the crosswalks, so turn that layer on with it.
-  const xw = document.getElementById('xwalkToggle');
-  if (!xw.checked && !xw.disabled){
-    xw.checked = true;
-    xw.dispatchEvent(new Event('change'));
-  }
-  loadCrosswalks().then(renderPriorities);
-});
+// The list is a reading of the crosswalk layer, so it rides with it: turning the
+// inventory on shows the scores under the crash count, turning it off hides them.
+function syncPriorityPanel(on){
+  document.getElementById('priority').classList.toggle('open', on);
+  if (on) loadCrosswalks().then(renderPriorities);
+}
 
 function escapeAttr(s){
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -1121,6 +1100,7 @@ function loadCrosswalks(){
       const cb = document.getElementById('xwalkToggle');
       cb.checked = false;
       cb.disabled = true;
+      document.getElementById('priority').classList.remove('open');
       cb.closest('.section-gap').querySelector('.hint').textContent =
         'Crosswalk inventory could not be loaded.';
     });
@@ -1128,6 +1108,7 @@ function loadCrosswalks(){
 
 document.getElementById('xwalkToggle').addEventListener('change', (e) => {
   document.getElementById('legendXwalk').style.display = e.target.checked ? 'block' : 'none';
+  syncPriorityPanel(e.target.checked);
   if (e.target.checked){
     loadCrosswalks().then(syncXwalkLayers);
   } else {
