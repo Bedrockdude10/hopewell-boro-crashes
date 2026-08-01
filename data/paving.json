@@ -1,0 +1,70 @@
+{
+  "compiled": "2026-08-01",
+  "note": "When each street was last resurfaced. Hand-maintained: there is no public dataset of last-repaved dates for municipal streets, so every entry here is traced to a named grant award or a published construction notice. Keys are street names spelled as `crossing_street` spells them in the survey CSV. A street absent from `streets` has NO known paving date -- that is the normal case, not an error. Read `coverage` before using any of this to rank anything.",
+  "coverage": "7 of the 35 streets carrying a surveyed crossing have a date here. The other 28 -- including West Broad Street, where the worst conditions are -- are unknown. Fill them from the Borough Clerk's paving history (and, for a borough with one, the road-opening moratorium list, which is effectively a recent-paving list) and from the County Engineer for CR 518 west of Greenwood Avenue.",
+  "caveats": [
+    "A grant AWARD year is not a construction year. NJDOT Municipal Aid money is typically built the following construction season or the one after, so treat `year` from `njdot_municipal_aid` as 'no earlier than'.",
+    "Dates are recorded per street, but paving happens per segment. East Broad Street's 2024 county resurfacing ran Elm Street to Greenwood Avenue only; the entry's `limits` field says so. Anything outside stated limits is not covered by that date.",
+    "Absence of a date says nothing about condition. It means nobody has looked it up."
+  ],
+  "cycles": {
+    "note": "Used to estimate how long until a street would next be resurfaced. Both figures are benchmarks, not published local policy -- see `verified` on each.",
+    "county_years": 10,
+    "county_verified": "NOT VERIFIED as published policy. Mercer County's Highway Division describes a condition-driven pavement management system across 180 centerline miles and publishes no cycle length or forward schedule. 10 years is the low end of the standard 10-20 year service life for a full mill-and-overlay, and is used here as a working assumption. Confirm with the County Engineer before quoting it.",
+    "borough_years": 15,
+    "borough_verified": "NOT VERIFIED. Hopewell Borough publishes no pavement management program or paving schedule; its repaving is visibly grant-driven at roughly one street per year against 35+ streets, which is a far longer de facto cycle than 15 years. Neighbouring Hopewell Township prioritises roads by the probability the road stays in good shape for 10-15 years, which is the closest local benchmark found."
+  },
+  "sources": {
+    "njdot_municipal_aid": {
+      "label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/"
+    },
+    "mercer_county": {
+      "label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/"
+    }
+  },
+  "streets": {
+    "North Greenwood Avenue": {
+      "year": 2019,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements"
+    },
+    "Columbia Avenue": {
+      "year": 2020,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements"
+    },
+    "Railroad Place": {
+      "year": 2021,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2021 award, $282,290 -- Railroad Place Road Improvements"
+    },
+    "Mercer Street": {
+      "year": 2022,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street"
+    },
+    "Walnut Street": {
+      "year": 2022,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street"
+    },
+    "Newell Place": {
+      "year": 2022,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street. No surveyed crossing on this street."
+    },
+    "Hart Avenue": {
+      "year": 2024,
+      "source": "njdot_municipal_aid",
+      "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase."
+    },
+    "East Broad Street": {
+      "year": 2024,
+      "source": "mercer_county",
+      "limits": "Elm Street to Greenwood Avenue",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits."
+    }
+  }
+}

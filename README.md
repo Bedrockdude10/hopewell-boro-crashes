@@ -243,6 +243,89 @@ attribution already shown on the map.
   the crossing lines come from" above. What street it spans and which junction it
   belongs to are reliable; its exact placement is not.
 
+### When each street was last repaved
+
+`data/paving.json` records when a street was last resurfaced, and is **hand-maintained
+desk research, not part of the survey** — the surveyor never observed this. It is a
+separate file for that reason, and `build_crosswalks.py` folds it into
+`crosswalks.json` at build time, so the site needs no second fetch. Each leg gets a
+`repaved` object (or `null`), and each location gets a `repaved` list plus
+`repaved_unknown` — the streets at that junction with no date on record.
+
+Popups show the year, the age, the source with a link, and when the street would
+next come due.
+
+**There is no public dataset of last-repaved dates for municipal streets.** Every
+entry traces to a named grant award or a published construction notice:
+
+| Street | Last repaved | Source |
+|---|---|---|
+| North Greenwood Avenue | 2019 | NJDOT Municipal Aid, FY2019, $392,260 |
+| Columbia Avenue | 2020 | NJDOT Municipal Aid, FY2020, $238,465 |
+| Railroad Place | 2021 | NJDOT Municipal Aid, FY2021, $282,290 |
+| Mercer Street, Walnut Street (and Newell Place) | 2022 | NJDOT Municipal Aid, FY2022, $385,000 |
+| Hart Avenue | 2024 | NJDOT Municipal Aid, FY2023 $310,630 + FY2024 Phase 2 $382,968 |
+| East Broad Street | 2024 | Mercer County milling and resurfacing of CR 518, began 19 Aug 2024, **Elm Street to Greenwood Avenue only** |
+
+**That is 7 of the 35 streets carrying a surveyed crossing.** The other 28 are
+unknown — including West Broad Street, where the worst conditions are. Three things
+to know before leaning on any of it:
+
+- A grant **award** year is not a construction year. Municipal Aid money is usually
+  built the following season or the one after, so treat those as "no earlier than".
+- Dates are recorded **per street**, but paving happens per segment. East Broad's
+  entry carries a `limits` field for exactly this reason.
+- **Absence of a date says nothing about condition.** It means nobody looked it up.
+
+To fill the gap: ask the **Borough Clerk** for the engineer's paving history, and —
+if the borough has one — the **road-opening moratorium list**, which many NJ
+municipalities keep for five years after resurfacing and which is therefore a
+recent-paving list already written down. For CR 518 west of Greenwood, ask the
+**County Engineer**.
+
+`data/paving.json` also holds the **cycle assumptions** used to estimate "next due",
+and both are flagged `NOT VERIFIED` in the file itself. Mercer County describes a
+condition-driven pavement management system over 180 centerline miles and publishes
+no cycle length or forward schedule; 10 years is used as the low end of the standard
+10–20 year service life for a full mill-and-overlay. The borough publishes no
+pavement management programme at all, and at roughly one grant-funded street per
+year against 35+ streets its de facto cycle is far longer than the 15 years assumed.
+Neighbouring Hopewell Township prioritises roads by the probability they stay in good
+shape for 10–15 years, which is the closest local benchmark found. **Confirm both
+with the engineers before quoting either.**
+
+### Repaving priority — the "top 5" list
+
+The **Repaving priority** checkbox scores every surveyed location and lists the top
+five. Turning it on turns the crosswalk layer on too; clicking an entry zooms to it
+and opens its popup. The score is computed in the browser, not baked in, because the
+crash half of it comes from the live Sheet.
+
+It is deliberately a simple additive score, so it can be argued with:
+
+| Term | Weight |
+|---|---|
+| **Crash harm**, per crash within 40 m | Pedestrian or cyclist: fatal 12, injury 6, property damage 2. Vehicle only: fatal 4, injury 2, property damage 0.5 |
+| **Survey deficiency**, per leg | Unmarked 3, bad 2, fair 0.5, good 0, marked-but-ungraded 1 |
+| **Paving timing**, per location | +3 where a street repaved within 3 years now has an unmarked or bad crossing — the markings went with the paving, which is cheap to restore and easy to justify |
+| | ×0.6 where a street is at or past its assumed cycle — **don't paint a road that's about to be milled** |
+
+Harm is the heaviest term on purpose: **a worn crossing where someone was injured
+outranks a worn crossing where nobody has been**, and a person hurt outside a vehicle
+counts for roughly double one inside it.
+
+Three limits are printed in the panel itself and belong in any presentation of it:
+
+- **Proximity is not causation.** A crash within 40 m of a junction was not
+  necessarily at the crosswalk, and the crash set is small.
+- **The paving term can only apply to 15 of the 44 locations**, so it cannot
+  meaningfully reorder the rest. Until the coverage gap above is filled, this ranks
+  partly by which streets happen to have a documented year.
+- **The borough already holds a $1.51M Safe Routes to School award** (2024, plus up
+  to $750k design) whose scope includes upgrading multiple crosswalks and RRFBs on
+  Broad Street. Check this list against that project's design before recommending
+  anything — some of the top entries may already be funded.
+
 Because the layer is loaded with `fetch`, it needs to be served over HTTP —
 opening `index.html` straight off the filesystem will show the crash pins but
 not the crosswalks. To check it locally:

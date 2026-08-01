@@ -1,6 +1,22 @@
 {
  "surveyed": "2026-07-31",
  "note": "Visual inventory from photographs, one afternoon. Condition grades are one reviewer's judgement by eye, not retroreflectivity measurements. Absence from this list is not evidence a crossing does not exist.",
+ "paving": {
+  "compiled": "2026-08-01",
+  "coverage": "7 of the 35 streets carrying a surveyed crossing have a date here. The other 28 -- including West Broad Street, where the worst conditions are -- are unknown. Fill them from the Borough Clerk's paving history (and, for a borough with one, the road-opening moratorium list, which is effectively a recent-paving list) and from the County Engineer for CR 518 west of Greenwood Avenue.",
+  "caveats": [
+   "A grant AWARD year is not a construction year. NJDOT Municipal Aid money is typically built the following construction season or the one after, so treat `year` from `njdot_municipal_aid` as 'no earlier than'.",
+   "Dates are recorded per street, but paving happens per segment. East Broad Street's 2024 county resurfacing ran Elm Street to Greenwood Avenue only; the entry's `limits` field says so. Anything outside stated limits is not covered by that date.",
+   "Absence of a date says nothing about condition. It means nobody has looked it up."
+  ],
+  "cycles": {
+   "note": "Used to estimate how long until a street would next be resurfaced. Both figures are benchmarks, not published local policy -- see `verified` on each.",
+   "county_years": 10,
+   "county_verified": "NOT VERIFIED as published policy. Mercer County's Highway Division describes a condition-driven pavement management system across 180 centerline miles and publishes no cycle length or forward schedule. 10 years is the low end of the standard 10-20 year service life for a full mill-and-overlay, and is used here as a working assumption. Confirm with the County Engineer before quoting it.",
+   "borough_years": 15,
+   "borough_verified": "NOT VERIFIED. Hopewell Borough publishes no pavement management program or paving schedule; its repaving is visibly grant-driven at roughly one street per year against 35+ streets, which is a far longer de facto cycle than 15 years. Neighbouring Hopewell Township prioritises roads by the probability the road stays in good shape for 10-15 years, which is the closest local benchmark found."
+  }
+ },
  "locations": [
   {
    "name": "Front Street & North Greenwood Avenue",
@@ -33,6 +49,7 @@
      "cam_lat": 40.391644,
      "cam_lng": -74.763931,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3917244316902,
@@ -46,6 +63,10 @@
      "geom_source": "derived",
      "geom_road": "Front Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Front Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -84,6 +105,13 @@
      "cam_lat": 40.392136,
      "cam_lng": -74.764244,
      "state": "unmarked",
+     "repaved": {
+      "year": 2019,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements"
+     },
      "geom": [
       [
        40.39203010957063,
@@ -120,6 +148,7 @@
      "cam_lat": 40.392028,
      "cam_lng": -74.764314,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3918761,
@@ -134,6 +163,19 @@
      "geom_ref": 496729574,
      "geom_road": "Golden Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2019,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements",
+     "street": "North Greenwood Avenue"
+    }
+   ],
+   "repaved_unknown": [
+    "Golden Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -173,6 +215,13 @@
      "cam_lat": 40.39265,
      "cam_lng": -74.764656,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase."
+     },
      "geom": [
       [
        40.3924379,
@@ -210,6 +259,13 @@
        "cam_lat": 40.392553,
        "cam_lng": -74.764739,
        "state": "good",
+       "repaved": {
+        "year": 2024,
+        "source": "njdot_municipal_aid",
+        "source_label": "NJDOT Municipal Aid award",
+        "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+        "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase."
+       },
        "_loc": "Hart Avenue & North Greenwood Avenue",
        "geom": [
         [
@@ -247,6 +303,13 @@
        "cam_lat": 40.392556,
        "cam_lng": -74.764725,
        "state": "good",
+       "repaved": {
+        "year": 2024,
+        "source": "njdot_municipal_aid",
+        "source_label": "NJDOT Municipal Aid award",
+        "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+        "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase."
+       },
        "_loc": "Hart Avenue & North Greenwood Avenue",
        "geom": [
         [
@@ -286,6 +349,13 @@
      "cam_lat": 40.392533,
      "cam_lng": -74.764747,
      "state": "fair",
+     "repaved": {
+      "year": 2019,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements"
+     },
      "geom": [
       [
        40.392561292058076,
@@ -300,6 +370,25 @@
      "geom_road": "North Greenwood Avenue"
     }
    ],
+   "repaved": [
+    {
+     "year": 2019,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements",
+     "street": "North Greenwood Avenue"
+    },
+    {
+     "year": 2024,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase.",
+     "street": "Hart Avenue"
+    }
+   ],
+   "repaved_unknown": [],
    "state": "fair",
    "state_counts": {
     "fair": 1,
@@ -338,6 +427,13 @@
      "cam_lat": 40.393306,
      "cam_lng": -74.765106,
      "state": "fair",
+     "repaved": {
+      "year": 2022,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street"
+     },
      "geom": [
       [
        40.39332820125106,
@@ -374,6 +470,13 @@
      "cam_lat": 40.393411,
      "cam_lng": -74.765372,
      "state": "unmarked",
+     "repaved": {
+      "year": 2019,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements"
+     },
      "geom": [
       [
        40.39336275449467,
@@ -388,6 +491,25 @@
      "geom_road": "North Greenwood Avenue"
     }
    ],
+   "repaved": [
+    {
+     "year": 2019,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements",
+     "street": "North Greenwood Avenue"
+    },
+    {
+     "year": 2022,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street",
+     "street": "Walnut Street"
+    }
+   ],
+   "repaved_unknown": [],
    "state": "unmarked",
    "state_counts": {
     "unmarked": 1,
@@ -426,6 +548,7 @@
      "cam_lat": 40.393997,
      "cam_lng": -74.765669,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.394011762317774,
@@ -462,6 +585,7 @@
        "cam_lat": 40.394008,
        "cam_lng": -74.765669,
        "state": "unmarked",
+       "repaved": null,
        "_loc": "Hopewell-Wertsville Road & North Greenwood Avenue & Washington Avenue",
        "geom": [
         [
@@ -478,6 +602,10 @@
       }
      ]
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Washington Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -516,6 +644,7 @@
      "cam_lat": 40.391311,
      "cam_lng": -74.765428,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.39133901514238,
@@ -529,6 +658,10 @@
      "geom_source": "derived",
      "geom_road": "Golden Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Golden Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -567,6 +700,7 @@
      "cam_lat": 40.391839,
      "cam_lng": -74.765992,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3918093,
@@ -604,6 +738,13 @@
      "cam_lat": 40.391842,
      "cam_lng": -74.766022,
      "state": "unmarked",
+     "repaved": {
+      "year": 2024,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase."
+     },
      "geom": [
       [
        40.391833848568055,
@@ -617,6 +758,19 @@
      "geom_source": "derived",
      "geom_road": "Hart Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2023 award $310,630 (Hart Avenue Road Improvements) and FY2024 award $382,968 (Phase 2). Year given is the later phase.",
+     "street": "Hart Avenue"
+    }
+   ],
+   "repaved_unknown": [
+    "Shaftsbury Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -656,6 +810,7 @@
      "cam_lat": 40.390878,
      "cam_lng": -74.763267,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3907088,
@@ -670,6 +825,10 @@
      "geom_ref": 364602143,
      "geom_road": "Model Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Model Avenue"
    ],
    "state": "fair",
    "state_counts": {
@@ -708,6 +867,7 @@
      "cam_lat": 40.389867,
      "cam_lng": -74.764778,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3898868,
@@ -745,6 +905,7 @@
      "cam_lat": 40.389881,
      "cam_lng": -74.764808,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38988990353807,
@@ -758,6 +919,11 @@
      "geom_source": "derived",
      "geom_road": "Model Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Model Avenue",
+    "Voorhees Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -797,6 +963,13 @@
      "cam_lat": 40.388961,
      "cam_lng": -74.766511,
      "state": "good",
+     "repaved": {
+      "year": 2022,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street"
+     },
      "geom": [
       [
        40.38894661897333,
@@ -833,6 +1006,13 @@
        "cam_lat": 40.388967,
        "cam_lng": -74.766517,
        "state": "good",
+       "repaved": {
+        "year": 2022,
+        "source": "njdot_municipal_aid",
+        "source_label": "NJDOT Municipal Aid award",
+        "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+        "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street"
+       },
        "_loc": "Mercer Street & Model Avenue",
        "geom": [
         [
@@ -850,6 +1030,17 @@
      ]
     }
    ],
+   "repaved": [
+    {
+     "year": 2022,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2022 award, $385,000 -- Mercer Street, Newell Place and Walnut Street",
+     "street": "Mercer Street"
+    }
+   ],
+   "repaved_unknown": [],
    "state": "good",
    "state_counts": {
     "good": 1
@@ -887,6 +1078,7 @@
      "cam_lat": 40.387914,
      "cam_lng": -74.768753,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38787095468497,
@@ -900,6 +1092,10 @@
      "geom_source": "derived",
      "geom_road": "Model Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Model Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -938,6 +1134,7 @@
      "cam_lat": 40.387386,
      "cam_lng": -74.7697,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38727863734203,
@@ -974,6 +1171,7 @@
      "cam_lat": 40.387325,
      "cam_lng": -74.769889,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38717583071088,
@@ -987,6 +1185,11 @@
      "geom_source": "derived",
      "geom_road": "Eaton Court"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Eaton Court",
+    "Louellen Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -1025,6 +1228,7 @@
      "cam_lat": 40.387147,
      "cam_lng": -74.768311,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3870613,
@@ -1039,6 +1243,10 @@
      "geom_ref": 376498316,
      "geom_road": "North Lanning Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "North Lanning Avenue"
    ],
    "state": "bad",
    "state_counts": {
@@ -1077,6 +1285,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3861429,
@@ -1114,6 +1323,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3860993,
@@ -1151,6 +1361,7 @@
      "cam_lat": 40.386161,
      "cam_lng": -74.767547,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3861983,
@@ -1188,6 +1399,7 @@
      "cam_lat": 40.386058,
      "cam_lng": -74.76735,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38605585524599,
@@ -1201,6 +1413,12 @@
      "geom_source": "derived",
      "geom_road": "West Broad Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "North Lanning Avenue",
+    "South Lanning Avenue",
+    "West Broad Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -1241,6 +1459,7 @@
      "cam_lat": 40.385383,
      "cam_lng": -74.769089,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3852335,
@@ -1278,6 +1497,7 @@
      "cam_lat": 40.385325,
      "cam_lng": -74.769272,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3852991,
@@ -1315,6 +1535,7 @@
      "cam_lat": 40.385325,
      "cam_lng": -74.769272,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.385334,
@@ -1329,6 +1550,12 @@
      "geom_ref": 376498358,
      "geom_road": "Eaton Place"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Eaton Place",
+    "Ege Avenue",
+    "West Broad Street"
    ],
    "state": "bad",
    "state_counts": {
@@ -1368,6 +1595,7 @@
      "cam_lat": 40.383269,
      "cam_lng": -74.773506,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38322062697171,
@@ -1381,6 +1609,10 @@
      "geom_source": "derived",
      "geom_road": "Windsor Way"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Windsor Way"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -1419,6 +1651,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3845174,
@@ -1456,6 +1689,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3845353,
@@ -1493,6 +1727,7 @@
      "cam_lat": 40.384586,
      "cam_lng": -74.768561,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3844719,
@@ -1507,6 +1742,11 @@
      "geom_ref": 777087749,
      "geom_road": "West Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Ege Avenue",
+    "West Prospect Street"
    ],
    "state": "good",
    "state_counts": {
@@ -1545,6 +1785,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3853467,
@@ -1582,6 +1823,7 @@
      "cam_lat": 40.385181,
      "cam_lng": -74.766831,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3853501,
@@ -1619,6 +1861,7 @@
      "cam_lat": 40.385289,
      "cam_lng": -74.766694,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3852667,
@@ -1633,6 +1876,11 @@
      "geom_ref": 777087740,
      "geom_road": "West Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "South Lanning Avenue",
+    "West Prospect Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -1671,6 +1919,7 @@
      "cam_lat": 40.386814,
      "cam_lng": -74.766167,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3869838,
@@ -1708,6 +1957,7 @@
      "cam_lat": 40.386892,
      "cam_lng": -74.766031,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38696630000192,
@@ -1744,6 +1994,7 @@
      "cam_lat": 40.387019,
      "cam_lng": -74.765883,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.387060051460686,
@@ -1780,6 +2031,7 @@
        "cam_lat": 40.387017,
        "cam_lng": -74.7659,
        "state": "unmarked",
+       "repaved": null,
        "_loc": "Louellen Street & West Broad Street",
        "geom": [
         [
@@ -1796,6 +2048,11 @@
       }
      ]
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Louellen Street",
+    "West Broad Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -1835,6 +2092,7 @@
      "cam_lat": 40.387444,
      "cam_lng": -74.765175,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3875391,
@@ -1872,6 +2130,7 @@
        "cam_lat": 40.3875,
        "cam_lng": -74.765053,
        "state": "good",
+       "repaved": null,
        "_loc": "Mercer Street & West Broad Street",
        "geom": [
         [
@@ -1888,6 +2147,10 @@
       }
      ]
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "West Broad Street"
    ],
    "state": "good",
    "state_counts": {
@@ -1926,6 +2189,14 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3891101,
@@ -1963,6 +2234,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3891101,
@@ -2000,6 +2272,7 @@
      "cam_lat": 40.389039,
      "cam_lng": -74.762,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3892382,
@@ -2037,6 +2310,13 @@
      "cam_lat": 40.389039,
      "cam_lng": -74.762008,
      "state": "fair",
+     "repaved": {
+      "year": 2019,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements"
+     },
      "geom": [
       [
        40.3892382,
@@ -2051,6 +2331,29 @@
      "geom_ref": 376498291,
      "geom_road": "North Greenwood Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2019,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2019 award, $392,260 -- North Greenwood Avenue Road Improvements",
+     "street": "North Greenwood Avenue"
+    },
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [
+    "South Greenwood Avenue",
+    "West Broad Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -2089,6 +2392,7 @@
      "cam_lat": 40.388542,
      "cam_lng": -74.761544,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.388260376890294,
@@ -2125,6 +2429,7 @@
        "cam_lat": 40.388161,
        "cam_lng": -74.761306,
        "state": "unmarked",
+       "repaved": null,
        "_loc": "Columbia Avenue & South Greenwood Avenue",
        "geom": [
         [
@@ -2141,6 +2446,10 @@
       }
      ]
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "South Greenwood Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -2179,6 +2488,13 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": {
+      "year": 2020,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements"
+     },
      "geom": [
       [
        40.3886806,
@@ -2216,6 +2532,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3886806,
@@ -2253,6 +2570,13 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": {
+      "year": 2020,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements"
+     },
      "geom": [
       [
        40.3885404,
@@ -2290,6 +2614,7 @@
      "cam_lat": 40.388553,
      "cam_lng": -74.760011,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3885773,
@@ -2304,6 +2629,19 @@
      "geom_ref": 376498345,
      "geom_road": "Seminary Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2020,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements",
+     "street": "Columbia Avenue"
+    }
+   ],
+   "repaved_unknown": [
+    "Seminary Avenue"
    ],
    "state": "fair",
    "state_counts": {
@@ -2342,6 +2680,7 @@
      "cam_lat": 40.389531,
      "cam_lng": -74.760522,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3895973,
@@ -2356,6 +2695,10 @@
      "geom_ref": 376498347,
      "geom_road": "Seminary Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Seminary Avenue"
    ],
    "state": "bad",
    "state_counts": {
@@ -2394,6 +2737,14 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.389622,
@@ -2431,6 +2782,14 @@
      "cam_lat": 40.389503,
      "cam_lng": -74.760864,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3895562,
@@ -2468,6 +2827,7 @@
      "cam_lat": 40.3895,
      "cam_lng": -74.760894,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3895806,
@@ -2482,6 +2842,20 @@
      "geom_ref": 376498286,
      "geom_road": "Blackwell Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [
+    "Blackwell Avenue"
    ],
    "state": "good",
    "state_counts": {
@@ -2520,6 +2894,7 @@
      "cam_lat": 40.387756,
      "cam_lng": -74.759506,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3876166,
@@ -2534,6 +2909,10 @@
      "geom_ref": 364715584,
      "geom_road": "East Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "East Prospect Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -2572,6 +2951,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3882632,
@@ -2609,6 +2989,7 @@
      "cam_lat": 40.388194,
      "cam_lng": -74.757347,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3881669,
@@ -2646,6 +3027,7 @@
      "cam_lat": 40.388194,
      "cam_lng": -74.757172,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3883021,
@@ -2660,6 +3042,11 @@
      "geom_ref": 376498293,
      "geom_road": "East Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "East Prospect Street",
+    "Princeton Avenue"
    ],
    "state": "good",
    "state_counts": {
@@ -2698,6 +3085,7 @@
      "cam_lat": 40.387283,
      "cam_lng": -74.756775,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3875017,
@@ -2712,6 +3100,10 @@
      "geom_ref": 496729585,
      "geom_road": "2nd Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "2nd Street"
    ],
    "state": "good",
    "state_counts": {
@@ -2750,6 +3142,7 @@
      "cam_lat": 40.3867,
      "cam_lng": -74.756339,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.38667507240844,
@@ -2763,6 +3156,10 @@
      "geom_source": "derived",
      "geom_road": "1st Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "1st Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -2801,6 +3198,13 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": {
+      "year": 2020,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements"
+     },
      "geom": [
       [
        40.3892484,
@@ -2838,6 +3242,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3892484,
@@ -2875,6 +3280,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3891421,
@@ -2912,6 +3318,13 @@
      "cam_lat": 40.3891,
      "cam_lng": -74.757683,
      "state": "bad",
+     "repaved": {
+      "year": 2020,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements"
+     },
      "geom": [
       [
        40.3890981,
@@ -2926,6 +3339,19 @@
      "geom_ref": 376498284,
      "geom_road": "Columbia Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2020,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2020 award, $238,465 -- Columbia Avenue Road Improvements",
+     "street": "Columbia Avenue"
+    }
+   ],
+   "repaved_unknown": [
+    "Princeton Avenue"
    ],
    "state": "bad",
    "state_counts": {
@@ -2965,6 +3391,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3901785,
@@ -3002,6 +3429,14 @@
      "cam_lat": 40.390122,
      "cam_lng": -74.758239,
      "state": "bad",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3901464,
@@ -3016,6 +3451,20 @@
      "geom_ref": 376498323,
      "geom_road": "East Broad Street"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [
+    "Princeton Avenue"
    ],
    "state": "bad",
    "state_counts": {
@@ -3055,6 +3504,14 @@
      "cam_lat": 40.390611,
      "cam_lng": -74.756767,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3907041,
@@ -3070,6 +3527,18 @@
      "geom_road": "East Broad Street"
     }
    ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [],
    "state": "good",
    "state_counts": {
     "good": 1
@@ -3107,6 +3576,14 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3907612,
@@ -3144,6 +3621,7 @@
      "cam_lat": 40.390739,
      "cam_lng": -74.756058,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3908845,
@@ -3181,6 +3659,7 @@
        "cam_lat": 40.390781,
        "cam_lng": -74.75605,
        "state": "good",
+       "repaved": null,
        "_loc": "East Broad Street & North Maple Street & South Maple Street",
        "geom": [
         [
@@ -3220,6 +3699,7 @@
      "cam_lat": 40.390739,
      "cam_lng": -74.756058,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3907672,
@@ -3234,6 +3714,21 @@
      "geom_ref": 376498355,
      "geom_road": "South Maple Street"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [
+    "North Maple Street",
+    "South Maple Street"
    ],
    "state": "good",
    "state_counts": {
@@ -3272,6 +3767,14 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "good",
+     "repaved": {
+      "year": 2024,
+      "source": "mercer_county",
+      "source_label": "Mercer County resurfacing project",
+      "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+      "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+      "limits": "Elm Street to Greenwood Avenue"
+     },
      "geom": [
       [
        40.3915674,
@@ -3309,6 +3812,7 @@
      "cam_lat": 40.391564,
      "cam_lng": -74.753503,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3914156,
@@ -3323,6 +3827,20 @@
      "geom_ref": 363310290,
      "geom_road": "South Elm Street"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2024,
+     "source": "mercer_county",
+     "source_label": "Mercer County resurfacing project",
+     "url": "https://www.hopewellboro-nj.us/update-mercer-county-milling-and-resurfacing-project-east-broad-street-cr-518/",
+     "detail": "County milling and resurfacing of CR 518 began 19 Aug 2024. This is a construction date, not an award year. All seven surveyed East Broad crossings fall inside the limits.",
+     "limits": "Elm Street to Greenwood Avenue",
+     "street": "East Broad Street"
+    }
+   ],
+   "repaved_unknown": [
+    "South Elm Street"
    ],
    "state": "good",
    "state_counts": {
@@ -3361,6 +3879,7 @@
      "cam_lat": 40.389406,
      "cam_lng": -74.752425,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.389402004750835,
@@ -3374,6 +3893,10 @@
      "geom_source": "derived",
      "geom_road": "East Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "East Prospect Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -3412,6 +3935,7 @@
      "cam_lat": 40.391953,
      "cam_lng": -74.757331,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3920783,
@@ -3426,6 +3950,10 @@
      "geom_ref": 376498263,
      "geom_road": "Lafayette Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Lafayette Street"
    ],
    "state": "good",
    "state_counts": {
@@ -3464,6 +3992,7 @@
      "cam_lat": 40.392025,
      "cam_lng": -74.756364,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.39208837098892,
@@ -3500,6 +4029,7 @@
      "cam_lat": 40.391986,
      "cam_lng": -74.756517,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3919674,
@@ -3514,6 +4044,11 @@
      "geom_ref": 776641170,
      "geom_road": "North Maple Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Lafayette Street",
+    "North Maple Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -3553,6 +4088,7 @@
      "cam_lat": 40.391619,
      "cam_lng": -74.758942,
      "state": "unmarked",
+     "repaved": null,
      "geom": [
       [
        40.39150113319466,
@@ -3589,6 +4125,7 @@
      "cam_lat": 40.391628,
      "cam_lng": -74.759514,
      "state": "bad",
+     "repaved": null,
      "geom": [
       [
        40.3914604,
@@ -3626,6 +4163,7 @@
      "cam_lat": 40.391583,
      "cam_lng": -74.75965,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3915742,
@@ -3640,6 +4178,11 @@
      "geom_ref": 376498303,
      "geom_road": "Hamilton Avenue"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Hamilton Avenue",
+    "Lafayette Street"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -3680,6 +4223,13 @@
      "cam_lat": 40.392342,
      "cam_lng": -74.759981,
      "state": "unmarked",
+     "repaved": {
+      "year": 2021,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2021 award, $282,290 -- Railroad Place Road Improvements"
+     },
      "geom": [
       [
        40.39241002154975,
@@ -3716,6 +4266,7 @@
      "cam_lat": 40.392344,
      "cam_lng": -74.759981,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3924192,
@@ -3730,6 +4281,19 @@
      "geom_ref": 376498309,
      "geom_road": "Hamilton Avenue"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2021,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2021 award, $282,290 -- Railroad Place Road Improvements",
+     "street": "Railroad Place"
+    }
+   ],
+   "repaved_unknown": [
+    "Hamilton Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -3769,6 +4333,7 @@
      "cam_lat": 40.391056,
      "cam_lng": -74.761642,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3910488,
@@ -3806,6 +4371,7 @@
        "cam_lat": 40.391042,
        "cam_lng": -74.761764,
        "state": "fair",
+       "repaved": null,
        "_loc": "Blackwell Avenue & Lafayette Street",
        "geom": [
         [
@@ -3822,6 +4388,10 @@
       }
      ]
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Lafayette Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -3860,6 +4430,7 @@
      "cam_lat": 40.391506,
      "cam_lng": -74.761964,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.3915161,
@@ -3897,6 +4468,13 @@
      "cam_lat": 40.391497,
      "cam_lng": -74.761956,
      "state": "unmarked",
+     "repaved": {
+      "year": 2021,
+      "source": "njdot_municipal_aid",
+      "source_label": "NJDOT Municipal Aid award",
+      "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+      "detail": "FY2021 award, $282,290 -- Railroad Place Road Improvements"
+     },
      "geom": [
       [
        40.391543259167086,
@@ -3910,6 +4488,19 @@
      "geom_source": "derived",
      "geom_road": "Railroad Place"
     }
+   ],
+   "repaved": [
+    {
+     "year": 2021,
+     "source": "njdot_municipal_aid",
+     "source_label": "NJDOT Municipal Aid award",
+     "url": "https://njdotlocalhub.nj.gov/local-aid-econ-dev/grant-programs/state-programs/municipal-aid/",
+     "detail": "FY2021 award, $282,290 -- Railroad Place Road Improvements",
+     "street": "Railroad Place"
+    }
+   ],
+   "repaved_unknown": [
+    "Blackwell Avenue"
    ],
    "state": "unmarked",
    "state_counts": {
@@ -3949,6 +4540,7 @@
      "cam_lat": 40.392547,
      "cam_lng": -74.754211,
      "state": "good",
+     "repaved": null,
      "geom": [
       [
        40.392568,
@@ -3963,6 +4555,10 @@
      "geom_ref": 776641172,
      "geom_road": "Lafayette Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Lafayette Street"
    ],
    "state": "good",
    "state_counts": {
@@ -4001,6 +4597,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3901785,
@@ -4015,6 +4612,10 @@
      "geom_ref": 376498305,
      "geom_road": "Center Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "Center Street"
    ],
    "state": "fair",
    "state_counts": {
@@ -4053,6 +4654,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3887644,
@@ -4090,6 +4692,7 @@
      "cam_lat": null,
      "cam_lng": null,
      "state": "fair",
+     "repaved": null,
      "geom": [
       [
        40.3886196,
@@ -4104,6 +4707,11 @@
      "geom_ref": 364602155,
      "geom_road": "East Prospect Street"
     }
+   ],
+   "repaved": [],
+   "repaved_unknown": [
+    "East Prospect Street",
+    "South Maple Street"
    ],
    "state": "fair",
    "state_counts": {

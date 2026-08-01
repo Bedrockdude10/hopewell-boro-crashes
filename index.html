@@ -284,6 +284,72 @@
     color:#7A4318;
   }
 
+  .popup .paving{
+    font-size:11px;
+    line-height:1.4;
+    color:var(--ink-soft);
+    margin-top:7px;
+    padding-top:6px;
+    border-top:1px solid var(--line);
+  }
+  .popup .paving b{color:var(--ink); font-weight:600;}
+  .popup .paving .due{color:#7A4318;}
+  .popup .paving a{color:var(--bike);}
+
+  /* ---- Repaving priority panel ---- */
+  #priority{
+    top:70px;
+    right:14px;
+    z-index:900;
+    width:262px;
+    padding:12px 14px;
+    max-height:calc(100vh - 190px);
+    overflow-y:auto;
+    display:none;
+  }
+  #priority.open{display:block;}
+  #priority h2{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--ink-soft);
+    margin:0 0 2px 0;
+    font-weight:600;
+  }
+  #priority .sub{font-size:10.5px; color:var(--ink-soft); line-height:1.35; margin:0 0 8px 0;}
+  #priority ol{margin:0; padding:0; list-style:none;}
+  #priority li{
+    padding:7px 0;
+    border-top:1px solid var(--line);
+    cursor:pointer;
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  #priority li:hover .pname{text-decoration:underline;}
+  #priority .rank{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--panel);
+    border-radius:4px;
+    padding:1px 5px;
+    flex-shrink:0;
+    margin-top:1px;
+  }
+  #priority .pname{font-size:12.5px; font-weight:600; line-height:1.3; color:var(--ink);}
+  #priority .why{font-size:10.5px; color:var(--ink-soft); line-height:1.4; margin-top:2px;}
+  #priority .why .harm{color:var(--injury); font-weight:600;}
+  #priority .caveat{
+    font-size:10px;
+    color:var(--ink-soft);
+    line-height:1.4;
+    margin:9px 0 0 0;
+    padding-top:8px;
+    border-top:1px solid var(--line);
+  }
+
   #lightbox{
     position:fixed;
     inset:0;
@@ -348,8 +414,12 @@
         <h2>Other layers</h2>
         <label class="check-row"><input type="checkbox" id="xwalkToggle">
           <span class="swatch square" style="background:var(--xw-good)"></span> Crosswalk inventory</label>
-        <p class="hint">41 locations walked 31 Jul 2026. Zoom in for the markings
+        <p class="hint">44 locations walked 31 Jul 2026. Zoom in for the markings
           drawn to scale; click any of them for the photo.</p>
+        <label class="check-row"><input type="checkbox" id="priorityToggle">
+          <span class="swatch square" style="background:var(--injury)"></span> Repaving priority</label>
+        <p class="hint">Top 5 intersections by condition and crash harm. Needs the
+          crosswalk layer.</p>
       </div>
     </div>
 
@@ -367,6 +437,13 @@
         <div class="row"><span class="swatch square" style="background:var(--xw-unknown); width:12px; height:12px;"></span> Marked, not graded</div>
         <div class="row" style="margin-top:5px;"><svg width="14" height="6"><rect x="0" y="0" width="14" height="6" fill="none" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="3,4"/></svg> Dashed = nothing painted</div>
       </div>
+    </div>
+
+    <div id="priority" class="floating">
+      <h2>Repaving priority</h2>
+      <p class="sub">Triage ordering, not a recommendation. Click to zoom.</p>
+      <ol></ol>
+      <p class="caveat"></p>
     </div>
 
     <div id="stats" class="floating">
@@ -531,7 +608,11 @@ function init(){
     download:true,
     header:true,
     skipEmptyLines:true,
-    complete: (res) => { allCrashes = res.data.map(normalizeRow); render(); },
+    complete: (res) => {
+      allCrashes = res.data.map(normalizeRow);
+      render();
+      renderPriorities();  // the priority score counts crashes, so it waits for these
+    },
     error: () => { console.error('Could not load crash data from DATA_URL'); showError(); }
   });
 }
@@ -767,8 +848,225 @@ function xwalkPopupHTML(loc){
       ${thumbHTML}
       ${reportedHTML}
       ${flagHTML}
+      ${pavingHTML(loc)}
     </div>`;
 }
+
+// ---- last repaved, and when it would next be due ---------------------------
+// data/paving.json, folded into crosswalks.json at build time. Only 7 of the 35
+// streets have a date, so "unknown" is the common answer and has to be said out
+// loud -- an empty line would read as "never repaved".
+//
+// The cycle lengths are BENCHMARKS, NOT PUBLISHED LOCAL POLICY: Mercer County
+// publishes no cycle length (10 years is the low end of the standard 10-20 year
+// mill-and-overlay service life) and the borough publishes no programme at all.
+// Everything derived from them is hedged in the wording for that reason.
+const THIS_YEAR = 2026;
+let xwPaving = null;   // the `paving` block from crosswalks.json
+
+function cycleYears(loc){
+  const c = (xwPaving && xwPaving.cycles) || {};
+  return loc.jurisdiction === 'county' ? (c.county_years || 10)
+                                       : (c.borough_years || 15);
+}
+
+// Years until the street would next be resurfaced on the benchmark cycle.
+// Negative means already overdue by that many years.
+function yearsUntilDue(rec, loc){
+  return rec.year + cycleYears(loc) - THIS_YEAR;
+}
+
+function pavingHTML(loc){
+  const known = loc.repaved || [];
+  const unknown = loc.repaved_unknown || [];
+  if (!known.length && !unknown.length) return '';
+  const rows = known.map(r => {
+    const age = THIS_YEAR - r.year;
+    const due = yearsUntilDue(r, loc);
+    const dueTxt = due <= 0
+      ? `<span class="due">due now on a ${cycleYears(loc)}-year cycle</span>`
+      : `next due ~${r.year + cycleYears(loc)}`;
+    const limits = r.limits ? `, ${r.limits} only` : '';
+    return `<div><b>${r.street}</b> repaved ${r.year} (${age} yr${age === 1 ? '' : 's'} ago${limits}) —
+      ${dueTxt}<br><span title="${escapeAttr(r.detail || '')}">${r.source_label}</span>${
+      r.url ? ` · <a href="${r.url}" target="_blank" rel="noopener">source</a>` : ''}</div>`;
+  }).join('');
+  const unk = unknown.length
+    ? `<div>No paving date on record for ${unknown.join(', ')}.</div>` : '';
+  return `<div class="paving">${rows}${unk}</div>`;
+}
+
+// ============================================================================
+// REPAVING PRIORITY — "top 5 intersections"
+// A transparent additive score, deliberately simple enough to argue with in a
+// council meeting. Three terms:
+//
+//   harm        crashes near the junction, weighted by INJURY SEVERITY and by
+//               whether a person outside a vehicle was hurt. This is the heaviest
+//               term on purpose: a worn crossing where someone was injured
+//               outranks a worn crossing where nobody has been.
+//   deficiency  what the survey found, per leg. Unmarked costs most (a new
+//               installation), then bad, then fair.
+//   paving      timing. A street repaved recently whose crossings are now
+//               unmarked lost its markings to the paving job -- cheap to restripe
+//               and easy to justify. A street about to be resurfaced is pushed
+//               DOWN: do not paint a road that is due to be milled.
+//
+// Crash counts come from the live Sheet, so this recomputes on every load and
+// nothing about it is baked into the repo. Proximity is not causation -- a crash
+// within 40 m of a junction was not necessarily at the crosswalk.
+// ============================================================================
+const PRI_RADIUS_M = 40;
+const PRI_HARM = {
+  // person outside a vehicle hurt -- what a crosswalk is actually for
+  ped_fatal:12, ped_injury:6, ped_pdo:2,
+  veh_fatal:4,  veh_injury:2, veh_pdo:0.5
+};
+const PRI_DEFICIENCY = { unmarked:3, bad:2, fair:0.5, good:0, unknown:1 };
+const PRI_FRESH_YEARS = 3;      // repaved this recently = markings lost in paving
+const PRI_LOST_MARKINGS = 3;    // bonus for that, per location
+const PRI_DUE_SOON_YEARS = 2;   // within this of due = hold off
+const PRI_DUE_SOON_FACTOR = 0.6;
+
+function distM(aLat, aLng, bLat, bLng){
+  const mPerDegLng = M_PER_DEG_LAT * Math.cos(aLat * Math.PI / 180);
+  return Math.hypot((bLat - aLat) * M_PER_DEG_LAT, (bLng - aLng) * mPerDegLng);
+}
+
+function nearbyCrashes(loc){
+  return allCrashes.filter(c => c.lat && c.lng && !isNaN(c.lat) && !isNaN(c.lng)
+    && distM(loc.lat, loc.lng, c.lat, c.lng) <= PRI_RADIUS_M);
+}
+
+function harmScore(crashes){
+  let score = 0, injured = 0, killed = 0, vulnerable = 0;
+  crashes.forEach(c => {
+    const vuln = c.crash_type === 'pedestrian' || c.crash_type === 'bicycle';
+    const sev = c.severity === 'fatal' ? 'fatal'
+              : c.severity === 'injury' ? 'injury' : 'pdo';
+    score += PRI_HARM[(vuln ? 'ped_' : 'veh_') + sev] || 0;
+    if (sev === 'fatal') killed++;
+    else if (sev === 'injury') injured++;
+    if (vuln && sev !== 'pdo') vulnerable++;
+  });
+  return { score, injured, killed, vulnerable, total: crashes.length };
+}
+
+function scoreLocation(loc){
+  const legs = loc.photos || [];
+  const counts = loc.state_counts || {};
+  const deficiency = legs.reduce((s, p) => s + (PRI_DEFICIENCY[p.state] ?? 0), 0);
+  const crashes = nearbyCrashes(loc);
+  const harm = harmScore(crashes);
+
+  // Paving timing. Only the newest known date on the junction is used -- if any
+  // leg's street was just paved and that leg is unmarked, the markings went with
+  // the paving.
+  const known = loc.repaved || [];
+  let paving = 0;
+  const reasons = [];
+  const fresh = known.filter(r => THIS_YEAR - r.year <= PRI_FRESH_YEARS);
+  const lost = fresh.filter(r => legs.some(p =>
+    p.street === r.street && (p.state === 'unmarked' || p.state === 'bad')));
+  if (lost.length){
+    paving += PRI_LOST_MARKINGS;
+    const gone = legs.some(p => p.street === lost[0].street && p.state === 'unmarked');
+    reasons.push(`${lost.map(r => r.street).join(', ')} repaved ${lost[0].year} and
+      the crossing is ${gone ? 'unmarked' : 'already bad'} — ${gone
+        ? 'markings likely lost in the paving and never restored'
+        : 'restriped poorly or not at all after the mill'}`);
+  }
+  // Due for resurfacing soon: hold, don't paint ahead of the mill.
+  const dueSoon = known.filter(r => yearsUntilDue(r, loc) <= PRI_DUE_SOON_YEARS);
+  let raw = harm.score + deficiency + paving;
+  let held = false;
+  if (dueSoon.length && !lost.length){
+    raw *= PRI_DUE_SOON_FACTOR;
+    held = true;
+    reasons.push(`${dueSoon.map(r => r.street).join(', ')} is at or past the
+      ${cycleYears(loc)}-year mark — stripe it after the mill, not before`);
+  }
+
+  if (counts.unmarked) reasons.unshift(`${counts.unmarked} unmarked leg${
+    counts.unmarked === 1 ? '' : 's'}`);
+  if (counts.bad) reasons.unshift(`${counts.bad} in bad condition`);
+
+  return { loc, score: raw, deficiency, paving, harm, held,
+           unknownPaving: !known.length, reasons };
+}
+
+function harmPhrase(h){
+  if (!h.total) return 'no crashes recorded within 40 m';
+  const bits = [];
+  if (h.killed) bits.push(`${h.killed} fatal`);
+  if (h.injured) bits.push(`${h.injured} with injuries`);
+  if (!bits.length) bits.push(`${h.total} property damage only`);
+  let out = `<span class="harm">${bits.join(', ')}</span>`;
+  if (h.vulnerable) out += ` (${h.vulnerable} pedestrian/cyclist)`;
+  return out;
+}
+
+function renderPriorities(){
+  const panel = document.getElementById('priority');
+  if (!panel.classList.contains('open')) return;
+  const ol = panel.querySelector('ol');
+  if (!xwalkLocations.length || !allCrashes.length){
+    ol.innerHTML = `<li style="cursor:default"><span class="why">Waiting for
+      crash and crosswalk data…</span></li>`;
+    return;
+  }
+  const ranked = xwalkLocations.map(scoreLocation)
+    .filter(r => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+
+  ol.innerHTML = ranked.map((r, i) => `
+    <li data-name="${escapeAttr(r.loc.name)}">
+      <span class="rank">${i + 1}</span>
+      <span>
+        <span class="pname">${r.loc.name}</span>
+        <span class="why">${harmPhrase(r.harm)} · ${r.reasons.length
+          ? r.reasons.join(' · ')
+          : XW_LABEL[r.loc.state].toLowerCase()}${
+          r.unknownPaving ? ' · paving date unknown' : ''}
+          <br>score ${r.score.toFixed(1)}${r.held ? ' (held back — resurfacing due)' : ''}</span>
+      </span>
+    </li>`).join('');
+
+  const nKnown = xwalkLocations.filter(l => (l.repaved || []).length).length;
+  panel.querySelector('.caveat').innerHTML =
+    `Score = crash harm (weighted by injury severity, and doubled for people
+     outside a vehicle) + survey deficiency per leg + paving timing. Crashes are
+     counted within ${PRI_RADIUS_M} m; <b>proximity is not causation</b>.
+     Paving dates are known for ${nKnown} of ${xwalkLocations.length} locations,
+     so the paving term cannot apply to most of the list — see
+     <code>data/paving.json</code>. Condition grades are one reviewer's eye, not a
+     meter, and the borough already holds a $1.51M Safe Routes to School award
+     whose scope includes crosswalk upgrades: check this against that design.`;
+}
+
+document.querySelector('#priority ol').addEventListener('click', (e) => {
+  const li = e.target.closest('li[data-name]');
+  if (!li) return;
+  const loc = xwalkLocations.find(l => l.name === li.dataset.name);
+  if (!loc) return;
+  map.setView([loc.lat, loc.lng], Math.max(map.getZoom(), 18));
+  const m = xwalkPopupTargets.get(loc.name);
+  if (m) setTimeout(() => m.openPopup(), 250);
+});
+
+document.getElementById('priorityToggle').addEventListener('change', (e) => {
+  const panel = document.getElementById('priority');
+  panel.classList.toggle('open', e.target.checked);
+  if (!e.target.checked) return;
+  // The priority list is about the crosswalks, so turn that layer on with it.
+  const xw = document.getElementById('xwalkToggle');
+  if (!xw.checked && !xw.disabled){
+    xw.checked = true;
+    xw.dispatchEvent(new Event('change'));
+  }
+  loadCrosswalks().then(renderPriorities);
+});
 
 function escapeAttr(s){
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -780,6 +1078,9 @@ const XWALK_GEOM_ZOOM = 17;
 const xwalkPins = L.layerGroup();
 const xwalkShapesLayer = L.layerGroup();
 let xwalksLoaded = false;
+let xwalkLocations = [];
+// name -> a layer whose popup the priority list can open
+const xwalkPopupTargets = new Map();
 
 function activeXwalkLayer(){
   return map.getZoom() >= XWALK_GEOM_ZOOM ? xwalkShapesLayer : xwalkPins;
@@ -798,15 +1099,20 @@ function loadCrosswalks(){
   return fetch(XWALK_URL)
     .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(data => {
+      xwPaving = data.paving || null;
+      xwalkLocations = data.locations;
       data.locations.forEach(loc => {
         const popup = xwalkPopupHTML(loc);
-        L.marker([loc.lat, loc.lng], { icon: xwalkIcon(loc) })
+        const pin = L.marker([loc.lat, loc.lng], { icon: xwalkIcon(loc) })
           .bindPopup(popup, { maxWidth:300 })
           .addTo(xwalkPins);
         const shapes = xwalkShapes(loc);
         if (shapes) shapes.bindPopup(popup, { maxWidth:300 }).addTo(xwalkShapesLayer);
         else L.marker([loc.lat, loc.lng], { icon: xwalkIcon(loc) })
               .bindPopup(popup, { maxWidth:300 }).addTo(xwalkShapesLayer);
+        // The priority list zooms in first, so the to-scale shapes are what will
+        // be on the map by the time the popup opens.
+        xwalkPopupTargets.set(loc.name, shapes || pin);
       });
       xwalksLoaded = true;
     })

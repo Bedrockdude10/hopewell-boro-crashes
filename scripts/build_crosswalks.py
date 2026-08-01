@@ -40,6 +40,7 @@ DEFAULT_SRC = os.path.expanduser(
     "~/Downloads/Hopewell Crosswalk Inventory - Results")
 DEFAULT_ORIGINALS = "Hopewell Boro Crosswalk Inventory"
 OUT_JSON = os.path.join(REPO, "data", "crosswalks.json")
+PAVING_JSON = os.path.join(REPO, "data", "paving.json")
 OUT_PHOTOS = os.path.join(REPO, "photos", "crosswalks")
 MAX_PX = 1200  # long edge; keeps the whole set to a few MB
 
@@ -95,6 +96,37 @@ def leg_state(leg):
     return CONDITION_STATE.get(leg["condition"], "unknown")
 
 
+# ---- when the street was last repaved --------------------------------------
+# data/paving.json, not the survey folder: this is desk research from grant awards
+# and construction notices, not something the surveyor observed. Only 7 of the 35
+# streets have a date, so `repaved` is None on most legs -- that is expected, and
+# the site has to say "unknown" rather than imply "never".
+_paving = None
+
+
+def paving():
+    global _paving
+    if _paving is None:
+        with open(PAVING_JSON) as fh:
+            _paving = json.load(fh)
+    return _paving
+
+
+def leg_repaved(leg):
+    """The paving record for the street this crossing spans, or None if unknown."""
+    pv = paving()
+    rec = pv["streets"].get(leg.get("street", ""))
+    if not rec:
+        return None
+    src = pv["sources"].get(rec["source"], {})
+    out = {"year": rec["year"], "source": rec["source"],
+           "source_label": src.get("label", rec["source"]),
+           "url": src.get("url", ""), "detail": rec.get("detail", "")}
+    if rec.get("limits"):
+        out["limits"] = rec["limits"]
+    return out
+
+
 def summarise(loc):
     """Roll the legs up into the location's headline figures. Computed here rather
     than read from map.geojson so that editing the CSV is all it takes to correct
@@ -102,6 +134,20 @@ def summarise(loc):
     legs = loc["photos"]
     for leg in legs:
         leg["state"] = leg_state(leg)
+        leg["repaved"] = leg_repaved(leg)
+
+    # Location level: one entry per distinct street with a known date. Kept as a
+    # list because a junction's legs are on different streets, paved in different
+    # years -- there is no single "when was this intersection paved".
+    seen, streets = set(), []
+    for leg in legs:
+        key = (leg.get("street", ""), (leg["repaved"] or {}).get("year"))
+        if leg["repaved"] and key not in seen:
+            seen.add(key)
+            streets.append(dict(leg["repaved"], street=leg["street"]))
+    loc["repaved"] = sorted(streets, key=lambda s: s["year"])
+    loc["repaved_unknown"] = sorted({leg.get("street", "") for leg in legs
+                                     if not leg["repaved"] and leg.get("street")})
 
     loc["state"] = min((leg["state"] for leg in legs),
                        key=STATE_ORDER.index, default="unknown")
@@ -191,6 +237,10 @@ def main():
                      "grades are one reviewer's judgement by eye, not "
                      "retroreflectivity measurements. Absence from this list is "
                      "not evidence a crossing does not exist."),
+            # Carried through so the site can show the coverage gap and the
+            # cycle assumptions without a second fetch. See data/paving.json.
+            "paving": {k: paving()[k] for k in
+                       ("compiled", "coverage", "caveats", "cycles")},
             "locations": locations,
         }, fh, indent=1)
     print("wrote %s (%d locations)" % (OUT_JSON, len(locations)))
