@@ -833,8 +833,28 @@ function xwalkPopupHTML(loc){
       ${photoHTML}
       ${thumbHTML}
       ${reportedHTML}
+      ${neverMarkedHTML(loc)}
       ${pavingHTML(loc)}
     </div>`;
+}
+
+// Why a leg is unmarked, where the surveyor has said. A photograph cannot tell a
+// crossing that wore away from one that was never there, and the difference is a
+// repaint versus a new installation -- so the map only ever states it when the CSV
+// does, and stays silent otherwise.
+function neverMarkedHTML(loc){
+  const never = loc.photos.filter(p => p.state === 'unmarked'
+                                    && p.unmarked_reason === 'never_marked');
+  const cands = loc.photos.filter(p => p.candidate);
+  if (!never.length && !cands.length) return '';
+  const bits = [];
+  if (never.length)
+    bits.push(`Never marked: ${never.map(p => p.street).join(', ')} — a new
+      crossing here, not a repaint.`);
+  if (cands.length)
+    bits.push(`The surveyor flags ${cands.map(p => p.street).join(', ')} as a good
+      candidate for a new crosswalk.`);
+  return `<p class="caption reported">${bits.join(' ')}</p>`;
 }
 
 // ---- last repaved, and when it would next be due ---------------------------
@@ -912,6 +932,7 @@ const PRI_FRESH_YEARS = 3;      // repaved this recently = markings lost in pavi
 const PRI_LOST_MARKINGS = 3;    // bonus for that, per location
 const PRI_DUE_SOON_YEARS = 2;   // within this of due = hold off
 const PRI_DUE_SOON_FACTOR = 0.6;
+const PRI_CANDIDATE = 1.5;      // the surveyor says a crossing belongs here
 
 function distM(aLat, aLng, bLat, bLng){
   const mPerDegLng = M_PER_DEG_LAT * Math.cos(aLat * Math.PI / 180);
@@ -951,19 +972,30 @@ function scoreLocation(loc){
   let paving = 0;
   const reasons = [];
   const fresh = known.filter(r => THIS_YEAR - r.year <= PRI_FRESH_YEARS);
-  const lost = fresh.filter(r => legs.some(p =>
-    p.street === r.street && (p.state === 'unmarked' || p.state === 'bad')));
+  // An unmarked leg on a freshly paved street only counts as lost markings when
+  // the surveyor has SAID the markings were there. "Unmarked + recently paved" on
+  // its own does not imply it: the crossing may never have existed, in which case
+  // this is a new installation and a completely different argument. Where
+  // `unmarked_reason` is blank, nobody has said, and no claim is made.
+  const lost = fresh.filter(r => legs.some(p => p.street === r.street && (
+    (p.state === 'unmarked' && p.unmarked_reason === 'markings_lost') ||
+    p.state === 'bad')));
   if (lost.length){
     paving += PRI_LOST_MARKINGS;
     const gone = legs.some(p => p.street === lost[0].street && p.state === 'unmarked');
     reasons.push(`${lost.map(r => r.street).join(', ')} repaved ${lost[0].year} and
-      the crossing is ${gone ? 'unmarked' : 'already bad'} — ${gone
-        ? 'markings likely lost in the paving and never restored'
-        : 'restriped poorly or not at all after the mill'}`);
+      the crossing is ${gone
+        ? 'unmarked — the surveyor records markings that are gone'
+        : 'already worn — restriped poorly or not at all after the mill'}`);
   }
+  // The surveyor's own recommendation counts for something, and is labelled as
+  // their judgement rather than folded silently into the condition terms.
+  const candidates = legs.filter(p => p.candidate);
+
   // Due for resurfacing soon: hold, don't paint ahead of the mill.
   const dueSoon = known.filter(r => yearsUntilDue(r, loc) <= PRI_DUE_SOON_YEARS);
-  let raw = harm.score + deficiency + paving;
+  let raw = harm.score + deficiency + paving
+          + PRI_CANDIDATE * candidates.length;
   let held = false;
   if (dueSoon.length && !lost.length){
     raw *= PRI_DUE_SOON_FACTOR;
@@ -972,9 +1004,19 @@ function scoreLocation(loc){
       ${cycleYears(loc)}-year mark — stripe it after the mill, not before`);
   }
 
-  if (counts.unmarked) reasons.unshift(`${counts.unmarked} unmarked leg${
-    counts.unmarked === 1 ? '' : 's'}`);
+  // An unmarked leg the surveyor says was never marked is a new installation, and
+  // saying so is the difference between a $600 repaint and a capital project.
+  const never = legs.filter(p => p.state === 'unmarked'
+                              && p.unmarked_reason === 'never_marked');
+  const otherUnmarked = (counts.unmarked || 0) - never.length;
+  if (otherUnmarked > 0) reasons.unshift(`${otherUnmarked} unmarked leg${
+    otherUnmarked === 1 ? '' : 's'}`);
+  if (never.length) reasons.unshift(`${never.length} leg${
+    never.length === 1 ? '' : 's'} never marked — new crossing, not a repaint`);
   if (counts.bad) reasons.unshift(`${counts.bad} in bad condition`);
+
+  if (candidates.length)
+    reasons.push('surveyor flags this as a good candidate for a new crosswalk');
 
   return { loc, score: raw, deficiency, paving, harm, held,
            unknownPaving: !known.length, reasons };

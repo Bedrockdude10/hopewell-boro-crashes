@@ -145,6 +145,8 @@ it. Edit the row and rebuild; there is no separate corrections file.
 | `condition` | `poor`, `fair`, `good`, `like_new`, or blank when unmarked. This is what the map colours: poor → Bad, fair → Fair, good/like_new → Good |
 | `crossing_street` | The street this crossing spans, exactly as OSM names it. This is what puts the line on the right leg of the junction — change it if a crossing is drawn across the wrong street |
 | `crossing_side` | Optional compass point (`N`/`NE`/`E`/…) for which side of the junction the crossing sits on. Only needed where one street carries a crossing on both sides — "the crossing on the south side of Princeton". Left blank, the side is inferred from where the photographer stood |
+| `unmarked_reason` | Why an unmarked leg is unmarked: `never_marked` (there has never been a crossing here — a new installation) or `markings_lost` (there was one and it is gone — a repaint). **Leave blank if you don't know**; blank means the map and the priority score make no claim either way |
+| `candidate` | `yes` where the surveyor judges a crossing *ought* to be here. Labelled on the map as their recommendation, not an observation |
 | `crosswalk_note` | Free text, shown in the popup caption |
 
 **A junction in the wrong place** is fixed in `map.geojson`, not the CSV — that
@@ -313,8 +315,17 @@ It is deliberately a simple additive score, so it can be argued with:
 |---|---|
 | **Crash harm**, per crash within 40 m | Pedestrian or cyclist: fatal 12, injury 6, property damage 2. Vehicle only: fatal 4, injury 2, property damage 0.5 |
 | **Survey deficiency**, per leg | Unmarked 3, bad 2, fair 0.5, good 0, marked-but-ungraded 1 |
-| **Paving timing**, per location | +3 where a street repaved within 3 years now has an unmarked or bad crossing — the markings went with the paving, which is cheap to restore and easy to justify |
+| **Paving timing**, per location | +3 where a street repaved within 3 years has a *bad* crossing, or an unmarked one the surveyor has marked `unmarked_reason=markings_lost` — the markings went with the paving, which is cheap to restore and easy to justify |
 | | ×0.6 where a street is at or past its assumed cycle — **don't paint a road that's about to be milled** |
+| **Surveyor's recommendation** | +1.5 per leg marked `candidate` — somewhere they judge a crossing ought to be |
+
+**A recently paved street with an unmarked leg does not by itself mean the markings
+were lost.** The crossing may never have existed, in which case it's a new
+installation and an entirely different argument to make. A photograph cannot tell the
+two apart, so only the surveyor's `unmarked_reason` may say — and where it is blank
+the score and the popup both stay silent. An earlier version of this inferred lost
+markings from paving date alone and was wrong at Hart Ave & Shaftsbury Ave, where
+there has never been a crosswalk.
 
 Harm is the heaviest term on purpose: **a worn crossing where someone was injured
 outranks a worn crossing where nobody has been**, and a person hurt outside a vehicle
@@ -326,7 +337,9 @@ Three limits are printed in the panel itself and belong in any presentation of i
   necessarily at the crosswalk, and the crash set is small.
 - **The paving term can only apply to 15 of the 44 locations**, so it cannot
   meaningfully reorder the rest. Until the coverage gap above is filled, this ranks
-  partly by which streets happen to have a documented year.
+  partly by which streets happen to have a documented year. It applies to fewer still
+  in practice, because it also needs `unmarked_reason` filled in — currently 1 of the
+  20 unmarked legs has it.
 - **The borough already holds a $1.51M Safe Routes to School award** (2024, plus up
   to $750k design) whose scope includes upgrading multiple crosswalks and RRFBs on
   Broad Street. Check this list against that project's design before recommending

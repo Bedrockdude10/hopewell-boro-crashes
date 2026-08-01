@@ -195,6 +195,15 @@ def main():
                 # needed where a street carries a crossing on both sides.
                 "side": r.get("crossing_side", "").strip().upper(),
                 "crosswalk": r["crosswalk"],
+                # Why a leg is unmarked. Only the surveyor knows this, and the
+                # photograph cannot show it: `never_marked` means there has never
+                # been a crossing here (a new installation), `markings_lost` means
+                # there was one and it is gone. Blank means nobody has said, and
+                # nothing downstream may assume either way.
+                "unmarked_reason": r.get("unmarked_reason", "").strip(),
+                # The surveyor's own recommendation: somewhere a crossing ought to
+                # be. Not an observation -- a judgement, labelled as one.
+                "candidate": r.get("candidate", "").strip().lower() == "yes",
                 "style": r["style"],
                 "style_street": r["style_street"],
                 "style_secondary": r["style_secondary"],
