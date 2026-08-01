@@ -4021,6 +4021,95 @@
     "fair": 1
    },
    "styles": "parallel_lines"
+  },
+  {
+   "name": "East Prospect Street & South Maple Street",
+   "lat": 40.388694,
+   "lng": -74.755435,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "South Maple Street",
+     "side": "NW",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "South Maple Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed (missed on the walk)",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3887644,
+       -74.7554134
+      ],
+      [
+       40.3887353,
+       -74.7555223
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498270,
+     "geom_road": "South Maple Street"
+    },
+    {
+     "file": "",
+     "street": "East Prospect Street",
+     "side": "W",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "East Prospect Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed (missed on the walk)",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3886196,
+       -74.7555239
+      ],
+      [
+       40.388723,
+       -74.7555664
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 364602155,
+     "geom_road": "East Prospect Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 2
+   },
+   "styles": "parallel_lines"
   }
  ]
 }
