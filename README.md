@@ -7,8 +7,9 @@ with spreadsheets can maintain the data with no code involved.
 Open `index.html` in a browser and it reads live from the published Google
 Sheet — that Sheet is the site's single source of truth. No crash data is baked
 into the HTML; if the Sheet can't be reached, the map shows a visible "data
-unavailable" state rather than stale data. Everything below is about
-maintaining the data in the Sheet.
+unavailable" state rather than stale data. Sections 1 and 2 are about
+maintaining that crash data; section 3 covers the separate crosswalk inventory
+layer, which is static survey data stored in the repo.
 
 > **Note:** Google caches the "Publish to web" CSV, so edits to the Sheet can
 > take a few minutes to show up on the live site.
@@ -72,7 +73,163 @@ that report has been redacted first. If you do want to link source documents
 non-public sheet/version rather than exposing them through `source_url` on
 the public site.
 
-## 3. Deploying (GitHub Pages)
+## 3. The crosswalk inventory layer
+
+The **Crosswalk inventory** checkbox (under "Other layers", off by default) shows
+the 41 locations walked and photographed on 31 July 2026.
+
+From zoom 17 in, each surveyed crossing is **drawn to scale where it actually
+lies** — across the carriageway, square to the road centreline, with the markings
+in the style that was recorded: two edge lines for transverse "parallel lines",
+rungs for continental, both for ladder, and a dashed empty corridor where there
+is no marking at all. Zoomed further out the crossings are too small to read, so
+the layer falls back to one icon per location.
+
+**Colour is condition, on one scale: Good, Fair, Bad, or Unmarked.** Each crossing
+is coloured by its own grade, so a good crossing beside an unmarked leg reads as
+one of each rather than as a single averaged colour. The zoomed-out pin takes the
+location's **worst** leg — an unmarked leg counts as worst, since a missing
+crossing is the most actionable thing at a junction — and where the legs differ
+the popup spells the mix out ("1 unmarked, 1 fair") instead of calling it "mixed".
+
+The CSV's `crosswalk` column also carries a `faded` value, but it earns no state
+of its own: all 14 faded legs already record a condition (6 fair, 8 poor), so
+faded is just a fair or bad marking. `condition: like_new` folds into Good.
+
+Clicking any crossing shows the photo of its actual condition; clicking the photo
+opens it full size, and locations with more than one photo show the rest as
+thumbnails.
+
+Unlike the crash data, this is a one-off survey rather than a living dataset, so
+it is baked into the repo instead of read from a Sheet:
+
+| Path | What it is |
+|---|---|
+| `data/crosswalks.json` | One entry per location, photos and field detail nested |
+| `photos/crosswalks/*.jpg` | The 72 survey photos, downscaled to 1200px for the web |
+| `data/osm_roads.json` | Cached Overpass response: borough road + crossing geometry |
+| `scripts/build_crosswalks.py` | Regenerates the data and photos from the survey folder |
+| `scripts/osm_crossings.py` | Adds the map geometry each crossing is drawn from |
+
+To rebuild after a re-survey or a correction, run both, in this order:
+
+```bash
+python3 scripts/build_crosswalks.py "~/Downloads/Hopewell Crosswalk Inventory - Results" && python3 scripts/osm_crossings.py
+```
+
+`build_crosswalks.py` reads `map.geojson` and `photo-intersection-matches.csv`
+from the survey folder, and prefers the full-resolution HEIC originals (looked
+for in a sibling folder named `Hopewell Boro Crosswalk Inventory`) over the 760px
+JPEG conversions.
+
+### Correcting the data
+
+`photo-intersection-matches.csv` in the survey folder is the editable source of
+truth — it started as one agent's read of the photographs, so expect to correct
+it. Edit the row and rebuild; there is no separate corrections file.
+
+| Column | What to change it to |
+|---|---|
+| `crosswalk` | `yes`, `faded`, `none`, `unclear` |
+| `style` | `parallel_lines`, `continental`, `ladder`, or blank when unmarked |
+| `condition` | `poor`, `fair`, `good`, `like_new`, or blank when unmarked. This is what the map colours: poor → Bad, fair → Fair, good/like_new → Good |
+| `crossing_street` | The street this crossing spans, exactly as OSM names it. This is what puts the line on the right leg of the junction — change it if a crossing is drawn across the wrong street |
+| `crossing_side` | Optional compass point (`N`/`NE`/`E`/…) for which side of the junction the crossing sits on. Only needed where one street carries a crossing on both sides — "the crossing on the south side of Princeton". Left blank, the side is inferred from where the photographer stood |
+| `crosswalk_note` | Free text, shown in the popup caption |
+
+A crossing nobody photographed goes in as a row with **`photo` left empty**, plus
+`intersection`, `crossing_street`, `crosswalk`, `style`, `condition`, and
+`crossing_side` where the street has two. The site
+lists those separately as "reported by the surveyor, not photographed", and the
+popup header counts legs and photos apart, so an unphotographed leg never passes
+as photographic evidence. Each leg's Good/Fair/Bad/Unmarked state, and the
+location's roll-up of them, are recomputed from the CSV on every build, so
+correcting a row is enough — nothing else needs touching.
+
+### Where the crossing lines come from
+
+The survey itself recorded a junction node and a camera bearing — enough to place
+a pin, not enough to draw a crossing. `osm_crossings.py` gets the geometry from
+OpenStreetMap instead, via one cached Overpass query (pass `--refresh`, or delete
+`data/osm_roads.json`, to re-query):
+
+- **33 of the legs match an OSM `footway=crossing` way**, which carries its own
+  curb-to-curb line. A leg matches only a crossing of its own `crossing_street`,
+  within 32 m of the junction, roughly square to the camera's line of sight and in
+  front of the camera rather than behind it; best-scoring pairs are assigned
+  first, and one crossing way can only be used once.
+- **The rest are derived** from the road centreline: perpendicular to
+  `crossing_street` (or, where that is blank, to whichever road is most square to
+  the camera), one carriageway wide (from OSM `width`/`lanes` where tagged, else a
+  default for the road class), sitting beside the junction box on the side the
+  photographer was standing. This covers the unmarked legs — which have no OSM
+  crossing way by definition — the crossings OSM hasn't got yet, and the legs
+  reported without a photograph.
+
+Which of the two a line came from is kept in the JSON as `geom_source`, but the
+map doesn't distinguish them, and deliberately so: most OSM crossing ways here are
+traced from aerial imagery rather than surveyed, several run sidewalk-to-sidewalk
+rather than curb-to-curb, and a derived line pinned to the centreline with a
+tagged carriageway width is often the closer of the two. Neither says anything
+about whether the crossing exists — that comes from the photograph.
+
+**Every line's position is approximate to within a few metres**, whichever source
+it came from: a derived line's position along the road is an estimate, and on a
+skewed junction the side it lands on comes partly from the photo's GPS fix. Don't
+scale measurements off them. What is solid is which street each crossing spans and
+which junction it belongs to; every line was checked to span exactly one road
+centreline, and the street its row names, at a median of 7 m from the junction.
+
+The CSV has one row per photograph, and the surveyor often shot the same crossing
+from two corners, so **rows that land on the same crossing are merged into one
+line**: same street, within 6 m, and agreeing on the verdict. The extra photos ride
+along and show up as thumbnails, which is why a popup can read "2 legs · 4 photos".
+Today 72 photos and 5 reported legs resolve to 68 crossings.
+
+**Two crossings that disagree can never occupy the same spot.** A stretch of road
+is either marked or it isn't, so a marked and an unmarked crossing drawn on top of
+each other is always an error in the data — usually `crossing_street` naming the
+wrong leg. `separate_conflicting_legs` enforces this: the better-evidenced line
+holds its position (an OSM-matched line first, then a photographed leg, then one
+merely reported) and the other is moved to the best free position at the junction —
+the other side of its own street if that works, otherwise a street at the junction
+with no crossing on it yet. Candidates are restricted to the streets named in the
+location's own name, so a crossing can't jump to a road a block away. The build
+prints every move it makes, and warns if a leg has nowhere non-contradictory to go.
+
+A moved leg is marked `moved_off_conflict` in the JSON. Treat those as prompts:
+the script picked the most plausible free spot, but the surveyor is the one who
+knows which leg the photo actually shows, and setting `crossing_street` correctly
+makes the move unnecessary.
+
+On the map, **dashed means one thing: nothing is painted there.** An unmarked leg
+is drawn as an empty corridor outline, so an absence reads as an absence rather
+than as missing data.
+
+Crossing and road geometry is © OpenStreetMap contributors, ODbL — the same
+attribution already shown on the map.
+
+**Two caveats worth repeating to anyone reading the layer:**
+
+- **Condition grades are one reviewer's judgement by eye from a single
+  photograph**, not retroreflectivity measurements, and absence from the layer
+  is not evidence that a crossing doesn't exist or is fine. The survey folder's
+  `LIMITATIONS.md` is the full version and is worth reading before any of this
+  goes to the county engineer. Locations with a flagged call show an orange
+  "needs a field check" note in the popup.
+- **Every crossing's position is approximate to within a few metres** — see "Where
+  the crossing lines come from" above. What street it spans and which junction it
+  belongs to are reliable; its exact placement is not.
+
+Because the layer is loaded with `fetch`, it needs to be served over HTTP —
+opening `index.html` straight off the filesystem will show the crash pins but
+not the crosswalks. To check it locally:
+
+```bash
+python3 -m http.server 8000
+```
+
+## 4. Deploying (GitHub Pages)
 
 It's one HTML file with no build step, and the repo already lives on GitHub, so
 GitHub Pages is the simplest host. `index.html` is at the repo root, which is
@@ -104,13 +261,14 @@ what Pages serves as the home page.
   site on the next page load (subject to Google's CSV cache, a few minutes).
 - **Code changes** (editing `index.html`) just need another `git push` to
   `main` — Pages rebuilds automatically within a minute or so.
-- The only file that matters to the running site is `index.html`. `template.csv`
-  is just a reference/import file for the Sheet and isn't read by the site.
+- The files the running site needs are `index.html`, `data/crosswalks.json`, and
+  `photos/crosswalks/`, and `data/osm_roads.json` is only needed to rebuild. `template.csv` is just a reference/import file for the
+  Sheet and isn't read by the site.
 - Optional: to use a custom domain (e.g. a `hopewellnj.org` subdomain), add it
   under Settings → Pages → **Custom domain** and create the matching DNS record
   with your domain provider.
 
-## 4. Extending later
+## 5. Extending later
 
 - **More crash types**: edit `TYPE_COLOR` / `TYPE_LABEL` near the top of the
   script and add a matching checkbox in the `#controls` markup — filtering,

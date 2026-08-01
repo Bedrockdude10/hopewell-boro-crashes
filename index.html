@@ -23,6 +23,11 @@
     --fatal:#7A1F1F;
     --injury:#C9622A;
     --pdo:#8C9A93;
+    --xw-good:#2E7D4F;
+    --xw-fair:#C99A22;
+    --xw-bad:#B23A2B;
+    --xw-unmarked:#4B4340;
+    --xw-unknown:#8C9A93;
     --radius:10px;
     --shadow: 0 4px 18px rgba(28,35,33,0.16);
   }
@@ -202,6 +207,111 @@
     color:var(--bike);
   }
 
+  /* ---- Crosswalk inventory layer ---- */
+  #controls .section-gap{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+  }
+  #controls .hint{
+    font-size:10.5px;
+    color:var(--ink-soft);
+    line-height:1.35;
+    margin:4px 0 0 22px;
+  }
+  .swatch.square{border-radius:3px;}
+  .xwalk-icon{
+    /* the stripe block is drawn rotated to the crossing's approximate heading */
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.45));
+  }
+  .popup.xwalk{min-width:250px; max-width:280px;}
+  .popup .pill-row{display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px;}
+  .popup .pill{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:2px 7px;
+    border-radius:4px;
+    color:#fff;
+  }
+  .popup .pill.ghost{
+    background:transparent;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+  }
+  .popup .photo{
+    display:block;
+    width:100%;
+    /* capped so a portrait photo can't push the popup off the top of the map --
+       click it for the full frame */
+    max-height:170px;
+    object-fit:cover;
+    border-radius:6px;
+    margin-top:8px;
+    cursor:zoom-in;
+    background:#E4E8E1;
+  }
+  .popup .caption{
+    font-size:11px;
+    color:var(--ink-soft);
+    line-height:1.35;
+    margin:5px 0 0 0;
+  }
+  .popup .thumbs{display:flex; gap:5px; margin-top:7px; flex-wrap:wrap;}
+  .popup .thumbs img{
+    width:48px; height:36px;
+    object-fit:cover;
+    border-radius:4px;
+    cursor:pointer;
+    border:2px solid transparent;
+    background:#E4E8E1;
+  }
+  .popup .thumbs img.active{border-color:var(--panel);}
+  .popup .caption.reported{
+    border-left:2px solid var(--line);
+    padding-left:6px;
+    margin-top:7px;
+  }
+  .popup .flag{
+    font-size:11px;
+    line-height:1.35;
+    margin-top:7px;
+    padding:5px 7px;
+    border-radius:5px;
+    background:rgba(201,98,42,0.12);
+    border:1px solid rgba(201,98,42,0.35);
+    color:#7A4318;
+  }
+
+  #lightbox{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(18,24,22,0.9);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    padding:24px;
+    cursor:zoom-out;
+  }
+  #lightbox.open{display:flex;}
+  #lightbox img{
+    max-width:100%;
+    max-height:82vh;
+    border-radius:8px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+  }
+  #lightbox .cap{
+    color:#E4E8E1;
+    font-size:12.5px;
+    text-align:center;
+    max-width:620px;
+    line-height:1.4;
+  }
+
   @media (max-width:640px){
     header{padding:10px 14px;}
     header h1{font-size:16px;}
@@ -233,6 +343,14 @@
         <span class="swatch" style="background:var(--vehicle)"></span> Vehicle only</label>
       <label class="check-row"><input type="checkbox" data-type="other" checked>
         <span class="swatch" style="background:var(--other)"></span> Other</label>
+
+      <div class="section-gap">
+        <h2>Other layers</h2>
+        <label class="check-row"><input type="checkbox" id="xwalkToggle">
+          <span class="swatch square" style="background:var(--xw-good)"></span> Crosswalk inventory</label>
+        <p class="hint">41 locations walked 31 Jul 2026. Zoom in for the markings
+          drawn to scale; click any of them for the photo.</p>
+      </div>
     </div>
 
     <div id="legend" class="floating">
@@ -240,6 +358,15 @@
       <div class="row"><span class="ring" style="border-color:var(--fatal)"></span> Fatal</div>
       <div class="row"><span class="ring" style="border-color:var(--injury)"></span> Injury</div>
       <div class="row"><span class="ring" style="border-color:var(--pdo)"></span> Property damage only</div>
+      <div id="legendXwalk" style="display:none; margin-top:8px; padding-top:8px; border-top:1px solid var(--line);">
+        <div style="font-weight:600; margin-bottom:6px; color:var(--ink);">Crosswalk condition</div>
+        <div class="row"><span class="swatch square" style="background:var(--xw-good); width:12px; height:12px;"></span> Good</div>
+        <div class="row"><span class="swatch square" style="background:var(--xw-fair); width:12px; height:12px;"></span> Fair</div>
+        <div class="row"><span class="swatch square" style="background:var(--xw-bad); width:12px; height:12px;"></span> Bad</div>
+        <div class="row"><span class="swatch square" style="background:var(--xw-unmarked); width:12px; height:12px;"></span> Unmarked</div>
+        <div class="row"><span class="swatch square" style="background:var(--xw-unknown); width:12px; height:12px;"></span> Marked, not graded</div>
+        <div class="row" style="margin-top:5px;"><svg width="14" height="6"><rect x="0" y="0" width="14" height="6" fill="none" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="3,4"/></svg> Dashed = nothing painted</div>
+      </div>
     </div>
 
     <div id="stats" class="floating">
@@ -248,6 +375,8 @@
     </div>
   </div>
 </div>
+
+<div id="lightbox"><img alt=""><div class="cap"></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -407,8 +536,319 @@ function init(){
   });
 }
 
+// ============================================================================
+// CROSSWALK INVENTORY LAYER
+// A one-off field survey (31 Jul 2026), so unlike the crash data it is baked
+// into the repo rather than read from a Sheet: data/crosswalks.json plus
+// photos/crosswalks/*.jpg, both generated by scripts/build_crosswalks.py.
+// Off by default; toggled from the "Other layers" checkbox.
+//
+// Each surveyed crossing carries curb-to-curb geometry (scripts/osm_crossings.py),
+// so from zoom 17 up the markings are drawn to scale where they actually lie.
+// Below that zoom the crossings are too small to read, so the layer falls back to
+// one icon per location.
+// ============================================================================
+const XWALK_URL = "data/crosswalks.json";
+const XWALK_PHOTOS = "photos/crosswalks/";
+
+// One scale for everything the map colours: a crossing is unmarked, or it is
+// good / fair / bad. Set per leg in scripts/build_crosswalks.py; a location takes
+// its worst leg's state.
+const XW_COLOR = { good:"#2E7D4F", fair:"#C99A22", bad:"#B23A2B",
+                   unmarked:"#4B4340", unknown:"#8C9A93" };
+const XW_LABEL = { good:"Good", fair:"Fair", bad:"Bad", unmarked:"Unmarked",
+                   unknown:"Not graded" };
+const STYLE_LABEL = {
+  parallel_lines:"Parallel lines (transverse)",
+  continental:"Continental (bars)",
+  ladder:"Ladder"
+};
+
+// Stripe geometry per marking style, drawn to scale within the 26x26 block.
+// `none` gets an outline with no stripes -- an unmarked crossing looks empty.
+function stripeSVG(style, color){
+  const bar = (x, w) => `<rect x="${x}" y="5" width="${w}" height="16" fill="#fff" opacity="0.95"/>`;
+  let inner = '';
+  if (style === 'parallel_lines'){
+    // two transverse lines: the crossing's two edge markings, nothing between
+    inner = bar(4, 3) + bar(19, 3);
+  } else if (style === 'continental'){
+    inner = [5, 10, 15, 20].map(x => bar(x, 2.6)).join('');
+  } else if (style === 'ladder'){
+    inner = bar(3, 2) + bar(21, 2) + [7, 11.5, 16].map(x => bar(x, 2.6)).join('');
+  }
+  return `<svg class="xwalk-icon" width="26" height="26" viewBox="0 0 26 26">
+    <rect x="0.5" y="0.5" width="25" height="25" rx="4" fill="${color}"
+          stroke="#fff" stroke-width="1.5" ${inner ? '' : 'fill-opacity="0.55"'}/>
+    ${inner}
+  </svg>`;
+}
+
+// ---- real-world crossing geometry -----------------------------------------
+// Each photo's `geom` is the crossing's curb-to-curb line in map coordinates.
+// Everything below works in metres off that line, so the markings come out to
+// scale and in the right place at any zoom.
+const CORRIDOR_M = 3.0;   // crosswalk corridor width, curb line to curb line
+const BAR_SPACING_M = 1.5; // centre-to-centre spacing of continental bars
+
+const M_PER_DEG_LAT = 111320;
+function metresToLatLng(origin, along, across, heading){
+  // `along` runs down the crossing (heading), `across` is perpendicular to it
+  const rad = heading * Math.PI / 180;
+  const dNorth = along * Math.cos(rad) - across * Math.sin(rad);
+  const dEast  = along * Math.sin(rad) + across * Math.cos(rad);
+  const mPerDegLng = M_PER_DEG_LAT * Math.cos(origin[0] * Math.PI / 180);
+  return [origin[0] + dNorth / M_PER_DEG_LAT, origin[1] + dEast / mPerDegLng];
+}
+
+function geomHeading(geom){
+  const [a, b] = geom;
+  const mPerDegLng = M_PER_DEG_LAT * Math.cos(a[0] * Math.PI / 180);
+  return Math.atan2((b[1] - a[1]) * mPerDegLng,
+                    (b[0] - a[0]) * M_PER_DEG_LAT) * 180 / Math.PI;
+}
+
+function geomLength(geom){
+  const [a, b] = geom;
+  const mPerDegLng = M_PER_DEG_LAT * Math.cos(a[0] * Math.PI / 180);
+  return Math.hypot((b[0] - a[0]) * M_PER_DEG_LAT, (b[1] - a[1]) * mPerDegLng);
+}
+
+// The painted marks themselves, as map polylines. Transverse "parallel lines"
+// are the two edge lines of the corridor; continental is the ladder rungs
+// (bars across the walking direction); ladder is both.
+// Dashed means one thing only: nothing is painted here. Where the line itself
+// came from -- an OSM crossing way or the road centreline -- is provenance, kept
+// in the JSON; it says nothing about whether the crossing exists or how it looks,
+// and OSM's crossing ways are mostly traced from aerial imagery anyway.
+function markingLines(p, color){
+  const geom = p.geom;
+  const hdg = geomHeading(geom);
+  const len = geomLength(geom);
+  const half = CORRIDOR_M / 2;
+  const at = (along, across) => metresToLatLng(geom[0], along, across, hdg);
+  const opts = { color, weight:2.5, opacity:0.95, lineCap:'butt',
+                 interactive:true };
+  const out = [];
+  const edges = () => {
+    out.push(L.polyline([at(0, -half), at(len, -half)], opts));
+    out.push(L.polyline([at(0, half), at(len, half)], opts));
+  };
+  const bars = () => {
+    const n = Math.max(3, Math.round(len / BAR_SPACING_M) - 1);
+    const step = len / (n + 1);
+    for (let i = 1; i <= n; i++)
+      out.push(L.polyline([at(i * step, -half), at(i * step, half)], opts));
+  };
+  if (p.style === 'parallel_lines') edges();
+  else if (p.style === 'continental') bars();
+  else if (p.style === 'ladder'){ edges(); bars(); }
+  else {
+    // Nothing painted here. Show the corridor outline only, so an unmarked
+    // crossing reads as an absence rather than as missing data.
+    out.push(L.polyline([at(0, -half), at(len, -half), at(len, half), at(0, half), at(0, -half)],
+      Object.assign({}, opts, { weight:1.5, opacity:0.75, dashArray:'3,4' })));
+  }
+  return out;
+}
+
+// One feature group per location: every photographed leg's markings, plus a
+// wide invisible hit line per leg so the thin strokes are still easy to click.
+function xwalkShapes(loc){
+  const group = L.featureGroup();
+  loc.photos.forEach(p => {
+    if (!p.geom) return;
+    // Per leg, not per location: a good crossing beside an unmarked leg should
+    // read as one of each, not as a single averaged colour.
+    const color = XW_COLOR[p.state] || XW_COLOR.unknown;
+    L.polyline(p.geom, { color, weight:14, opacity:0, interactive:true }).addTo(group);
+    markingLines(p, color).forEach(l => l.addTo(group));
+  });
+  return group.getLayers().length ? group : null;
+}
+
+// Zoomed-out fallback icon. Rotation follows the crossing's real heading where
+// there is geometry, and the camera bearing only as a last resort.
+function xwalkIcon(loc){
+  const color = XW_COLOR[loc.state] || XW_COLOR.unknown;
+  const lead = leadPhoto(loc);
+  const style = (lead && lead.style) || (loc.state === 'unmarked' ? 'none' : 'parallel_lines');
+  const rot = (lead && lead.geom) ? geomHeading(lead.geom)
+            : (lead && lead.bearing != null) ? lead.bearing : 0;
+  const html = `<div style="transform:rotate(${rot}deg); width:26px; height:26px;">
+      ${stripeSVG(style, color)}
+    </div>`;
+  return L.divIcon({ html, className:'', iconSize:[26,26], iconAnchor:[13,13], popupAnchor:[0,-12] });
+}
+
+// The leg that best characterises a location: the worst crosswalk verdict
+// present, so a marked intersection with one unmarked leg doesn't look fine.
+// Legs the surveyor reported but never photographed have no `file`, so the
+// popup's photo comes from the worst leg that does have one.
+const STATE_ORDER = ['unmarked', 'bad', 'fair', 'good', 'unknown'];
+function byVerdict(legs){
+  return legs.slice().sort((a, b) =>
+    STATE_ORDER.indexOf(a.state) - STATE_ORDER.indexOf(b.state));
+}
+// A crossing shot from two corners is one leg carrying several photos: the extra
+// ones ride along in `also` (see merge_duplicate_legs in scripts/osm_crossings.py).
+function allPhotos(loc){
+  return loc.photos.flatMap(p => [p, ...(p.also || [])]).filter(p => p.file);
+}
+function leadPhoto(loc){
+  if (!loc.photos || !loc.photos.length) return null;
+  return byVerdict(allPhotos(loc))[0] || null;
+}
+
+function photoCaption(p){
+  const bits = [];
+  bits.push(XW_LABEL[p.state] || p.state);
+  if (p.style) bits.push(STYLE_LABEL[p.style] || p.style);
+  if (p.facing) bits.push('looking ' + p.facing);
+  let out = bits.join(' · ');
+  if (p.crosswalk_note) out += ' — ' + p.crosswalk_note;
+  return out;
+}
+
+function xwalkPopupHTML(loc){
+  const color = XW_COLOR[loc.state] || XW_COLOR.unknown;
+  const lead = leadPhoto(loc);
+  const jur = loc.jurisdiction === 'county'
+    ? 'County road' + (loc.county_route ? ' (' + loc.county_route + ')' : '')
+    : (loc.jurisdiction ? 'Borough road' : '');
+  // The location takes its worst leg's state. Where the legs differ, spell the
+  // mix out -- "2 good, 1 unmarked" says what a single word never could.
+  const counts = loc.state_counts || {};
+  const mixed = Object.keys(counts).length > 1;
+  const pills = [`<span class="pill" style="background:${color}">${
+    XW_LABEL[loc.state] || loc.state}${mixed ? ' — worst leg' : ''}</span>`];
+  if (mixed)
+    pills.push(`<span class="pill ghost">${Object.entries(counts)
+      .map(([s, n]) => `${n} ${(XW_LABEL[s] || s).toLowerCase()}`).join(', ')}</span>`);
+  if (jur) pills.push(`<span class="pill ghost">${jur}</span>`);
+
+  // Recorded features are a property of the location, review flags are doubts
+  // about the reading -- keep them apart, and de-duplicate across legs.
+  const uniq = (xs) => [...new Set(xs.filter(Boolean))];
+  const legsAndPhotos = loc.photos.flatMap(p => [p, ...(p.also || [])]);
+  uniq(legsAndPhotos.map(p => p.features)).forEach(f =>
+    pills.push(`<span class="pill ghost">${f}</span>`));
+  const flags = uniq(legsAndPhotos.map(p => p.review_flag));
+  const flagHTML = flags.length
+    ? `<div class="flag">Needs a field check — ${flags.join('; ')}</div>` : '';
+
+  const photoHTML = lead ? `
+    <img class="photo" src="${XWALK_PHOTOS}${lead.file}" alt="${loc.name}" loading="lazy"
+         data-cap="${escapeAttr(loc.name + ' — ' + photoCaption(lead))}">
+    <p class="caption">${photoCaption(lead)}</p>` : '';
+
+  const others = allPhotos(loc).filter(p => p !== lead);
+  const thumbHTML = others.length ? `<div class="thumbs">` + others.map(p =>
+    `<img src="${XWALK_PHOTOS}${p.file}" alt="" loading="lazy"
+          data-cap="${escapeAttr(loc.name + ' — ' + photoCaption(p))}">`).join('') + `</div>` : '';
+
+  // Legs the surveyor reported without a photograph: say so plainly rather than
+  // letting them look like photographed evidence.
+  const unphotographed = loc.photos.filter(p => !p.file);
+  const reportedHTML = unphotographed.length ? `
+    <p class="caption reported">Reported by the surveyor, not photographed:
+      ${unphotographed.map(p =>
+        `${p.style_street || 'unnamed leg'} (${photoCaption(p).toLowerCase()})`).join('; ')}</p>` : '';
+
+  const nPhotos = allPhotos(loc).length;
+
+  return `
+    <div class="popup xwalk">
+      <div class="pill-row">${pills.join('')}</div>
+      <h3>${loc.name}</h3>
+      <div class="meta mono">${loc.photos.length} leg${loc.photos.length === 1 ? '' : 's'} ·
+        ${nPhotos} photo${nPhotos === 1 ? '' : 's'} · 31 Jul 2026</div>
+      ${photoHTML}
+      ${thumbHTML}
+      ${reportedHTML}
+      ${flagHTML}
+    </div>`;
+}
+
+function escapeAttr(s){
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+}
+
+// Two representations of the same 41 locations: to-scale markings for close-in
+// zooms, one icon each for further out. Only ever one is on the map.
+const XWALK_GEOM_ZOOM = 17;
+const xwalkPins = L.layerGroup();
+const xwalkShapesLayer = L.layerGroup();
+let xwalksLoaded = false;
+
+function activeXwalkLayer(){
+  return map.getZoom() >= XWALK_GEOM_ZOOM ? xwalkShapesLayer : xwalkPins;
+}
+
+function syncXwalkLayers(){
+  if (!document.getElementById('xwalkToggle').checked || !xwalksLoaded) return;
+  const want = activeXwalkLayer();
+  const drop = want === xwalkPins ? xwalkShapesLayer : xwalkPins;
+  if (map.hasLayer(drop)) map.removeLayer(drop);
+  if (!map.hasLayer(want)) want.addTo(map);
+}
+
+function loadCrosswalks(){
+  if (xwalksLoaded) return Promise.resolve();
+  return fetch(XWALK_URL)
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(data => {
+      data.locations.forEach(loc => {
+        const popup = xwalkPopupHTML(loc);
+        L.marker([loc.lat, loc.lng], { icon: xwalkIcon(loc) })
+          .bindPopup(popup, { maxWidth:300 })
+          .addTo(xwalkPins);
+        const shapes = xwalkShapes(loc);
+        if (shapes) shapes.bindPopup(popup, { maxWidth:300 }).addTo(xwalkShapesLayer);
+        else L.marker([loc.lat, loc.lng], { icon: xwalkIcon(loc) })
+              .bindPopup(popup, { maxWidth:300 }).addTo(xwalkShapesLayer);
+      });
+      xwalksLoaded = true;
+    })
+    .catch(err => {
+      console.error('Could not load crosswalk inventory', err);
+      const cb = document.getElementById('xwalkToggle');
+      cb.checked = false;
+      cb.disabled = true;
+      cb.closest('.section-gap').querySelector('.hint').textContent =
+        'Crosswalk inventory could not be loaded.';
+    });
+}
+
+document.getElementById('xwalkToggle').addEventListener('change', (e) => {
+  document.getElementById('legendXwalk').style.display = e.target.checked ? 'block' : 'none';
+  if (e.target.checked){
+    loadCrosswalks().then(syncXwalkLayers);
+  } else {
+    map.removeLayer(xwalkPins);
+    map.removeLayer(xwalkShapesLayer);
+  }
+});
+map.on('zoomend', syncXwalkLayers);
+
+// ---- Photo lightbox ---------------------------------------------------------
+const lightbox = document.getElementById('lightbox');
+document.addEventListener('click', (e) => {
+  const img = e.target.closest('.popup.xwalk img');
+  if (img){
+    lightbox.querySelector('img').src = img.src;
+    lightbox.querySelector('.cap').textContent = img.dataset.cap || '';
+    lightbox.classList.add('open');
+    return;
+  }
+  if (lightbox.classList.contains('open')) lightbox.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') lightbox.classList.remove('open');
+});
+
 // ---- Controls ---------------------------------------------------------------
-document.querySelectorAll('.check-row input').forEach(cb => {
+document.querySelectorAll('.check-row input[data-type]').forEach(cb => {
   cb.addEventListener('change', () => {
     const t = cb.dataset.type;
     if (cb.checked) activeTypes.add(t); else activeTypes.delete(t);

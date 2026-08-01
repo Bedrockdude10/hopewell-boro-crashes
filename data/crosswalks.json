@@ -1,0 +1,3974 @@
+{
+ "surveyed": "2026-07-31",
+ "note": "Visual inventory from photographs, one afternoon. Condition grades are one reviewer's judgement by eye, not retroreflectivity measurements. Absence from this list is not evidence a crossing does not exist.",
+ "locations": [
+  {
+   "name": "Front Street & North Greenwood Avenue",
+   "lat": 40.391726,
+   "lng": -74.763967,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9815.jpg",
+     "street": "Front Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "17:46:54",
+     "bearing": 308,
+     "facing": "NW",
+     "stood_on_side": "S",
+     "meters_to_corner": "10",
+     "cam_lat": 40.391644,
+     "cam_lng": -74.763931,
+     "state": "fair",
+     "geom": [
+      [
+       40.3917244316902,
+       -74.76387599086469
+      ],
+      [
+       40.39178711809998,
+       -74.76392449794979
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Front Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Golden Avenue & North Greenwood Avenue",
+   "lat": 40.391961,
+   "lng": -74.764187,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9816.jpg",
+     "street": "North Greenwood Avenue",
+     "side": "NW",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on this leg",
+     "note": "surveyor: confirmed the unmarked leg is N Greenwood Ave",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "17:47:55",
+     "bearing": 183,
+     "facing": "S",
+     "stood_on_side": "N",
+     "meters_to_corner": "20",
+     "cam_lat": 40.392136,
+     "cam_lng": -74.764244,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39203010957063,
+       -74.76418671206594
+      ],
+      [
+       40.39199213941336,
+       -74.76426820917402
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "North Greenwood Avenue"
+    },
+    {
+     "file": "IMG_9825.jpg",
+     "street": "Golden Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Golden Ave",
+     "style_secondary": "ladder",
+     "style_secondary_street": "N Greenwood Ave (distant)",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "17:57:12",
+     "bearing": 142,
+     "facing": "SE",
+     "stood_on_side": "NW",
+     "meters_to_corner": "13",
+     "cam_lat": 40.392028,
+     "cam_lng": -74.764314,
+     "state": "fair",
+     "geom": [
+      [
+       40.3918761,
+       -74.7642076
+      ],
+      [
+       40.391967,
+       -74.7642857
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 496729574,
+     "geom_road": "Golden Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "ladder/parallel_lines"
+  },
+  {
+   "name": "Hart Avenue & North Greenwood Avenue",
+   "lat": 40.392527,
+   "lng": -74.764625,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9817.jpg",
+     "street": "Hart Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Hart Ave",
+     "style_secondary": "ladder",
+     "style_secondary_street": "N Greenwood Ave",
+     "condition": "good",
+     "features": "painted bulb-out",
+     "crosswalk_note": "",
+     "note": "style corrected from continental after surveyor review",
+     "review_flag": "style corrected by surveyor; my original call was wrong",
+     "style_confidence": "high",
+     "taken": "17:49:02",
+     "bearing": 178,
+     "facing": "S",
+     "stood_on_side": "N",
+     "meters_to_corner": "14",
+     "cam_lat": 40.39265,
+     "cam_lng": -74.764656,
+     "state": "good",
+     "also": [
+      {
+       "file": "IMG_9823.jpg",
+       "street": "Hart Avenue",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "parallel_lines",
+       "style_street": "Hart Ave",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "good",
+       "features": "",
+       "crosswalk_note": "",
+       "note": "",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "17:54:36",
+       "bearing": 146,
+       "facing": "SE",
+       "stood_on_side": "W",
+       "meters_to_corner": "10",
+       "cam_lat": 40.392553,
+       "cam_lng": -74.764739,
+       "state": "good",
+       "_loc": "Hart Avenue & North Greenwood Avenue",
+       "geom": [
+        [
+         40.39252658459987,
+         -74.76471582901722
+        ],
+        [
+         40.392464927352215,
+         -74.76466509835596
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "Hart Avenue"
+      },
+      {
+       "file": "IMG_9824.jpg",
+       "street": "Hart Avenue",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "parallel_lines",
+       "style_street": "Hart Ave",
+       "style_secondary": "ladder",
+       "style_secondary_street": "N Greenwood Ave",
+       "condition": "good",
+       "features": "painted bulb-out",
+       "crosswalk_note": "",
+       "note": "",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "17:54:39",
+       "bearing": 110,
+       "facing": "E",
+       "stood_on_side": "W",
+       "meters_to_corner": "9",
+       "cam_lat": 40.392556,
+       "cam_lng": -74.764725,
+       "state": "good",
+       "_loc": "Hart Avenue & North Greenwood Avenue",
+       "geom": [
+        [
+         40.39252658459987,
+         -74.76471582901722
+        ],
+        [
+         40.392464927352215,
+         -74.76466509835596
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "Hart Avenue"
+      }
+     ],
+     "geom": [
+      [
+       40.3924379,
+       -74.7646615
+      ],
+      [
+       40.3925409,
+       -74.7647354
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 496729577,
+     "geom_road": "Hart Avenue"
+    },
+    {
+     "file": "IMG_9822.jpg",
+     "street": "North Greenwood Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "ladder",
+     "style_street": "N Greenwood Ave",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "17:54:29",
+     "bearing": 56,
+     "facing": "NE",
+     "stood_on_side": "W",
+     "meters_to_corner": "10",
+     "cam_lat": 40.392533,
+     "cam_lng": -74.764747,
+     "state": "fair",
+     "geom": [
+      [
+       40.392561292058076,
+       -74.76470388577582
+      ],
+      [
+       40.39259607253584,
+       -74.76461996955771
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "North Greenwood Avenue"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1,
+    "good": 1
+   },
+   "styles": "ladder/parallel_lines"
+  },
+  {
+   "name": "North Greenwood Avenue & Walnut Street",
+   "lat": 40.39333,
+   "lng": -74.765246,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9818.jpg",
+     "street": "Walnut Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "17:49:59",
+     "bearing": 324,
+     "facing": "NW",
+     "stood_on_side": "E",
+     "meters_to_corner": "12",
+     "cam_lat": 40.393306,
+     "cam_lng": -74.765106,
+     "state": "fair",
+     "geom": [
+      [
+       40.39332820125106,
+       -74.76515512619937
+      ],
+      [
+       40.39339101528294,
+       -74.76520334898578
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Walnut Street"
+    },
+    {
+     "file": "IMG_9821.jpg",
+     "street": "North Greenwood Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on this leg",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "17:52:52",
+     "bearing": 106,
+     "facing": "E",
+     "stood_on_side": "NW",
+     "meters_to_corner": "14",
+     "cam_lat": 40.393411,
+     "cam_lng": -74.765372,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39336275449467,
+       -74.76532633055695
+      ],
+      [
+       40.39339893457932,
+       -74.76524343978821
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "North Greenwood Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Hopewell-Wertsville Road & North Greenwood Avenue & Washington Avenue",
+   "lat": 40.394014,
+   "lng": -74.765762,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9819.jpg",
+     "street": "Washington Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no marked crossing at this junction",
+     "note": "",
+     "review_flag": "style read at distance \u2014 low confidence",
+     "style_confidence": "",
+     "taken": "17:51:11",
+     "bearing": 289,
+     "facing": "W",
+     "stood_on_side": "E",
+     "meters_to_corner": "8",
+     "cam_lat": 40.393997,
+     "cam_lng": -74.765669,
+     "state": "unmarked",
+     "also": [
+      {
+       "file": "IMG_9820.jpg",
+       "street": "Washington Avenue",
+       "side": "",
+       "crosswalk": "none",
+       "style": "",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "",
+       "features": "",
+       "crosswalk_note": "no marked crossing at this junction",
+       "note": "",
+       "review_flag": "condition poor/fair borderline \u2014 marking is distant and small in frame",
+       "style_confidence": "",
+       "taken": "17:51:13",
+       "bearing": 335,
+       "facing": "NW",
+       "stood_on_side": "at centre",
+       "meters_to_corner": "8",
+       "cam_lat": 40.394008,
+       "cam_lng": -74.765669,
+       "state": "unmarked",
+       "_loc": "Hopewell-Wertsville Road & North Greenwood Avenue & Washington Avenue",
+       "geom": [
+        [
+         40.394011762317774,
+         -74.76567093847154
+        ],
+        [
+         40.39407511635136,
+         -74.76571792810785
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "Washington Avenue"
+      }
+     ],
+     "geom": [
+      [
+       40.394011762317774,
+       -74.76567093847154
+      ],
+      [
+       40.39407511635136,
+       -74.76571792810785
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Washington Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Golden Avenue & Shaftsbury Avenue",
+   "lat": 40.391339,
+   "lng": -74.765482,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9826.jpg",
+     "street": "Golden Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "stop bar only, no crosswalk",
+     "note": "",
+     "review_flag": "recorded as unmarked (stop bar only) \u2014 confirm no ghost crosswalk present",
+     "style_confidence": "",
+     "taken": "17:58:55",
+     "bearing": 295,
+     "facing": "NW",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "6",
+     "cam_lat": 40.391311,
+     "cam_lng": -74.765428,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39133901514238,
+       -74.76539096379331
+      ],
+      [
+       40.39140075406617,
+       -74.76544152207505
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Golden Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Hart Avenue & Shaftsbury Avenue",
+   "lat": 40.391896,
+   "lng": -74.76594,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9827.jpg",
+     "street": "Shaftsbury Avenue",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:00:05",
+     "bearing": 43,
+     "facing": "NE",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "8",
+     "cam_lat": 40.391839,
+     "cam_lng": -74.765992,
+     "state": "fair",
+     "geom": [
+      [
+       40.3918093,
+       -74.7659699
+      ],
+      [
+       40.3918678,
+       -74.7658474
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 496729576,
+     "geom_road": "Shaftsbury Avenue"
+    },
+    {
+     "file": "IMG_9828.jpg",
+     "street": "Hart Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the Hart Ave leg",
+     "note": "",
+     "review_flag": "condition poor/fair borderline",
+     "style_confidence": "",
+     "taken": "18:00:13",
+     "bearing": 10,
+     "facing": "N",
+     "stood_on_side": "SW",
+     "meters_to_corner": "9",
+     "cam_lat": 40.391842,
+     "cam_lng": -74.766022,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.391833848568055,
+       -74.76597988704559
+      ],
+      [
+       40.39189540567246,
+       -74.76603082645151
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Hart Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "North Greenwood Avenue & Railroad Place",
+   "lat": 40.390919,
+   "lng": -74.763283,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9829.jpg",
+     "street": "Model Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:03:39",
+     "bearing": 151,
+     "facing": "SE",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "5",
+     "cam_lat": 40.390878,
+     "cam_lng": -74.763267,
+     "state": "fair",
+     "geom": [
+      [
+       40.3907088,
+       -74.7632055
+      ],
+      [
+       40.3908089,
+       -74.7632804
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 364602143,
+     "geom_road": "Model Avenue"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Model Avenue & Voorhees Avenue",
+   "lat": 40.389953,
+   "lng": -74.764763,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9830.jpg",
+     "street": "Voorhees Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:05:29",
+     "bearing": 43,
+     "facing": "NE",
+     "stood_on_side": "S",
+     "meters_to_corner": "10",
+     "cam_lat": 40.389867,
+     "cam_lng": -74.764778,
+     "state": "fair",
+     "geom": [
+      [
+       40.3898868,
+       -74.764779
+      ],
+      [
+       40.3899407,
+       -74.7646799
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498276,
+     "geom_road": "Voorhees Avenue"
+    },
+    {
+     "file": "IMG_9831.jpg",
+     "street": "Model Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the Model Ave leg",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:05:44",
+     "bearing": 10,
+     "facing": "N",
+     "stood_on_side": "SW",
+     "meters_to_corner": "9",
+     "cam_lat": 40.389881,
+     "cam_lng": -74.764808,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38988990353807,
+       -74.76480038349754
+      ],
+      [
+       40.389950281722385,
+       -74.76485369834188
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Model Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Mercer Street & Model Avenue",
+   "lat": 40.388972,
+   "lng": -74.766613,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9832.jpg",
+     "street": "Mercer Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:07:09",
+     "bearing": 221,
+     "facing": "SW",
+     "stood_on_side": "E",
+     "meters_to_corner": "9",
+     "cam_lat": 40.388961,
+     "cam_lng": -74.766511,
+     "state": "good",
+     "also": [
+      {
+       "file": "IMG_9833.jpg",
+       "street": "Mercer Street",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "parallel_lines",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "good",
+       "features": "",
+       "crosswalk_note": "",
+       "note": "",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "18:07:15",
+       "bearing": 259,
+       "facing": "W",
+       "stood_on_side": "E",
+       "meters_to_corner": "8",
+       "cam_lat": 40.388967,
+       "cam_lng": -74.766517,
+       "state": "good",
+       "_loc": "Mercer Street & Model Avenue",
+       "geom": [
+        [
+         40.38894661897333,
+         -74.76652840798357
+        ],
+        [
+         40.38890308635987,
+         -74.76660495665675
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "Mercer Street"
+      }
+     ],
+     "geom": [
+      [
+       40.38894661897333,
+       -74.76652840798357
+      ],
+      [
+       40.38890308635987,
+       -74.76660495665675
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Mercer Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Model Avenue \u2014 sidewalk terminus (mid-block)",
+   "lat": 40.387871,
+   "lng": -74.768714,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9834.jpg",
+     "street": "Model Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings; sidewalk ends with no pedestrian continuation",
+     "note": "located by surveyor; 6m from the Model Ave centreline. Mid-block, so distance is to the street, not a corner.",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:09:16",
+     "bearing": 203,
+     "facing": "SW",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "6",
+     "cam_lat": 40.387914,
+     "cam_lng": -74.768753,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38787095468497,
+       -74.76879965052558
+      ],
+      [
+       40.38781086722767,
+       -74.76874577413625
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Model Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Louellen Street & Model Avenue",
+   "lat": 40.387234,
+   "lng": -74.769885,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9835.jpg",
+     "street": "Louellen Street",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "stop bar only, no crosswalk",
+     "note": "nearest at 23m; Eaton Court & Louellen is the alternative at 38m",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:10:34",
+     "bearing": 210,
+     "facing": "SW",
+     "stood_on_side": "NE",
+     "meters_to_corner": "23",
+     "cam_lat": 40.387386,
+     "cam_lng": -74.7697,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38727863734203,
+       -74.76978690850555
+      ],
+      [
+       40.387180005619534,
+       -74.76979478965339
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Louellen Street"
+    },
+    {
+     "file": "IMG_9836.jpg",
+     "street": "Eaton Court",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings",
+     "note": "nearest at 10m; Eaton Court & Louellen is the alternative at 20m",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:10:57",
+     "bearing": 101,
+     "facing": "E",
+     "stood_on_side": "N",
+     "meters_to_corner": "10",
+     "cam_lat": 40.387325,
+     "cam_lng": -74.769889,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38717583071088,
+       -74.77016329111929
+      ],
+      [
+       40.38716878615461,
+       -74.77005755097333
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Eaton Court"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 2
+   },
+   "styles": ""
+  },
+  {
+   "name": "Louellen Street & North Lanning Avenue",
+   "lat": 40.387152,
+   "lng": -74.768313,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9837.jpg",
+     "street": "North Lanning Avenue",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:13:03",
+     "bearing": 115,
+     "facing": "SE",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "1",
+     "cam_lat": 40.387147,
+     "cam_lng": -74.768311,
+     "state": "bad",
+     "geom": [
+      [
+       40.3870613,
+       -74.7681652
+      ],
+      [
+       40.3870476,
+       -74.7683095
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498316,
+     "geom_road": "North Lanning Avenue"
+    }
+   ],
+   "state": "bad",
+   "state_counts": {
+    "bad": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "North Lanning Avenue & South Lanning Avenue & West Broad Street",
+   "lat": 40.386118,
+   "lng": -74.767449,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "",
+     "street": "North Lanning Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "North Lanning Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3861429,
+       -74.7675497
+      ],
+      [
+       40.3861983,
+       -74.7674353
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498245,
+     "geom_road": "North Lanning Avenue"
+    },
+    {
+     "file": "",
+     "street": "South Lanning Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "South Lanning Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3860993,
+       -74.7673526
+      ],
+      [
+       40.3860355,
+       -74.7674778
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498289,
+     "geom_road": "South Lanning Avenue"
+    },
+    {
+     "file": "IMG_9838.jpg",
+     "street": "West Broad Street",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "continental",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "style changed ladder->continental on high-res re-check",
+     "review_flag": "style uncertain \u2014 heavily worn, ladder vs continental not separable",
+     "style_confidence": "low \u2014 bar-type confirmed, ladder vs continental not separable from this angle",
+     "taken": "18:14:34",
+     "bearing": 115,
+     "facing": "SE",
+     "stood_on_side": "NW",
+     "meters_to_corner": "10",
+     "cam_lat": 40.386161,
+     "cam_lng": -74.767547,
+     "state": "bad",
+     "geom": [
+      [
+       40.3861983,
+       -74.7674353
+      ],
+      [
+       40.3860993,
+       -74.7673526
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 364660162,
+     "geom_road": "West Broad Street"
+    },
+    {
+     "file": "IMG_9846.jpg",
+     "street": "West Broad Street",
+     "side": "SW",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the west side of W Broad St",
+     "note": "surveyor: recorded as unmarked, was read as continental",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:26:26",
+     "bearing": 301,
+     "facing": "NW",
+     "stood_on_side": "SE",
+     "meters_to_corner": "11",
+     "cam_lat": 40.386058,
+     "cam_lng": -74.76735,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38605585524599,
+       -74.7674888962188
+      ],
+      [
+       40.38611741720877,
+       -74.76753982113308
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "West Broad Street"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "bad": 1,
+    "fair": 2
+   },
+   "styles": "continental/parallel_lines"
+  },
+  {
+   "name": "Eaton Place & Ege Avenue & West Broad Street",
+   "lat": 40.385313,
+   "lng": -74.769121,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9839.jpg",
+     "street": "West Broad Street",
+     "side": "SW",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "surveyor: continental crossing on W Broad, fair",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:15:48",
+     "bearing": 208,
+     "facing": "SW",
+     "stood_on_side": "N",
+     "meters_to_corner": "8",
+     "cam_lat": 40.385383,
+     "cam_lng": -74.769089,
+     "state": "fair",
+     "geom": [
+      [
+       40.3852335,
+       -74.7691469
+      ],
+      [
+       40.385334,
+       -74.7692291
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498337,
+     "geom_road": "West Broad Street"
+    },
+    {
+     "file": "IMG_9841.jpg",
+     "street": "Ege Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Ege Ave",
+     "style_secondary": "parallel_lines",
+     "style_secondary_street": "W Broad St",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style and condition corrected by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:21:31",
+     "bearing": 89,
+     "facing": "E",
+     "stood_on_side": "W",
+     "meters_to_corner": "13",
+     "cam_lat": 40.385325,
+     "cam_lng": -74.769272,
+     "state": "bad",
+     "geom": [
+      [
+       40.3852991,
+       -74.7690133
+      ],
+      [
+       40.3852335,
+       -74.7691469
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498332,
+     "geom_road": "Ege Avenue"
+    },
+    {
+     "file": "IMG_9842.jpg",
+     "street": "Eaton Place",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style and condition corrected by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:21:33",
+     "bearing": 88,
+     "facing": "E",
+     "stood_on_side": "W",
+     "meters_to_corner": "13",
+     "cam_lat": 40.385325,
+     "cam_lng": -74.769272,
+     "state": "bad",
+     "geom": [
+      [
+       40.385334,
+       -74.7692291
+      ],
+      [
+       40.3853932,
+       -74.7691021
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498358,
+     "geom_road": "Eaton Place"
+    }
+   ],
+   "state": "bad",
+   "state_counts": {
+    "bad": 2,
+    "fair": 1
+   },
+   "styles": "continental/parallel_lines"
+  },
+  {
+   "name": "West Broad Street & Windsor Way",
+   "lat": 40.383151,
+   "lng": -74.773554,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9840.jpg",
+     "street": "Windsor Way",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:18:52",
+     "bearing": 212,
+     "facing": "SW",
+     "stood_on_side": "N",
+     "meters_to_corner": "14",
+     "cam_lat": 40.383269,
+     "cam_lng": -74.773506,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38322062697171,
+       -74.773550088212
+      ],
+      [
+       40.383184781969554,
+       -74.77363321701336
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Windsor Way"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Ege Avenue & West Prospect Street",
+   "lat": 40.384474,
+   "lng": -74.768401,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "Ege Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Ege Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.3845174,
+       -74.7685184
+      ],
+      [
+       40.3845573,
+       -74.7684401
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 777087748,
+     "geom_road": "Ege Avenue"
+    },
+    {
+     "file": "",
+     "street": "West Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "West Prospect Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.3845353,
+       -74.7683787
+      ],
+      [
+       40.3844827,
+       -74.7683281
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 777087747,
+     "geom_road": "West Prospect Street"
+    },
+    {
+     "file": "IMG_9843.jpg",
+     "street": "West Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style corrected to parallel_lines by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:23:20",
+     "bearing": 114,
+     "facing": "SE",
+     "stood_on_side": "NW",
+     "meters_to_corner": "18",
+     "cam_lat": 40.384586,
+     "cam_lng": -74.768561,
+     "state": "good",
+     "geom": [
+      [
+       40.3844719,
+       -74.768516
+      ],
+      [
+       40.3844148,
+       -74.7684652
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 777087749,
+     "geom_road": "West Prospect Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 3
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "South Lanning Avenue & West Prospect Street",
+   "lat": 40.385277,
+   "lng": -74.766748,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "West Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "West Prospect Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3853467,
+       -74.7667097
+      ],
+      [
+       40.3852859,
+       -74.7666578
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 777087739,
+     "geom_road": "West Prospect Street"
+    },
+    {
+     "file": "IMG_9844.jpg",
+     "street": "South Lanning Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:25:18",
+     "bearing": 20,
+     "facing": "N",
+     "stood_on_side": "SW",
+     "meters_to_corner": "13",
+     "cam_lat": 40.385181,
+     "cam_lng": -74.766831,
+     "state": "fair",
+     "geom": [
+      [
+       40.3853501,
+       -74.7667432
+      ],
+      [
+       40.3852993,
+       -74.7668375
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498261,
+     "geom_road": "South Lanning Avenue"
+    },
+    {
+     "file": "IMG_9845.jpg",
+     "street": "West Prospect Street",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:25:32",
+     "bearing": 285,
+     "facing": "W",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "5",
+     "cam_lat": 40.385289,
+     "cam_lng": -74.766694,
+     "state": "fair",
+     "geom": [
+      [
+       40.3852667,
+       -74.7668723
+      ],
+      [
+       40.3852039,
+       -74.7668163
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 777087740,
+     "geom_road": "West Prospect Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 3
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Louellen Street & West Broad Street",
+   "lat": 40.387041,
+   "lng": -74.765945,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9847.jpg",
+     "street": "Louellen Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:27:51",
+     "bearing": 9,
+     "facing": "N",
+     "stood_on_side": "SW",
+     "meters_to_corner": "31",
+     "cam_lat": 40.386814,
+     "cam_lng": -74.766167,
+     "state": "bad",
+     "geom": [
+      [
+       40.3869838,
+       -74.7661836
+      ],
+      [
+       40.3871321,
+       -74.7659811
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498339,
+     "geom_road": "Louellen Street"
+    },
+    {
+     "file": "IMG_9848.jpg",
+     "street": "West Broad Street",
+     "side": "SW",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on this leg of W Broad St",
+     "note": "surveyor: unmarked; original read as worn parallel lines",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:28:07",
+     "bearing": 299,
+     "facing": "NW",
+     "stood_on_side": "SW",
+     "meters_to_corner": "18",
+     "cam_lat": 40.386892,
+     "cam_lng": -74.766031,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38696630000192,
+       -74.76598507998419
+      ],
+      [
+       40.387021453182605,
+       -74.76604739137328
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "West Broad Street"
+    },
+    {
+     "file": "IMG_9849.jpg",
+     "street": "West Broad Street",
+     "side": "NE",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on this leg of W Broad St",
+     "note": "surveyor: unmarked; original read as worn parallel lines",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:28:36",
+     "bearing": 321,
+     "facing": "NW",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "6",
+     "cam_lat": 40.387019,
+     "cam_lng": -74.765883,
+     "state": "unmarked",
+     "also": [
+      {
+       "file": "IMG_9850.jpg",
+       "street": "West Broad Street",
+       "side": "NE",
+       "crosswalk": "none",
+       "style": "",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "",
+       "features": "",
+       "crosswalk_note": "no markings on this leg of W Broad St",
+       "note": "surveyor: unmarked; original read as worn parallel lines",
+       "review_flag": "none/poor boundary \u2014 markings may be entirely gone, not merely worn",
+       "style_confidence": "",
+       "taken": "18:28:41",
+       "bearing": 274,
+       "facing": "W",
+       "stood_on_side": "at centre",
+       "meters_to_corner": "5",
+       "cam_lat": 40.387017,
+       "cam_lng": -74.7659,
+       "state": "unmarked",
+       "_loc": "Louellen Street & West Broad Street",
+       "geom": [
+        [
+         40.387060051460686,
+         -74.76584204893527
+        ],
+        [
+         40.38711520464137,
+         -74.76590436041107
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "West Broad Street"
+      }
+     ],
+     "geom": [
+      [
+       40.387060051460686,
+       -74.76584204893527
+      ],
+      [
+       40.38711520464137,
+       -74.76590436041107
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "West Broad Street"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 2,
+    "bad": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Mercer Street & West Broad Street",
+   "lat": 40.387467,
+   "lng": -74.765169,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9851.jpg",
+     "street": "West Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style changed ladder->continental on high-res re-check",
+     "review_flag": "",
+     "style_confidence": "low \u2014 bar-type confirmed, ladder vs continental not separable from this angle",
+     "taken": "18:29:34",
+     "bearing": 351,
+     "facing": "N",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "3",
+     "cam_lat": 40.387444,
+     "cam_lng": -74.765175,
+     "state": "good",
+     "also": [
+      {
+       "file": "IMG_9852.jpg",
+       "street": "West Broad Street",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "continental",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "good",
+       "features": "",
+       "crosswalk_note": "",
+       "note": "style changed ladder->continental on high-res re-check",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "18:29:44",
+       "bearing": 335,
+       "facing": "NW",
+       "stood_on_side": "E",
+       "meters_to_corner": "11",
+       "cam_lat": 40.3875,
+       "cam_lng": -74.765053,
+       "state": "good",
+       "_loc": "Mercer Street & West Broad Street",
+       "geom": [
+        [
+         40.38747068124656,
+         -74.76507844824218
+        ],
+        [
+         40.38753054795301,
+         -74.76513274629804
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "West Broad Street"
+      }
+     ],
+     "geom": [
+      [
+       40.3875391,
+       -74.7651413
+      ],
+      [
+       40.3874655,
+       -74.7650246
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776842399,
+     "geom_road": "West Broad Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "continental"
+  },
+  {
+   "name": "East Broad Street & North Greenwood Avenue & South Greenwood Avenue & West Broad Street",
+   "lat": 40.389179,
+   "lng": -74.76196,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 654",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "East Broad Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3891101,
+       -74.7618261
+      ],
+      [
+       40.3893003,
+       -74.761959
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498330,
+     "geom_road": "East Broad Street"
+    },
+    {
+     "file": "",
+     "street": "South Greenwood Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "South Greenwood Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3891101,
+       -74.7618261
+      ],
+      [
+       40.3890458,
+       -74.7619562
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498334,
+     "geom_road": "South Greenwood Avenue"
+    },
+    {
+     "file": "IMG_9853.jpg",
+     "street": "West Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:32:53",
+     "bearing": 353,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "16",
+     "cam_lat": 40.389039,
+     "cam_lng": -74.762,
+     "state": "fair",
+     "geom": [
+      [
+       40.3892382,
+       -74.7620896
+      ],
+      [
+       40.3890458,
+       -74.7619562
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498328,
+     "geom_road": "West Broad Street"
+    },
+    {
+     "file": "IMG_9854.jpg",
+     "street": "North Greenwood Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:32:54",
+     "bearing": 32,
+     "facing": "NE",
+     "stood_on_side": "S",
+     "meters_to_corner": "16",
+     "cam_lat": 40.389039,
+     "cam_lng": -74.762008,
+     "state": "fair",
+     "geom": [
+      [
+       40.3892382,
+       -74.7620896
+      ],
+      [
+       40.3893003,
+       -74.761959
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498291,
+     "geom_road": "North Greenwood Avenue"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 4
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Columbia Avenue & South Greenwood Avenue",
+   "lat": 40.388266,
+   "lng": -74.761201,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9855.jpg",
+     "street": "South Greenwood Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings discernible at high resolution",
+     "note": "Hopewell Volunteer Fire Company 50m away matches the photo; mapped crossing 10m away | reclassified poor->none after high-res re-check; was read as a ghost ladder at low resolution",
+     "review_flag": "CONFIRM IN FIELD \u2014 unmarked vs ghost decides repaint vs new install",
+     "style_confidence": "",
+     "taken": "18:34:10",
+     "bearing": 85,
+     "facing": "E",
+     "stood_on_side": "NW",
+     "meters_to_corner": "42",
+     "cam_lat": 40.388542,
+     "cam_lng": -74.761544,
+     "state": "unmarked",
+     "also": [
+      {
+       "file": "IMG_9856.jpg",
+       "street": "South Greenwood Avenue",
+       "side": "",
+       "crosswalk": "none",
+       "style": "",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "",
+       "features": "",
+       "crosswalk_note": "yellow hatch island only, no crosswalk",
+       "note": "corrected from the OSM footpath junction '1699 Trail & Teachers' Way'; photo shows the fire house with an S Greenwood sign, 1 min after 9855",
+       "review_flag": "",
+       "style_confidence": "",
+       "taken": "18:34:45",
+       "bearing": 49,
+       "facing": "NE",
+       "stood_on_side": "SW",
+       "meters_to_corner": "5",
+       "cam_lat": 40.388161,
+       "cam_lng": -74.761306,
+       "state": "unmarked",
+       "_loc": "Columbia Avenue & South Greenwood Avenue",
+       "geom": [
+        [
+         40.388260376890294,
+         -74.76129140259069
+        ],
+        [
+         40.388325266490405,
+         -74.76124817987152
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "South Greenwood Avenue"
+      }
+     ],
+     "geom": [
+      [
+       40.388260376890294,
+       -74.76129140259069
+      ],
+      [
+       40.388325266490405,
+       -74.76124817987152
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "South Greenwood Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Columbia Avenue & Seminary Avenue",
+   "lat": 40.388608,
+   "lng": -74.759957,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "Columbia Avenue",
+     "side": "E",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Columbia Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3886806,
+       -74.7599181
+      ],
+      [
+       40.3885773,
+       -74.7598542
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498259,
+     "geom_road": "Columbia Avenue"
+    },
+    {
+     "file": "",
+     "street": "Seminary Avenue",
+     "side": "NW",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Seminary Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3886806,
+       -74.7599181
+      ],
+      [
+       40.3886377,
+       -74.7600627
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498278,
+     "geom_road": "Seminary Avenue"
+    },
+    {
+     "file": "",
+     "street": "Columbia Avenue",
+     "side": "W",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Columbia Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3885404,
+       -74.7599994
+      ],
+      [
+       40.3886377,
+       -74.7600627
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498299,
+     "geom_road": "Columbia Avenue"
+    },
+    {
+     "file": "IMG_9857.jpg",
+     "street": "Seminary Avenue",
+     "side": "SE",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:35:52",
+     "bearing": 34,
+     "facing": "NE",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "8",
+     "cam_lat": 40.388553,
+     "cam_lng": -74.760011,
+     "state": "fair",
+     "geom": [
+      [
+       40.3885773,
+       -74.7598542
+      ],
+      [
+       40.3885404,
+       -74.7599994
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498345,
+     "geom_road": "Seminary Avenue"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 4
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "East Broad Street & Seminary Avenue",
+   "lat": 40.389659,
+   "lng": -74.760529,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9858.jpg",
+     "street": "Seminary Avenue",
+     "side": "S",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "surveyor: OSM placement correct; condition bad",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:37:22",
+     "bearing": 11,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "14",
+     "cam_lat": 40.389531,
+     "cam_lng": -74.760522,
+     "state": "bad",
+     "geom": [
+      [
+       40.3895973,
+       -74.760445
+      ],
+      [
+       40.3895708,
+       -74.7605432
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498347,
+     "geom_road": "Seminary Avenue"
+    }
+   ],
+   "state": "bad",
+   "state_counts": {
+    "bad": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Blackwell Avenue & East Broad Street",
+   "lat": 40.389525,
+   "lng": -74.761019,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "East Broad Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "second continental crossing on E Broad St",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.389622,
+       -74.7609698
+      ],
+      [
+       40.3894684,
+       -74.7608983
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498351,
+     "geom_road": "East Broad Street"
+    },
+    {
+     "file": "IMG_9859.jpg",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:37:48",
+     "bearing": 331,
+     "facing": "NW",
+     "stood_on_side": "E",
+     "meters_to_corner": "13",
+     "cam_lat": 40.389503,
+     "cam_lng": -74.760864,
+     "state": "good",
+     "geom": [
+      [
+       40.3895562,
+       -74.7611336
+      ],
+      [
+       40.3894296,
+       -74.7610758
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776760689,
+     "geom_road": "East Broad Street"
+    },
+    {
+     "file": "IMG_9860.jpg",
+     "street": "Blackwell Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style corrected to parallel_lines by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:37:52",
+     "bearing": 299,
+     "facing": "NW",
+     "stood_on_side": "E",
+     "meters_to_corner": "11",
+     "cam_lat": 40.3895,
+     "cam_lng": -74.760894,
+     "state": "good",
+     "geom": [
+      [
+       40.3895806,
+       -74.7611154
+      ],
+      [
+       40.389622,
+       -74.7609698
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498286,
+     "geom_road": "Blackwell Avenue"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 3
+   },
+   "styles": "continental/parallel_lines"
+  },
+  {
+   "name": "East Prospect Street & Seminary Avenue",
+   "lat": 40.387685,
+   "lng": -74.75944,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9861.jpg",
+     "street": "East Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:39:55",
+     "bearing": 119,
+     "facing": "SE",
+     "stood_on_side": "NW",
+     "meters_to_corner": "10",
+     "cam_lat": 40.387756,
+     "cam_lng": -74.759506,
+     "state": "fair",
+     "geom": [
+      [
+       40.3876166,
+       -74.7594669
+      ],
+      [
+       40.3877223,
+       -74.7595408
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 364715584,
+     "geom_road": "East Prospect Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "East Prospect Street & Princeton Avenue",
+   "lat": 40.388241,
+   "lng": -74.757246,
+   "jurisdiction": "county",
+   "county_route": "CR 569",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "East Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "East Prospect Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "east side of E Prospect St",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.3882632,
+       -74.7573508
+      ],
+      [
+       40.3881669,
+       -74.7572973
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498222,
+     "geom_road": "East Prospect Street"
+    },
+    {
+     "file": "IMG_9862.jpg",
+     "street": "Princeton Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "Princeton Ave",
+     "style_secondary": "parallel_lines",
+     "style_secondary_street": "E Prospect St",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:41:40",
+     "bearing": 40,
+     "facing": "NE",
+     "stood_on_side": "SW",
+     "meters_to_corner": "10",
+     "cam_lat": 40.388194,
+     "cam_lng": -74.757347,
+     "state": "good",
+     "geom": [
+      [
+       40.3881669,
+       -74.7572973
+      ],
+      [
+       40.3882055,
+       -74.7571358
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498296,
+     "geom_road": "Princeton Avenue"
+    },
+    {
+     "file": "IMG_9865.jpg",
+     "street": "East Prospect Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style corrected to parallel_lines by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:48:44",
+     "bearing": 299,
+     "facing": "NW",
+     "stood_on_side": "SE",
+     "meters_to_corner": "8",
+     "cam_lat": 40.388194,
+     "cam_lng": -74.757172,
+     "state": "good",
+     "geom": [
+      [
+       40.3883021,
+       -74.7571846
+      ],
+      [
+       40.3882055,
+       -74.7571358
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498293,
+     "geom_road": "East Prospect Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 3
+   },
+   "styles": "continental/parallel_lines"
+  },
+  {
+   "name": "2nd Street & Princeton Avenue",
+   "lat": 40.387445,
+   "lng": -74.756808,
+   "jurisdiction": "county",
+   "county_route": "CR 569",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9863.jpg",
+     "street": "2nd Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "2nd St",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "surveyor: marked crossing on 2nd St; original read as unmarked",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:42:44",
+     "bearing": 18,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "18",
+     "cam_lat": 40.387283,
+     "cam_lng": -74.756775,
+     "state": "good",
+     "geom": [
+      [
+       40.3875017,
+       -74.7567542
+      ],
+      [
+       40.3874132,
+       -74.7567074
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 496729585,
+     "geom_road": "2nd Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "1st Street & Princeton Avenue",
+   "lat": 40.38662,
+   "lng": -74.75635,
+   "jurisdiction": "county",
+   "county_route": "CR 569",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9864.jpg",
+     "street": "1st Street",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "worn stop bar only; ADA ramp present",
+     "note": "",
+     "review_flag": "recorded as unmarked (worn stop bar) \u2014 ADA ramp present, confirm intent",
+     "style_confidence": "",
+     "taken": "18:43:41",
+     "bearing": 156,
+     "facing": "SE",
+     "stood_on_side": "N",
+     "meters_to_corner": "9",
+     "cam_lat": 40.3867,
+     "cam_lng": -74.756339,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.38667507240844,
+       -74.75629503596092
+      ],
+      [
+       40.38660715525555,
+       -74.75626075658802
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "1st Street"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Columbia Avenue & Princeton Avenue",
+   "lat": 40.389169,
+   "lng": -74.75776,
+   "jurisdiction": "county",
+   "county_route": "CR 569",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "Columbia Avenue",
+     "side": "E",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Columbia Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3892484,
+       -74.7577073
+      ],
+      [
+       40.3891421,
+       -74.7576466
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498282,
+     "geom_road": "Columbia Avenue"
+    },
+    {
+     "file": "",
+     "street": "Princeton Avenue",
+     "side": "N",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Princeton Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3892484,
+       -74.7577073
+      ],
+      [
+       40.3892071,
+       -74.7578701
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498356,
+     "geom_road": "Princeton Avenue"
+    },
+    {
+     "file": "",
+     "street": "Princeton Avenue",
+     "side": "S",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Princeton Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "bad",
+     "geom": [
+      [
+       40.3891421,
+       -74.7576466
+      ],
+      [
+       40.3890981,
+       -74.7578072
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498335,
+     "geom_road": "Princeton Avenue"
+    },
+    {
+     "file": "IMG_9866.jpg",
+     "street": "Columbia Avenue",
+     "side": "W",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:49:41",
+     "bearing": 306,
+     "facing": "NW",
+     "stood_on_side": "SE",
+     "meters_to_corner": "10",
+     "cam_lat": 40.3891,
+     "cam_lng": -74.757683,
+     "state": "bad",
+     "geom": [
+      [
+       40.3890981,
+       -74.7578072
+      ],
+      [
+       40.3892071,
+       -74.7578701
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498284,
+     "geom_road": "Columbia Avenue"
+    }
+   ],
+   "state": "bad",
+   "state_counts": {
+    "bad": 2,
+    "fair": 2
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "East Broad Street & Princeton Avenue",
+   "lat": 40.390233,
+   "lng": -74.75834,
+   "jurisdiction": "county",
+   "county_route": "CR 518, CR 569",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "Princeton Avenue",
+     "side": "S",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Princeton Avenue",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed (OSM way 376498301)",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3901785,
+       -74.7582267
+      ],
+      [
+       40.3901464,
+       -74.7583853
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498301,
+     "geom_road": "Princeton Avenue"
+    },
+    {
+     "file": "IMG_9867.jpg",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "markings worn",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:50:50",
+     "bearing": 310,
+     "facing": "NW",
+     "stood_on_side": "SE",
+     "meters_to_corner": "15",
+     "cam_lat": 40.390122,
+     "cam_lng": -74.758239,
+     "state": "bad",
+     "geom": [
+      [
+       40.3901464,
+       -74.7583853
+      ],
+      [
+       40.3902787,
+       -74.758447
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498323,
+     "geom_road": "East Broad Street"
+    }
+   ],
+   "state": "bad",
+   "state_counts": {
+    "bad": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "East Broad Street mid-block crossing (by PNC Bank)",
+   "lat": 40.390611,
+   "lng": -74.756767,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9868.jpg",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "like_new",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "RRFB crossing 8m away on E Broad; 65m from the Maple corner - a separate mid-block crossing, not the intersection",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:51:47",
+     "bearing": 35,
+     "facing": "NE",
+     "stood_on_side": "",
+     "meters_to_corner": "73",
+     "cam_lat": 40.390611,
+     "cam_lng": -74.756767,
+     "state": "good",
+     "geom": [
+      [
+       40.3907041,
+       -74.7567128
+      ],
+      [
+       40.3906057,
+       -74.756672
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776760690,
+     "geom_road": "East Broad Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "continental"
+  },
+  {
+   "name": "East Broad Street & North Maple Street & South Maple Street",
+   "lat": 40.390846,
+   "lng": -74.755965,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "East Broad Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.3907612,
+       -74.7559982
+      ],
+      [
+       40.3908758,
+       -74.7560862
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498311,
+     "geom_road": "East Broad Street"
+    },
+    {
+     "file": "IMG_9869.jpg",
+     "street": "North Maple Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:52:32",
+     "bearing": 30,
+     "facing": "NE",
+     "stood_on_side": "SW",
+     "meters_to_corner": "14",
+     "cam_lat": 40.390739,
+     "cam_lng": -74.756058,
+     "state": "good",
+     "also": [
+      {
+       "file": "IMG_9871.jpg",
+       "street": "North Maple Street",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "parallel_lines",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "good",
+       "features": "",
+       "crosswalk_note": "",
+       "note": "",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "18:52:46",
+       "bearing": 30,
+       "facing": "NE",
+       "stood_on_side": "SW",
+       "meters_to_corner": "10",
+       "cam_lat": 40.390781,
+       "cam_lng": -74.75605,
+       "state": "good",
+       "_loc": "East Broad Street & North Maple Street & South Maple Street",
+       "geom": [
+        [
+         40.3908939511633,
+         -74.75603009462856
+        ],
+        [
+         40.390912176411156,
+         -74.75593760518953
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "North Maple Street"
+      }
+     ],
+     "geom": [
+      [
+       40.3908845,
+       -74.7560517
+      ],
+      [
+       40.3909359,
+       -74.7559255
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498255,
+     "geom_road": "North Maple Street"
+    },
+    {
+     "file": "IMG_9870.jpg",
+     "street": "South Maple Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:52:35",
+     "bearing": 66,
+     "facing": "NE",
+     "stood_on_side": "SW",
+     "meters_to_corner": "14",
+     "cam_lat": 40.390739,
+     "cam_lng": -74.756058,
+     "state": "good",
+     "geom": [
+      [
+       40.3907672,
+       -74.7558846
+      ],
+      [
+       40.3907612,
+       -74.7559982
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498355,
+     "geom_road": "South Maple Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 3
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "East Broad Street & North Elm Street & South Elm Street",
+   "lat": 40.391508,
+   "lng": -74.753395,
+   "jurisdiction": "county",
+   "county_route": "CR 518",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "East Broad Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "continental",
+     "style_street": "East Broad Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "good",
+     "geom": [
+      [
+       40.3915674,
+       -74.7534823
+      ],
+      [
+       40.3914156,
+       -74.7534213
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498319,
+     "geom_road": "East Broad Street"
+    },
+    {
+     "file": "IMG_9872.jpg",
+     "street": "South Elm Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "ladder",
+     "style_street": "N/S Elm St",
+     "style_secondary": "parallel_lines",
+     "style_secondary_street": "E Broad St approach",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "style corrected to ladder by surveyor",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "18:55:12",
+     "bearing": 116,
+     "facing": "SE",
+     "stood_on_side": "NW",
+     "meters_to_corner": "11",
+     "cam_lat": 40.391564,
+     "cam_lng": -74.753503,
+     "state": "good",
+     "geom": [
+      [
+       40.3914156,
+       -74.7534213
+      ],
+      [
+       40.3914458,
+       -74.7532963
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 363310290,
+     "geom_road": "South Elm Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 2
+   },
+   "styles": "continental/ladder/parallel_lines"
+  },
+  {
+   "name": "East Prospect Street & South Elm Street",
+   "lat": 40.389418,
+   "lng": -74.752512,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9873.jpg",
+     "street": "East Prospect Street",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "18:58:22",
+     "bearing": 301,
+     "facing": "NW",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "7",
+     "cam_lat": 40.389406,
+     "cam_lng": -74.752425,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.389402004750835,
+       -74.75242392079431
+      ],
+      [
+       40.38947119377359,
+       -74.75245349407993
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "East Prospect Street"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1
+   },
+   "styles": ""
+  },
+  {
+   "name": "Lafayette Street & North Elm Street",
+   "lat": 40.392021,
+   "lng": -74.757453,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9877.jpg",
+     "street": "Lafayette Street",
+     "side": "E",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "surveyor: OSM placement correct; condition good",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:05:31",
+     "bearing": 321,
+     "facing": "NW",
+     "stood_on_side": "W",
+     "meters_to_corner": "13",
+     "cam_lat": 40.391953,
+     "cam_lng": -74.757331,
+     "state": "good",
+     "geom": [
+      [
+       40.3920783,
+       -74.7573318
+      ],
+      [
+       40.3919507,
+       -74.7573358
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498263,
+     "geom_road": "Lafayette Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Lafayette Street & North Maple Street",
+   "lat": 40.39204,
+   "lng": -74.756482,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9875.jpg",
+     "street": "Lafayette Street",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the Lafayette St leg",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "19:04:02",
+     "bearing": 228,
+     "facing": "SW",
+     "stood_on_side": "E",
+     "meters_to_corner": "10",
+     "cam_lat": 40.392025,
+     "cam_lng": -74.756364,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39208837098892,
+       -74.75641706484144
+      ],
+      [
+       40.39201736984723,
+       -74.75639616738833
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Lafayette Street"
+    },
+    {
+     "file": "IMG_9876.jpg",
+     "street": "North Maple Street",
+     "side": "S",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "surveyor: OSM placement and style correct; condition fair",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:04:40",
+     "bearing": 264,
+     "facing": "W",
+     "stood_on_side": "at centre",
+     "meters_to_corner": "7",
+     "cam_lat": 40.391986,
+     "cam_lng": -74.756517,
+     "state": "fair",
+     "geom": [
+      [
+       40.3919674,
+       -74.756524
+      ],
+      [
+       40.391997,
+       -74.756404
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776641170,
+     "geom_road": "North Maple Street"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Hamilton Avenue & Lafayette Street",
+   "lat": 40.391545,
+   "lng": -74.75952,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "yes",
+   "photos": [
+    {
+     "file": "IMG_9878.jpg",
+     "street": "Hamilton Avenue",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "25 MPH marking only, no crosswalk",
+     "note": "approach shot ~50m out; shows 25 MPH marking, no crosswalk in frame",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "19:06:34",
+     "bearing": 274,
+     "facing": "W",
+     "stood_on_side": "E",
+     "meters_to_corner": "50",
+     "cam_lat": 40.391619,
+     "cam_lng": -74.758942,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39150113319466,
+       -74.75944999449311
+      ],
+      [
+       40.39147743683453,
+       -74.7595403220094
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Hamilton Avenue"
+    },
+    {
+     "file": "IMG_9879.jpg",
+     "street": "Lafayette Street",
+     "side": "",
+     "crosswalk": "faded",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "poor",
+     "features": "",
+     "crosswalk_note": "edge line and ADA ramp; striping unclear",
+     "note": "",
+     "review_flag": "none/poor boundary \u2014 very faint; could reasonably be recorded as unmarked",
+     "style_confidence": "high",
+     "taken": "19:07:17",
+     "bearing": 177,
+     "facing": "S",
+     "stood_on_side": "N",
+     "meters_to_corner": "9",
+     "cam_lat": 40.391628,
+     "cam_lng": -74.759514,
+     "state": "bad",
+     "geom": [
+      [
+       40.3914604,
+       -74.7595734
+      ],
+      [
+       40.3915742,
+       -74.7596218
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498287,
+     "geom_road": "Lafayette Street"
+    },
+    {
+     "file": "IMG_9880.jpg",
+     "street": "Hamilton Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:07:33",
+     "bearing": 119,
+     "facing": "SE",
+     "stood_on_side": "W",
+     "meters_to_corner": "12",
+     "cam_lat": 40.391583,
+     "cam_lng": -74.75965,
+     "state": "fair",
+     "geom": [
+      [
+       40.3915742,
+       -74.7596218
+      ],
+      [
+       40.3916127,
+       -74.7594769
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498303,
+     "geom_road": "Hamilton Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "bad": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Hamilton Avenue & Railroad Place & Somerset Street",
+   "lat": 40.392464,
+   "lng": -74.759921,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9881.jpg",
+     "street": "Railroad Place",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the Railroad Pl leg",
+     "note": "surveyor: unmarked; original read as parallel lines",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "19:08:34",
+     "bearing": 13,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "15",
+     "cam_lat": 40.392342,
+     "cam_lng": -74.759981,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.39241002154975,
+       -74.75997780872035
+      ],
+      [
+       40.39247858720323,
+       -74.76000978831561
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Railroad Place"
+    },
+    {
+     "file": "IMG_9882.jpg",
+     "street": "Hamilton Avenue",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:08:37",
+     "bearing": 17,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "14",
+     "cam_lat": 40.392344,
+     "cam_lng": -74.759981,
+     "state": "fair",
+     "geom": [
+      [
+       40.3924192,
+       -74.7598206
+      ],
+      [
+       40.3923755,
+       -74.759974
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498309,
+     "geom_road": "Hamilton Avenue"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Blackwell Avenue & Lafayette Street",
+   "lat": 40.390984,
+   "lng": -74.761667,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9883.jpg",
+     "street": "Lafayette Street",
+     "side": "",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:10:35",
+     "bearing": 186,
+     "facing": "S",
+     "stood_on_side": "N",
+     "meters_to_corner": "8",
+     "cam_lat": 40.391056,
+     "cam_lng": -74.761642,
+     "state": "fair",
+     "also": [
+      {
+       "file": "IMG_9884.jpg",
+       "street": "Lafayette Street",
+       "side": "",
+       "crosswalk": "yes",
+       "style": "parallel_lines",
+       "style_street": "",
+       "style_secondary": "",
+       "style_secondary_street": "",
+       "condition": "fair",
+       "features": "",
+       "crosswalk_note": "",
+       "note": "",
+       "review_flag": "",
+       "style_confidence": "high",
+       "taken": "19:10:57",
+       "bearing": 349,
+       "facing": "N",
+       "stood_on_side": "NW",
+       "meters_to_corner": "10",
+       "cam_lat": 40.391042,
+       "cam_lng": -74.761764,
+       "state": "fair",
+       "_loc": "Blackwell Avenue & Lafayette Street",
+       "geom": [
+        [
+         40.39096868831011,
+         -74.76157872572476
+        ],
+        [
+         40.39103765204011,
+         -74.761609193323
+        ]
+       ],
+       "geom_source": "derived",
+       "geom_road": "Lafayette Street"
+      }
+     ],
+     "geom": [
+      [
+       40.3910488,
+       -74.7616088
+      ],
+      [
+       40.3909404,
+       -74.7615582
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498454,
+     "geom_road": "Lafayette Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Blackwell Avenue & Railroad Place",
+   "lat": 40.391606,
+   "lng": -74.761931,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9885.jpg",
+     "street": "Blackwell Avenue",
+     "side": "S",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "surveyor: OSM placement correct; condition good",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:11:38",
+     "bearing": 22,
+     "facing": "N",
+     "stood_on_side": "S",
+     "meters_to_corner": "12",
+     "cam_lat": 40.391506,
+     "cam_lng": -74.761964,
+     "state": "good",
+     "geom": [
+      [
+       40.3915161,
+       -74.7619901
+      ],
+      [
+       40.3915919,
+       -74.7618446
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498241,
+     "geom_road": "Blackwell Avenue"
+    },
+    {
+     "file": "IMG_9886.jpg",
+     "street": "Railroad Place",
+     "side": "",
+     "crosswalk": "none",
+     "style": "",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "",
+     "features": "",
+     "crosswalk_note": "no markings on the Railroad Pl leg",
+     "note": "surveyor: unmarked; original read as worn parallel lines",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "19:12:54",
+     "bearing": 334,
+     "facing": "NW",
+     "stood_on_side": "S",
+     "meters_to_corner": "12",
+     "cam_lat": 40.391497,
+     "cam_lng": -74.761956,
+     "state": "unmarked",
+     "geom": [
+      [
+       40.391543259167086,
+       -74.76196843691257
+      ],
+      [
+       40.3916034503471,
+       -74.76202211633661
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Railroad Place"
+    }
+   ],
+   "state": "unmarked",
+   "state_counts": {
+    "unmarked": 1,
+    "good": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Lafayette Street & North Elm Street (east, at Kings Path)",
+   "lat": 40.392652,
+   "lng": -74.754188,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "IMG_9874.jpg",
+     "street": "Lafayette Street",
+     "side": "SW",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "good",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "surveyor: this photo is the eastern Lafayette & N Elm junction, by Kings Path",
+     "review_flag": "",
+     "style_confidence": "high",
+     "taken": "19:02:19",
+     "bearing": 356,
+     "facing": "N",
+     "stood_on_side": "E",
+     "meters_to_corner": "12",
+     "cam_lat": 40.392547,
+     "cam_lng": -74.754211,
+     "state": "good",
+     "geom": [
+      [
+       40.392568,
+       -74.7542422
+      ],
+      [
+       40.3926665,
+       -74.7543168
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776641172,
+     "geom_road": "Lafayette Street"
+    }
+   ],
+   "state": "good",
+   "state_counts": {
+    "good": 1
+   },
+   "styles": "parallel_lines"
+  }
+ ]
+}
