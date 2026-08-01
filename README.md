@@ -76,7 +76,17 @@ the public site.
 ## 3. The crosswalk inventory layer
 
 The **Crosswalk inventory** checkbox (under "Other layers", off by default) shows
-the 41 locations walked and photographed on 31 July 2026.
+**81 crossings at 42 locations**, from the survey walked on 31 July 2026 and
+corrected by the surveyor afterwards.
+
+| | Good | Fair | Bad | Unmarked |
+|---|---|---|---|---|
+| Crossings | 22 | 29 | 10 | 20 |
+| Locations (worst leg) | 11 | 8 | 5 | 18 |
+
+18 of the 42 locations have at least one unmarked leg, and 8 have no markings at
+all. 63 crossings are backed by a photograph; the other 18 the surveyor reported
+without photographing.
 
 From zoom 17 in, each surveyed crossing is **drawn to scale where it actually
 lies** — across the carriageway, square to the road centreline, with the markings
@@ -93,8 +103,8 @@ crossing is the most actionable thing at a junction — and where the legs diffe
 the popup spells the mix out ("1 unmarked, 1 fair") instead of calling it "mixed".
 
 The CSV's `crosswalk` column also carries a `faded` value, but it earns no state
-of its own: all 14 faded legs already record a condition (6 fair, 8 poor), so
-faded is just a fair or bad marking. `condition: like_new` folds into Good.
+of its own: every faded leg records a condition too, so faded is just a fair or
+bad marking. `condition: like_new` folds into Good.
 
 Clicking any crossing shows the photo of its actual condition; clicking the photo
 opens it full size, and locations with more than one photo show the rest as
@@ -137,6 +147,16 @@ it. Edit the row and rebuild; there is no separate corrections file.
 | `crossing_side` | Optional compass point (`N`/`NE`/`E`/…) for which side of the junction the crossing sits on. Only needed where one street carries a crossing on both sides — "the crossing on the south side of Princeton". Left blank, the side is inferred from where the photographer stood |
 | `crosswalk_note` | Free text, shown in the popup caption |
 
+**A junction in the wrong place** is fixed in `map.geojson`, not the CSV — that
+file holds each location's coordinates. This has happened once: the survey put
+"Lafayette Street & North Elm Street" 143 m from where those streets actually
+meet, because Lafayette crosses North Elm at *two* junctions and the photo
+matching averaged one photo from each into a single point in open ground. The fix
+was to correct the coordinate and add a second location,
+`Lafayette Street & North Elm Street (east, at Kings Path)`, then point one photo
+at each. If crossings at some junction are drawn in open ground or nowhere near
+the street, suspect the coordinate before the crossing.
+
 A crossing nobody photographed goes in as a row with **`photo` left empty**, plus
 `intersection`, `crossing_street`, `crosswalk`, `style`, `condition`, and
 `crossing_side` where the street has two. The site
@@ -153,12 +173,14 @@ a pin, not enough to draw a crossing. `osm_crossings.py` gets the geometry from
 OpenStreetMap instead, via one cached Overpass query (pass `--refresh`, or delete
 `data/osm_roads.json`, to re-query):
 
-- **33 of the legs match an OSM `footway=crossing` way**, which carries its own
-  curb-to-curb line. A leg matches only a crossing of its own `crossing_street`,
-  within 32 m of the junction, roughly square to the camera's line of sight and in
-  front of the camera rather than behind it; best-scoring pairs are assigned
-  first, and one crossing way can only be used once.
-- **The rest are derived** from the road centreline: perpendicular to
+- **57 of the 81 crossings match an OSM `footway=crossing` way**, which carries
+  its own curb-to-curb line. The match must be within 32 m of the junction, and
+  where the row names a `crossing_street` — optionally a `crossing_side` too —
+  only an OSM crossing of that street and side will do. Where the row names no
+  street, the camera stands in for it: the crossing has to be roughly square to
+  the view and in front of the camera rather than behind it. Best-scoring pairs
+  are assigned first, and one OSM way can only be used once.
+- **The other 24 are derived** from the road centreline: perpendicular to
   `crossing_street` (or, where that is blank, to whichever road is most square to
   the camera), one carriageway wide (from OSM `width`/`lanes` where tagged, else a
   default for the road class), sitting beside the junction box on the side the
@@ -184,7 +206,7 @@ The CSV has one row per photograph, and the surveyor often shot the same crossin
 from two corners, so **rows that land on the same crossing are merged into one
 line**: same street, within 6 m, and agreeing on the verdict. The extra photos ride
 along and show up as thumbnails, which is why a popup can read "2 legs · 4 photos".
-Today 72 photos and 5 reported legs resolve to 68 crossings.
+Today 72 photos and 18 reported legs resolve to 81 crossings.
 
 **Two crossings that disagree can never occupy the same spot.** A stretch of road
 is either marked or it isn't, so a marked and an unmarked crossing drawn on top of
@@ -257,8 +279,14 @@ what Pages serves as the home page.
 - On the free plan the repo must be **public** for Pages to work. That's fine
   here — the data is already public (a published Sheet with no personal
   details).
-- **Data changes need no redeploy.** Editing the Google Sheet updates the live
-  site on the next page load (subject to Google's CSV cache, a few minutes).
+- **Crash data changes need no redeploy.** Editing the Google Sheet updates the
+  live site on the next page load (subject to Google's CSV cache, a few minutes).
+- **Crosswalk data changes do need a redeploy**, since that layer is baked into
+  the repo: correct the survey CSV, re-run the two scripts, then commit and push.
+- The first push of the photos may fail with `HTTP 400 / unexpected disconnect`.
+  That is git's 1 MB HTTP post buffer, not a permissions problem. This repo has
+  `http.postBuffer` set locally to avoid it; on a fresh clone, run
+  `git config http.postBuffer 524288000`.
 - **Code changes** (editing `index.html`) just need another `git push` to
   `main` — Pages rebuilds automatically within a minute or so.
 - The files the running site needs are `index.html`, `data/crosswalks.json`, and
