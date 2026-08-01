@@ -173,6 +173,19 @@
      "cam_lat": 40.39265,
      "cam_lng": -74.764656,
      "state": "good",
+     "geom": [
+      [
+       40.3924379,
+       -74.7646615
+      ],
+      [
+       40.3925409,
+       -74.7647354
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 496729577,
+     "geom_road": "Hart Avenue",
      "also": [
       {
        "file": "IMG_9823.jpg",
@@ -248,20 +261,7 @@
        "geom_source": "derived",
        "geom_road": "Hart Avenue"
       }
-     ],
-     "geom": [
-      [
-       40.3924379,
-       -74.7646615
-      ],
-      [
-       40.3925409,
-       -74.7647354
-      ]
-     ],
-     "geom_source": "osm",
-     "geom_ref": 496729577,
-     "geom_road": "Hart Avenue"
+     ]
     },
     {
      "file": "IMG_9822.jpg",
@@ -426,6 +426,18 @@
      "cam_lat": 40.393997,
      "cam_lng": -74.765669,
      "state": "unmarked",
+     "geom": [
+      [
+       40.394011762317774,
+       -74.76567093847154
+      ],
+      [
+       40.39407511635136,
+       -74.76571792810785
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Washington Avenue",
      "also": [
       {
        "file": "IMG_9820.jpg",
@@ -464,19 +476,7 @@
        "geom_source": "derived",
        "geom_road": "Washington Avenue"
       }
-     ],
-     "geom": [
-      [
-       40.394011762317774,
-       -74.76567093847154
-      ],
-      [
-       40.39407511635136,
-       -74.76571792810785
-      ]
-     ],
-     "geom_source": "derived",
-     "geom_road": "Washington Avenue"
+     ]
     }
    ],
    "state": "unmarked",
@@ -797,6 +797,18 @@
      "cam_lat": 40.388961,
      "cam_lng": -74.766511,
      "state": "good",
+     "geom": [
+      [
+       40.38894661897333,
+       -74.76652840798357
+      ],
+      [
+       40.38890308635987,
+       -74.76660495665675
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "Mercer Street",
      "also": [
       {
        "file": "IMG_9833.jpg",
@@ -835,19 +847,7 @@
        "geom_source": "derived",
        "geom_road": "Mercer Street"
       }
-     ],
-     "geom": [
-      [
-       40.38894661897333,
-       -74.76652840798357
-      ],
-      [
-       40.38890308635987,
-       -74.76660495665675
-      ]
-     ],
-     "geom_source": "derived",
-     "geom_road": "Mercer Street"
+     ]
     }
    ],
    "state": "good",
@@ -1744,6 +1744,18 @@
      "cam_lat": 40.387019,
      "cam_lng": -74.765883,
      "state": "unmarked",
+     "geom": [
+      [
+       40.387060051460686,
+       -74.76584204893527
+      ],
+      [
+       40.38711520464137,
+       -74.76590436041107
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "West Broad Street",
      "also": [
       {
        "file": "IMG_9850.jpg",
@@ -1782,19 +1794,7 @@
        "geom_source": "derived",
        "geom_road": "West Broad Street"
       }
-     ],
-     "geom": [
-      [
-       40.387060051460686,
-       -74.76584204893527
-      ],
-      [
-       40.38711520464137,
-       -74.76590436041107
-      ]
-     ],
-     "geom_source": "derived",
-     "geom_road": "West Broad Street"
+     ]
     }
    ],
    "state": "unmarked",
@@ -1835,6 +1835,19 @@
      "cam_lat": 40.387444,
      "cam_lng": -74.765175,
      "state": "good",
+     "geom": [
+      [
+       40.3875391,
+       -74.7651413
+      ],
+      [
+       40.3874655,
+       -74.7650246
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 776842399,
+     "geom_road": "West Broad Street",
      "also": [
       {
        "file": "IMG_9852.jpg",
@@ -1873,20 +1886,7 @@
        "geom_source": "derived",
        "geom_road": "West Broad Street"
       }
-     ],
-     "geom": [
-      [
-       40.3875391,
-       -74.7651413
-      ],
-      [
-       40.3874655,
-       -74.7650246
-      ]
-     ],
-     "geom_source": "osm",
-     "geom_ref": 776842399,
-     "geom_road": "West Broad Street"
+     ]
     }
    ],
    "state": "good",
@@ -2089,6 +2089,18 @@
      "cam_lat": 40.388542,
      "cam_lng": -74.761544,
      "state": "unmarked",
+     "geom": [
+      [
+       40.388260376890294,
+       -74.76129140259069
+      ],
+      [
+       40.388325266490405,
+       -74.76124817987152
+      ]
+     ],
+     "geom_source": "derived",
+     "geom_road": "South Greenwood Avenue",
      "also": [
       {
        "file": "IMG_9856.jpg",
@@ -2127,19 +2139,7 @@
        "geom_source": "derived",
        "geom_road": "South Greenwood Avenue"
       }
-     ],
-     "geom": [
-      [
-       40.388260376890294,
-       -74.76129140259069
-      ],
-      [
-       40.388325266490405,
-       -74.76124817987152
-      ]
-     ],
-     "geom_source": "derived",
-     "geom_road": "South Greenwood Avenue"
+     ]
     }
    ],
    "state": "unmarked",
@@ -3144,6 +3144,19 @@
      "cam_lat": 40.390739,
      "cam_lng": -74.756058,
      "state": "good",
+     "geom": [
+      [
+       40.3908845,
+       -74.7560517
+      ],
+      [
+       40.3909359,
+       -74.7559255
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498255,
+     "geom_road": "North Maple Street",
      "also": [
       {
        "file": "IMG_9871.jpg",
@@ -3182,20 +3195,7 @@
        "geom_source": "derived",
        "geom_road": "North Maple Street"
       }
-     ],
-     "geom": [
-      [
-       40.3908845,
-       -74.7560517
-      ],
-      [
-       40.3909359,
-       -74.7559255
-      ]
-     ],
-     "geom_source": "osm",
-     "geom_ref": 376498255,
-     "geom_road": "North Maple Street"
+     ]
     },
     {
      "file": "IMG_9870.jpg",
@@ -3769,6 +3769,19 @@
      "cam_lat": 40.391056,
      "cam_lng": -74.761642,
      "state": "fair",
+     "geom": [
+      [
+       40.3910488,
+       -74.7616088
+      ],
+      [
+       40.3909404,
+       -74.7615582
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498454,
+     "geom_road": "Lafayette Street",
      "also": [
       {
        "file": "IMG_9884.jpg",
@@ -3807,20 +3820,7 @@
        "geom_source": "derived",
        "geom_road": "Lafayette Street"
       }
-     ],
-     "geom": [
-      [
-       40.3910488,
-       -74.7616088
-      ],
-      [
-       40.3909404,
-       -74.7615582
-      ]
-     ],
-     "geom_source": "osm",
-     "geom_ref": 376498454,
-     "geom_road": "Lafayette Street"
+     ]
     }
    ],
    "state": "fair",
@@ -3967,6 +3967,58 @@
    "state": "good",
    "state_counts": {
     "good": 1
+   },
+   "styles": "parallel_lines"
+  },
+  {
+   "name": "Center Street & North Greenwood Avenue",
+   "lat": 40.390149,
+   "lng": -74.762702,
+   "jurisdiction": "borough",
+   "county_route": "",
+   "needs_field_check": "",
+   "photos": [
+    {
+     "file": "",
+     "street": "Center Street",
+     "side": "SW",
+     "crosswalk": "yes",
+     "style": "parallel_lines",
+     "style_street": "Center Street",
+     "style_secondary": "",
+     "style_secondary_street": "",
+     "condition": "fair",
+     "features": "",
+     "crosswalk_note": "",
+     "note": "reported by the surveyor; not photographed (missed on the walk)",
+     "review_flag": "",
+     "style_confidence": "",
+     "taken": "",
+     "bearing": null,
+     "facing": "",
+     "stood_on_side": "",
+     "meters_to_corner": "",
+     "cam_lat": null,
+     "cam_lng": null,
+     "state": "fair",
+     "geom": [
+      [
+       40.3901785,
+       -74.7627998
+      ],
+      [
+       40.3900685,
+       -74.7627223
+      ]
+     ],
+     "geom_source": "osm",
+     "geom_ref": 376498305,
+     "geom_road": "Center Street"
+    }
+   ],
+   "state": "fair",
+   "state_counts": {
+    "fair": 1
    },
    "styles": "parallel_lines"
   }

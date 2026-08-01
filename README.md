@@ -76,16 +76,16 @@ the public site.
 ## 3. The crosswalk inventory layer
 
 The **Crosswalk inventory** checkbox (under "Other layers", off by default) shows
-**81 crossings at 42 locations**, from the survey walked on 31 July 2026 and
+**82 crossings at 43 locations**, from the survey walked on 31 July 2026 and
 corrected by the surveyor afterwards.
 
 | | Good | Fair | Bad | Unmarked |
 |---|---|---|---|---|
-| Crossings | 22 | 29 | 10 | 20 |
-| Locations (worst leg) | 11 | 8 | 5 | 18 |
+| Crossings | 22 | 30 | 10 | 20 |
+| Locations (worst leg) | 11 | 9 | 5 | 18 |
 
-18 of the 42 locations have at least one unmarked leg, and 8 have no markings at
-all. 63 crossings are backed by a photograph; the other 18 the surveyor reported
+18 of the 43 locations have at least one unmarked leg, and 8 have no markings at
+all. 63 crossings are backed by a photograph; the other 19 the surveyor reported
 without photographing.
 
 From zoom 17 in, each surveyed crossing is **drawn to scale where it actually
@@ -173,7 +173,7 @@ a pin, not enough to draw a crossing. `osm_crossings.py` gets the geometry from
 OpenStreetMap instead, via one cached Overpass query (pass `--refresh`, or delete
 `data/osm_roads.json`, to re-query):
 
-- **57 of the 81 crossings match an OSM `footway=crossing` way**, which carries
+- **58 of the 82 crossings match an OSM `footway=crossing` way**, which carries
   its own curb-to-curb line. The match must be within 32 m of the junction, and
   where the row names a `crossing_street` — optionally a `crossing_side` too —
   only an OSM crossing of that street and side will do. Where the row names no
@@ -206,7 +206,7 @@ The CSV has one row per photograph, and the surveyor often shot the same crossin
 from two corners, so **rows that land on the same crossing are merged into one
 line**: same street, within 6 m, and agreeing on the verdict. The extra photos ride
 along and show up as thumbnails, which is why a popup can read "2 legs · 4 photos".
-Today 72 photos and 18 reported legs resolve to 81 crossings.
+Today 72 photos and 19 reported legs resolve to 82 crossings.
 
 **Two crossings that disagree can never occupy the same spot.** A stretch of road
 is either marked or it isn't, so a marked and an unmarked crossing drawn on top of
